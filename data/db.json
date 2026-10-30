@@ -1,0 +1,1044 @@
+{
+  "settings": {
+    "deliveryFee": 35,
+    "codLimit": 5000
+  },
+  "coupons": {
+    "WELCOME50": {
+      "enabled": true
+    },
+    "FLOWER10": {
+      "enabled": true
+    },
+    "FESTIVE100": {
+      "enabled": true,
+      "discountType": "flat",
+      "discountValue": 100,
+      "minOrder": 999,
+      "description": ""
+    }
+  },
+  "products": [
+    {
+      "id": 101,
+      "name": "Velvet Crimson 10 Red Roses Bouquet",
+      "cat": "Flowers",
+      "flowerType": "Roses",
+      "color": "Red",
+      "occasion": "Romance",
+      "emoji": "🌹",
+      "price": 499,
+      "mrp": 699,
+      "weight": "10 Stems · Handcrafted",
+      "stock": 44,
+      "rating": 4.9,
+      "reviews": 2140,
+      "badge": "Best Seller",
+      "delivery": "In 2 Hours",
+      "image": "/images/products/velvet-crimson-red-roses.jpg",
+      "enabled": true
+    },
+    {
+      "id": 102,
+      "name": "Blushing Pink Roses & Gypsophila",
+      "cat": "Flowers",
+      "flowerType": "Roses",
+      "color": "Pink",
+      "occasion": "Birthday",
+      "emoji": "💐",
+      "price": 599,
+      "mrp": 799,
+      "weight": "12 Stems · With Baby Breath",
+      "stock": 37,
+      "rating": 4.8,
+      "reviews": 1420,
+      "badge": "Trending",
+      "delivery": "In 2 Hours",
+      "image": "/images/products/blushing-pink-roses.jpg",
+      "enabled": true
+    },
+    {
+      "id": 103,
+      "name": "Pure Elegance White Oriental Lilies Vase",
+      "cat": "Flowers",
+      "flowerType": "Lilies",
+      "color": "White",
+      "occasion": "Anniversary",
+      "emoji": "⚜️",
+      "price": 899,
+      "mrp": 1199,
+      "weight": "6 Buds · Heavy Glass Vase",
+      "stock": 24,
+      "rating": 4.9,
+      "reviews": 980,
+      "badge": "Luxury",
+      "delivery": "Same Day",
+      "image": "/images/products/white-oriental-lilies.jpg",
+      "enabled": true
+    },
+    {
+      "id": 104,
+      "name": "Enchanted Purple Orchids in Glass Vase",
+      "cat": "Flowers",
+      "flowerType": "Orchids",
+      "color": "Purple",
+      "occasion": "Congratulations",
+      "emoji": "🪻",
+      "price": 799,
+      "mrp": 999,
+      "weight": "6 Exotic Stems · Glass Vase",
+      "stock": 30,
+      "rating": 4.8,
+      "reviews": 1130,
+      "badge": "Best Seller",
+      "delivery": "In 2 Hours",
+      "image": "/images/products/purple-orchids.jpg",
+      "enabled": true
+    },
+    {
+      "id": 105,
+      "name": "Bright Sunshine Yellow Roses & Lilies",
+      "cat": "Flowers",
+      "flowerType": "Roses",
+      "color": "Yellow",
+      "occasion": "Get Well Soon",
+      "emoji": "🌻",
+      "price": 549,
+      "mrp": 749,
+      "weight": "10 Stems · Golden Wrap",
+      "stock": 35,
+      "rating": 4.7,
+      "reviews": 840,
+      "badge": "Express",
+      "delivery": "In 2 Hours",
+      "image": "/images/products/yellow-roses-lilies.jpg",
+      "enabled": true
+    },
+    {
+      "id": 106,
+      "name": "Sweet Romance: Red Roses & Truffle Cake",
+      "cat": "Combos",
+      "flowerType": "Combos",
+      "color": "Red",
+      "occasion": "Anniversary",
+      "emoji": "🎂",
+      "price": 999,
+      "mrp": 1399,
+      "weight": "10 Roses + 500g Cake",
+      "stock": 28,
+      "rating": 4.9,
+      "reviews": 3240,
+      "badge": "Best Seller",
+      "delivery": "Midnight",
+      "image": "/images/products/roses-truffle-cake.jpg",
+      "enabled": true
+    },
+    {
+      "id": 107,
+      "name": "Cuddly Love: Roses & Plush Teddy Combo",
+      "cat": "Combos",
+      "flowerType": "Combos",
+      "color": "Pink",
+      "occasion": "Romance",
+      "emoji": "🧸",
+      "price": 849,
+      "mrp": 1199,
+      "weight": "12 Roses + 12-inch Bear",
+      "stock": 32,
+      "rating": 4.9,
+      "reviews": 2650,
+      "badge": "FNP Favourite",
+      "delivery": "In 2 Hours",
+      "image": "/images/products/roses-teddy-combo.jpg",
+      "enabled": true
+    },
+    {
+      "id": 108,
+      "name": "Golden Bliss: Roses & Ferrero Rocher Box",
+      "cat": "Combos",
+      "flowerType": "Combos",
+      "color": "Red",
+      "occasion": "Birthday",
+      "emoji": "🍬",
+      "price": 949,
+      "mrp": 1299,
+      "weight": "10 Roses + 16pcs Ferrero",
+      "stock": 24,
+      "rating": 4.8,
+      "reviews": 1890,
+      "badge": "Top Gift",
+      "delivery": "In 2 Hours",
+      "image": "/images/products/roses-ferrero-combo.jpg",
+      "enabled": true
+    },
+    {
+      "id": 109,
+      "name": "Pastel Symphony Mixed Carnations Bunch",
+      "cat": "Flowers",
+      "flowerType": "Carnations",
+      "color": "Mixed",
+      "occasion": "Birthday",
+      "emoji": "🌸",
+      "price": 499,
+      "mrp": 699,
+      "weight": "12 Carnations · Dual Tone Wrap",
+      "stock": 40,
+      "rating": 4.7,
+      "reviews": 780,
+      "badge": "Fresh Today",
+      "delivery": "In 2 Hours",
+      "image": "/images/products/carnations-bunch.jpg",
+      "enabled": true
+    },
+    {
+      "id": 110,
+      "name": "Royal Red Roses Luxury Hat Box",
+      "cat": "Flowers",
+      "flowerType": "Roses",
+      "color": "Red",
+      "occasion": "Anniversary",
+      "emoji": "🎁",
+      "price": 1499,
+      "mrp": 1999,
+      "weight": "24 Premium Roses in Box",
+      "stock": 18,
+      "rating": 5,
+      "reviews": 620,
+      "badge": "Luxury Atelier",
+      "delivery": "Same Day",
+      "image": "/images/products/roses-hat-box.jpg",
+      "enabled": true
+    },
+    {
+      "id": 111,
+      "name": "Vibrant Rainbow Mixed Flower Bouquet",
+      "cat": "Flowers",
+      "flowerType": "Mixed",
+      "color": "Mixed",
+      "occasion": "Congratulations",
+      "emoji": "🌷",
+      "price": 699,
+      "mrp": 899,
+      "weight": "15 Mixed Stems · Luxury Wrap",
+      "stock": 30,
+      "rating": 4.8,
+      "reviews": 1520,
+      "badge": "Express",
+      "delivery": "In 2 Hours",
+      "image": "/images/products/rainbow-mixed-bouquet.jpg",
+      "enabled": true
+    },
+    {
+      "id": 112,
+      "name": "Serene Asiatic Lilies & Pink Roses Vase",
+      "cat": "Flowers",
+      "flowerType": "Lilies",
+      "color": "Pink",
+      "occasion": "Anniversary",
+      "emoji": "🏺",
+      "price": 1099,
+      "mrp": 1499,
+      "weight": "4 Lilies + 8 Roses in Vase",
+      "stock": 20,
+      "rating": 4.9,
+      "reviews": 890,
+      "badge": "Premium",
+      "delivery": "Same Day",
+      "image": "/images/products/lilies-roses-vase.jpg",
+      "enabled": true
+    },
+    {
+      "id": 113,
+      "name": "Midnight Star: 15 Red Roses & Black Forest",
+      "cat": "Combos",
+      "flowerType": "Combos",
+      "color": "Red",
+      "occasion": "Birthday",
+      "emoji": "🎂",
+      "price": 1199,
+      "mrp": 1599,
+      "weight": "15 Roses + 1kg Cake",
+      "stock": 22,
+      "rating": 4.9,
+      "reviews": 1740,
+      "badge": "Midnight Special",
+      "delivery": "Midnight",
+      "image": "/images/products/midnight-roses-black-forest.jpg",
+      "enabled": true
+    },
+    {
+      "id": 114,
+      "name": "Forever Love 50 Red Roses Heart Shape",
+      "cat": "Flowers",
+      "flowerType": "Roses",
+      "color": "Red",
+      "occasion": "Romance",
+      "emoji": "💖",
+      "price": 2499,
+      "mrp": 3299,
+      "weight": "50 Hand-selected Roses",
+      "stock": 12,
+      "rating": 5,
+      "reviews": 430,
+      "badge": "Signature Grand",
+      "delivery": "Same Day",
+      "image": "/images/products/50-roses-heart.jpg",
+      "enabled": true
+    },
+    {
+      "id": 115,
+      "name": "Exotic Blue Dendrobium Orchids Bouquet",
+      "cat": "Flowers",
+      "flowerType": "Orchids",
+      "color": "Purple",
+      "occasion": "Congratulations",
+      "emoji": "🪻",
+      "price": 849,
+      "mrp": 1099,
+      "weight": "8 Rare Stems · Silk Ribbon",
+      "stock": 25,
+      "rating": 4.8,
+      "reviews": 910,
+      "badge": "Exotic Bloom",
+      "delivery": "In 2 Hours",
+      "image": "/images/products/blue-dendrobium-orchids.jpg",
+      "enabled": true
+    },
+    {
+      "id": 116,
+      "name": "Sunny Gerberas & Carnations Festive Bunch",
+      "cat": "Flowers",
+      "flowerType": "Carnations",
+      "color": "Yellow",
+      "occasion": "Get Well Soon",
+      "emoji": "🌼",
+      "price": 449,
+      "mrp": 599,
+      "weight": "10 Stems · Sunshine Paper",
+      "stock": 35,
+      "rating": 4.7,
+      "reviews": 650,
+      "badge": "Pocket Friendly",
+      "delivery": "In 2 Hours",
+      "image": "/images/products/sunny-gerberas.jpg",
+      "enabled": true
+    },
+    {
+      "id": 1,
+      "name": "Classic Teddy Bear",
+      "cat": "Soft Toys",
+      "emoji": "🧸",
+      "price": 499,
+      "mrp": 699,
+      "weight": "1 pc",
+      "stock": 21,
+      "enabled": true,
+      "image": "/images/products/classic-teddy-bear.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Mini Plush Bear",
+      "cat": "Soft Toys",
+      "emoji": "🐻",
+      "price": 249,
+      "mrp": 349,
+      "weight": "1 pc",
+      "stock": 22,
+      "enabled": true,
+      "image": "/images/products/mini-plush-bear.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Giant Cuddle Teddy",
+      "cat": "Soft Toys",
+      "emoji": "🧸",
+      "price": 1299,
+      "mrp": 1599,
+      "weight": "1 pc",
+      "stock": 23,
+      "enabled": true,
+      "image": "/images/products/giant-cuddle-teddy.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Pink Heart Teddy",
+      "cat": "Soft Toys",
+      "emoji": "💗",
+      "price": 699,
+      "mrp": 899,
+      "weight": "1 pc",
+      "stock": 24,
+      "enabled": true,
+      "image": "/images/products/pink-heart-teddy.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Cute Bunny Plush",
+      "cat": "Soft Toys",
+      "emoji": "🐰",
+      "price": 449,
+      "mrp": 599,
+      "weight": "1 pc",
+      "stock": 25,
+      "enabled": true,
+      "image": "/images/products/cute-bunny-plush.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Birthday Surprise Hamper",
+      "cat": "Custom Hampers",
+      "emoji": "🎁",
+      "price": 899,
+      "mrp": 1199,
+      "weight": "1 hamper",
+      "stock": 26,
+      "enabled": true,
+      "image": "/images/products/birthday-surprise-hamper.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Chocolate Lover Hamper",
+      "cat": "Custom Hampers",
+      "emoji": "🍫",
+      "price": 749,
+      "mrp": 999,
+      "weight": "1 hamper",
+      "stock": 27,
+      "enabled": true,
+      "image": "/images/products/chocolate-lover-hamper.jpg"
+    },
+    {
+      "id": 8,
+      "name": "Snack Attack Hamper",
+      "cat": "Custom Hampers",
+      "emoji": "🍿",
+      "price": 499,
+      "mrp": 699,
+      "weight": "1 hamper",
+      "stock": 28,
+      "enabled": true,
+      "image": "/images/products/snack-attack-hamper.jpg"
+    },
+    {
+      "id": 9,
+      "name": "Gamer Gift Hamper",
+      "cat": "Custom Hampers",
+      "emoji": "🎮",
+      "price": 1499,
+      "mrp": 1799,
+      "weight": "1 hamper",
+      "stock": 29,
+      "enabled": true,
+      "image": "/images/products/gamer-gift-hamper.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Self Care Gift Box",
+      "cat": "Custom Hampers",
+      "emoji": "🎀",
+      "price": 999,
+      "mrp": 1299,
+      "weight": "1 hamper",
+      "stock": 30,
+      "enabled": true,
+      "image": "/images/products/self-care-gift-box.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Gaming Headset",
+      "cat": "Gaming Gifts",
+      "emoji": "🎧",
+      "price": 1299,
+      "mrp": 1599,
+      "weight": "1 pc",
+      "stock": 31,
+      "enabled": true,
+      "image": "/images/products/gaming-headset.jpg"
+    },
+    {
+      "id": 12,
+      "name": "RGB Gaming Mouse",
+      "cat": "Gaming Gifts",
+      "emoji": "🖱️",
+      "price": 699,
+      "mrp": 899,
+      "weight": "1 pc",
+      "stock": 32,
+      "enabled": true,
+      "image": "/images/products/rgb-gaming-mouse.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Gaming Controller",
+      "cat": "Gaming Gifts",
+      "emoji": "🎮",
+      "price": 1799,
+      "mrp": 2199,
+      "weight": "1 pc",
+      "stock": 33,
+      "enabled": true,
+      "image": "/images/products/gaming-controller.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Gaming Desk Light",
+      "cat": "Gaming Gifts",
+      "emoji": "💡",
+      "price": 599,
+      "mrp": 799,
+      "weight": "1 pc",
+      "stock": 34,
+      "enabled": true,
+      "image": "/images/products/gaming-desk-light.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Dairy Milk Silk",
+      "cat": "Chocolates",
+      "emoji": "🍫",
+      "price": 100,
+      "mrp": 120,
+      "weight": "1 pc",
+      "stock": 20,
+      "enabled": true,
+      "image": "/images/products/dairy-milk-silk.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Ferrero Rocher Box",
+      "cat": "Chocolates",
+      "emoji": "🍬",
+      "price": 349,
+      "mrp": 399,
+      "weight": "16 pcs",
+      "stock": 21,
+      "enabled": true,
+      "image": "/images/products/ferrero-rocher-box.jpg"
+    },
+    {
+      "id": 17,
+      "name": "KitKat Share Pack",
+      "cat": "Chocolates",
+      "emoji": "🍫",
+      "price": 149,
+      "mrp": 179,
+      "weight": "1 pack",
+      "stock": 22,
+      "enabled": true,
+      "image": "/images/products/kitkat-share-pack.jpg"
+    },
+    {
+      "id": 18,
+      "name": "Assorted Chocolate Box",
+      "cat": "Chocolates",
+      "emoji": "🍫",
+      "price": 499,
+      "mrp": 599,
+      "weight": "1 box",
+      "stock": 23,
+      "enabled": true,
+      "image": "/images/products/assorted-chocolate-box.jpg"
+    },
+    {
+      "id": 19,
+      "name": "Lay’s Classic Chips",
+      "cat": "Snacks & Drinks",
+      "emoji": "🥔",
+      "price": 20,
+      "mrp": 25,
+      "weight": "1 pack",
+      "stock": 24,
+      "enabled": true,
+      "image": "/images/products/lays-classic-chips.jpg"
+    },
+    {
+      "id": 20,
+      "name": "Lay’s Masala Chips",
+      "cat": "Snacks & Drinks",
+      "emoji": "🍟",
+      "price": 19,
+      "mrp": 25,
+      "weight": "1 pack",
+      "stock": 25,
+      "enabled": true,
+      "image": "/images/products/lays-masala-chips.jpg",
+      "flowerType": "",
+      "occasion": "All",
+      "delivery": "In 2 Hours",
+      "color": "",
+      "badge": "Fresh",
+      "rating": 4.8,
+      "reviews": 840
+    },
+    {
+      "id": 21,
+      "name": "Kurkure Masala Munch",
+      "cat": "Snacks & Drinks",
+      "emoji": "🌶️",
+      "price": 20,
+      "mrp": 25,
+      "weight": "1 pack",
+      "stock": 26,
+      "enabled": true,
+      "image": "/images/products/kurkure-masala-munch.jpg"
+    },
+    {
+      "id": 22,
+      "name": "Nachos Party Pack",
+      "cat": "Snacks & Drinks",
+      "emoji": "🧀",
+      "price": 99,
+      "mrp": 129,
+      "weight": "1 pack",
+      "stock": 27,
+      "enabled": true,
+      "image": "/images/products/nachos-party-pack.jpg"
+    },
+    {
+      "id": 23,
+      "name": "Cold Coffee",
+      "cat": "Snacks & Drinks",
+      "emoji": "🧋",
+      "price": 80,
+      "mrp": 99,
+      "weight": "250 ml",
+      "stock": 28,
+      "enabled": true,
+      "image": "/images/products/cold-coffee.jpg"
+    },
+    {
+      "id": 24,
+      "name": "Chocolate Milkshake",
+      "cat": "Snacks & Drinks",
+      "emoji": "🥤",
+      "price": 99,
+      "mrp": 129,
+      "weight": "250 ml",
+      "stock": 29,
+      "enabled": true,
+      "image": "/images/products/chocolate-milkshake.jpg"
+    },
+    {
+      "id": 25,
+      "name": "Cookies Gift Pack",
+      "cat": "Snacks & Drinks",
+      "emoji": "🍪",
+      "price": 149,
+      "mrp": 189,
+      "weight": "1 pack",
+      "stock": 30,
+      "enabled": true,
+      "image": "/images/products/cookies-gift-pack.jpg"
+    },
+    {
+      "id": 26,
+      "name": "Popcorn Party Pack",
+      "cat": "Snacks & Drinks",
+      "emoji": "🍿",
+      "price": 99,
+      "mrp": 129,
+      "weight": "1 pack",
+      "stock": 31,
+      "enabled": true,
+      "image": "/images/products/popcorn-party-pack.jpg"
+    }
+  ],
+  "orders": [
+    {
+      "id": "BB127466379",
+      "items": [
+        {
+          "productId": 101,
+          "product": "Velvet Crimson 10 Red Roses Bouquet",
+          "emoji": "🎁",
+          "qty": 1,
+          "price": 499
+        }
+      ],
+      "total": 499,
+      "method": "Cash on Delivery",
+      "status": "Placed",
+      "name": "Suresh Kumar",
+      "phone": "9835123456",
+      "address": "Circular Road, Lalpur",
+      "city": "Ranchi",
+      "pin": "834001",
+      "slot": "Instant · 10–30 min",
+      "tip": 0,
+      "date": "2026-10-29T16:27:54.665Z",
+      "demoPayment": false,
+      "paymentId": "",
+      "paymentStatus": "pending"
+    },
+    {
+      "id": "BB880852797",
+      "items": [
+        {
+          "productId": 102,
+          "product": "Blushing Pink Roses & Gypsophila",
+          "emoji": "💐",
+          "qty": 1,
+          "price": 599
+        }
+      ],
+      "total": 599,
+      "method": "Cash on Delivery",
+      "status": "Placed",
+      "name": "xxxx",
+      "phone": "7209903335",
+      "address": "Main Road, Upper Bazar, Ranchi",
+      "pin": "834001",
+      "slot": "⚡ Instant Delivery · 10–30 min",
+      "tip": 0,
+      "date": "2026-10-29T15:46:48.527Z",
+      "demoPayment": false,
+      "paymentId": "",
+      "paymentStatus": "pending",
+      "city": "Ranchi"
+    },
+    {
+      "id": "BB875300587",
+      "items": [
+        {
+          "productId": 103,
+          "product": "Pure Elegance White Oriental Lilies Vase",
+          "emoji": "⚜️",
+          "qty": 1,
+          "price": 899
+        }
+      ],
+      "total": 899,
+      "method": "Cash on Delivery",
+      "status": "Placed",
+      "name": "BloomBox Guest",
+      "phone": "7209903335",
+      "address": "Main Road, Upper Bazar, Ranchi",
+      "pin": "834001",
+      "slot": "⚡ Instant Delivery · 10–30 min",
+      "tip": 0,
+      "date": "2026-10-29T15:45:53.007Z",
+      "demoPayment": false,
+      "paymentId": "",
+      "paymentStatus": "pending",
+      "city": "Ranchi"
+    },
+    {
+      "id": "BB7821945",
+      "name": "Rohit Malhotra",
+      "phone": "9811223344",
+      "address": "Villa 12, Kanke Road, Near CMPDI, Ranchi",
+      "city": "Ranchi",
+      "pin": "834008",
+      "items": [
+        {
+          "productId": 101,
+          "product": "Velvet Crimson 10 Red Roses Bouquet",
+          "emoji": "🌹",
+          "qty": 1,
+          "price": 499
+        },
+        {
+          "productId": 106,
+          "product": "Sweet Romance: Red Roses & Truffle Cake",
+          "emoji": "🎂",
+          "qty": 1,
+          "price": 999
+        }
+      ],
+      "total": 1498,
+      "method": "Online (Razorpay Live)",
+      "paymentId": "pay_LiveRzp982341",
+      "paymentStatus": "paid",
+      "status": "Delivered",
+      "slot": "🌙 Midnight 12 AM",
+      "tip": 50,
+      "date": "2026-10-29T13:11:02.174Z"
+    },
+    {
+      "id": "BB7821946",
+      "name": "Ananya Sen",
+      "phone": "9822334455",
+      "address": "Flat 402, Lotus Tower, Doranda, Ranchi",
+      "city": "Ranchi",
+      "pin": "834002",
+      "items": [
+        {
+          "productId": 103,
+          "product": "Pure Elegance White Oriental Lilies Vase",
+          "emoji": "🌸",
+          "qty": 1,
+          "price": 899
+        },
+        {
+          "productId": 16,
+          "product": "Ferrero Rocher Box",
+          "emoji": "🍬",
+          "qty": 1,
+          "price": 349
+        }
+      ],
+      "total": 1248,
+      "method": "Online (Razorpay Live)",
+      "paymentId": "pay_LiveRzp982342",
+      "paymentStatus": "paid",
+      "status": "Packed",
+      "slot": "⚡ Today in 2 Hrs",
+      "tip": 0,
+      "date": "2026-10-29T11:11:02.175Z"
+    },
+    {
+      "id": "BB7821947",
+      "name": "Vikram Joshi",
+      "phone": "9833445566",
+      "address": "7B, Ganga Enclave, Circular Road, Lalpur, Ranchi",
+      "city": "Ranchi",
+      "pin": "834009",
+      "items": [
+        {
+          "productId": 110,
+          "product": "Royal Red Roses Luxury Hat Box",
+          "emoji": "🎁",
+          "qty": 1,
+          "price": 1499
+        }
+      ],
+      "total": 1499,
+      "method": "Cash on Delivery",
+      "paymentId": "",
+      "paymentStatus": "pending",
+      "status": "Placed",
+      "slot": "📅 Tomorrow Express",
+      "tip": 0,
+      "date": "2026-10-29T09:11:02.175Z"
+    },
+    {
+      "id": "BB7821948",
+      "name": "Priya Sharma (VIP)",
+      "phone": "9844556677",
+      "address": "House 88, Ashok Nagar, Ranchi",
+      "city": "Ranchi",
+      "pin": "834004",
+      "items": [
+        {
+          "productId": 114,
+          "product": "Forever Love 50 Red Roses Heart Shape",
+          "emoji": "❤️",
+          "qty": 1,
+          "price": 2499
+        },
+        {
+          "productId": 1,
+          "product": "Classic Teddy Bear",
+          "emoji": "🧸",
+          "qty": 1,
+          "price": 499
+        }
+      ],
+      "total": 2998,
+      "method": "Online (Razorpay Live)",
+      "paymentId": "pay_LiveRzp982343",
+      "paymentStatus": "paid",
+      "status": "Delivered",
+      "slot": "⚡ Today in 2 Hrs",
+      "tip": 100,
+      "deliveredAt": "2026-10-29T03:11:02.175Z",
+      "date": "2026-10-29T01:11:02.175Z"
+    }
+  ],
+  "updatedAt": "2026-10-29T16:27:54.665Z",
+  "customers": [
+    {
+      "id": "CUST_7209903335",
+      "phone": "7209903335",
+      "name": "BloomBox Guest",
+      "email": "guest.7209@bloombox.in",
+      "address": "Main Road, Upper Bazar, Ranchi - 834001",
+      "walletBalance": 250,
+      "rewardPoints": 120,
+      "tier": "Gold Member",
+      "interests": {
+        "favoriteFlowers": [
+          "Red Roses",
+          "Exotic Orchids",
+          "White Lilies"
+        ],
+        "favoriteColors": [
+          "Frozen Pink",
+          "Pure White"
+        ],
+        "preferredOccasions": [
+          "Anniversary",
+          "Valentine's Day",
+          "Birthday"
+        ],
+        "celebrationDates": [
+          {
+            "title": "Partner Birthday",
+            "date": "2026-11-14",
+            "note": "Loves 50 Roses"
+          }
+        ]
+      },
+      "orderCount": 2,
+      "totalSpent": 1498,
+      "createdAt": "2026-10-28T10:00:00.000Z",
+      "lastActive": "2026-10-29T16:10:25.092Z"
+    },
+    {
+      "id": "CUST_9844556677",
+      "phone": "9844556677",
+      "name": "Priya Sharma",
+      "email": "priya.sharma@luxuryatelier.in",
+      "address": "House 88, Ashok Nagar, Ranchi - 834004",
+      "walletBalance": 500,
+      "rewardPoints": 450,
+      "tier": "VIP Platinum",
+      "interests": {
+        "favoriteFlowers": [
+          "Red Roses",
+          "Oriental White Lilies"
+        ],
+        "favoriteColors": [
+          "Velvet Crimson",
+          "Pure White"
+        ],
+        "preferredOccasions": [
+          "Anniversary",
+          "Luxury Gifting"
+        ],
+        "celebrationDates": [
+          {
+            "title": "Wedding Anniversary",
+            "date": "2026-10-29",
+            "note": "50 Red Roses Heart Shape"
+          }
+        ]
+      },
+      "orderCount": 1,
+      "totalSpent": 2998,
+      "createdAt": "2026-10-25T08:30:00.000Z",
+      "lastActive": "2026-10-29T11:00:00.000Z"
+    },
+    {
+      "id": "CUST_9833445566",
+      "phone": "9833445566",
+      "name": "Vikram Joshi",
+      "email": "vikram.joshi@mumbai.co.in",
+      "address": "7B, Ganga Enclave, Circular Road, Lalpur, Ranchi - 834009",
+      "walletBalance": 100,
+      "rewardPoints": 150,
+      "tier": "Silver Member",
+      "interests": {
+        "favoriteFlowers": [
+          "Exotic Purple Orchids",
+          "Yellow Roses"
+        ],
+        "favoriteColors": [
+          "Royal Purple",
+          "Sunshine Yellow"
+        ],
+        "preferredOccasions": [
+          "Congratulations",
+          "Birthday"
+        ],
+        "celebrationDates": [
+          {
+            "title": "Sister's Birthday",
+            "date": "2026-12-05",
+            "note": "Orchids in Glass Vase"
+          }
+        ]
+      },
+      "orderCount": 1,
+      "totalSpent": 1499,
+      "createdAt": "2026-10-26T12:00:00.000Z",
+      "lastActive": "2026-10-29T09:15:00.000Z"
+    },
+    {
+      "id": "CUST_9811223344",
+      "phone": "9811223344",
+      "name": "Rohit Malhotra",
+      "email": "rohit.m@delhicapital.in",
+      "address": "Villa 12, Kanke Road, Ranchi - 834008",
+      "walletBalance": 150,
+      "rewardPoints": 180,
+      "tier": "Gold Member",
+      "interests": {
+        "favoriteFlowers": [
+          "Pink Roses",
+          "Gypsophila Baby Breath"
+        ],
+        "favoriteColors": [
+          "Frozen Pink",
+          "Pastel Peach"
+        ],
+        "preferredOccasions": [
+          "Romance",
+          "Valentine's Day"
+        ],
+        "celebrationDates": []
+      },
+      "orderCount": 1,
+      "totalSpent": 1498,
+      "createdAt": "2026-10-27T14:00:00.000Z",
+      "lastActive": "2026-10-29T10:00:00.000Z"
+    },
+    {
+      "id": "CUST_9822334455",
+      "phone": "9822334455",
+      "name": "Ananya Sen",
+      "email": "ananya.sen@atelier.in",
+      "address": "Flat 402, Lotus Tower, Doranda, Ranchi - 834002",
+      "walletBalance": 120,
+      "rewardPoints": 140,
+      "tier": "Silver Member",
+      "interests": {
+        "favoriteFlowers": [
+          "Blue Orchids",
+          "White Lilies"
+        ],
+        "favoriteColors": [
+          "Ice Blue",
+          "Pure White"
+        ],
+        "preferredOccasions": [
+          "Birthday",
+          "Celebration"
+        ],
+        "celebrationDates": []
+      },
+      "orderCount": 1,
+      "totalSpent": 1248,
+      "createdAt": "2026-10-27T16:00:00.000Z",
+      "lastActive": "2026-10-29T11:15:00.000Z"
+    },
+    {
+      "id": "CUST_9835123456",
+      "phone": "9835123456",
+      "name": "Suresh Kumar",
+      "email": "9835123456@guest.bloombox.in",
+      "address": "Circular Road, Lalpur",
+      "walletBalance": 250,
+      "rewardPoints": 100,
+      "tier": "Gold Member",
+      "interests": {
+        "favoriteFlowers": [
+          "Red Roses",
+          "Pink Lilies"
+        ],
+        "favoriteColors": [
+          "Frozen Pink"
+        ],
+        "preferredOccasions": [
+          "Anniversary",
+          "Birthday"
+        ],
+        "celebrationDates": []
+      },
+      "orderCount": 1,
+      "totalSpent": 499,
+      "createdAt": "2026-10-29T16:27:54.665Z",
+      "lastActive": "2026-10-29T16:27:54.665Z"
+    }
+  ]
+}

@@ -1,0 +1,2167 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Admin Atelier Portal — BloomBox Haute Gifting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #be185d;
+      --primary-hover: #9d174d;
+      --primary-light: #fdf2f8;
+      --primary-glow: rgba(236, 72, 153, 0.28);
+      --frozen-rose: #be185d;
+      --frozen-pink-light: #fdf2f8;
+      --frozen-cyan: #0284c7;
+      --frozen-cyan-light: #e0f2fe;
+      --gold: #d97706;
+      --gold-light: #fef3c7;
+      --success: #059669;
+      --success-light: #d1fae5;
+      --danger: #dc2626;
+      --danger-light: #fee2e2;
+      --cream: #fbf7fb;
+      --surface: #ffffff;
+      --surface-glass: rgba(255, 255, 255, 0.88);
+      --surface-border: rgba(244, 114, 182, 0.32);
+      --surface-border-subtle: rgba(244, 114, 182, 0.16);
+      --ink: #1e1022;
+      --ink-muted: #6b5a70;
+      --ink-light: #9d8b9e;
+      --shadow-sm: 0 4px 16px rgba(190, 24, 93, 0.06);
+      --shadow-md: 0 12px 36px rgba(190, 24, 93, 0.1);
+      --shadow-lg: 0 24px 60px rgba(190, 24, 93, 0.14);
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-pill: 9999px;
+      --transition: all 0.24s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body.dark {
+      --cream: #120a16;
+      --surface: #1a0f20;
+      --surface-glass: rgba(26, 15, 32, 0.92);
+      --surface-border: rgba(244, 114, 182, 0.24);
+      --surface-border-subtle: rgba(244, 114, 182, 0.12);
+      --ink: #fdf7fc;
+      --ink-muted: #baa8bd;
+      --ink-light: #7b697d;
+      --primary-light: #291222;
+      --frozen-cyan-light: #0d1e2e;
+      --gold-light: #2c1e09;
+      --success-light: #0d291e;
+      --danger-light: #331317;
+      background: #120a16;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(120% 90% at 50% 0%, #fdf2f8 0%, #faeaf4 35%, #edf5fc 70%, #fbf3f8 100%), #fdf4f8;
+      color: var(--ink);
+      line-height: 1.5;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.3s ease, color 0.3s ease;
+      position: relative;
+    }
+
+    h1, h2, h3, h4, .serif {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    /* Ambient Crystalline Glow Orbs */
+    .bg-crystal-1 {
+      position: fixed;
+      top: -100px;
+      left: 5%;
+      width: 480px;
+      height: 480px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.28) 0%, rgba(251, 207, 232, 0.12) 50%, transparent 70%);
+      filter: blur(65px);
+      z-index: 0;
+      pointer-events: none;
+    }
+    .bg-crystal-2 {
+      position: fixed;
+      bottom: -100px;
+      right: 5%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.24) 0%, rgba(224, 242, 254, 0.1) 50%, transparent 70%);
+      filter: blur(75px);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* Layout Structure */
+    .admin-app {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Top Navigation Header */
+    .admin-nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: var(--surface-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--surface-border);
+      padding: 12px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+    }
+    .brand-badge {
+      font-size: 20px;
+      background: var(--primary-light);
+      border: 1px solid var(--surface-border);
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+    }
+    .brand-text h1 {
+      font-size: 19px;
+      color: var(--primary);
+      line-height: 1.1;
+    }
+    .brand-text span {
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+    }
+
+    .gateway-pills {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11.5px;
+      font-weight: 700;
+      border: 1px solid var(--surface-border);
+      background: var(--surface);
+    }
+    .status-chip.active {
+      color: var(--success);
+      border-color: rgba(16, 185, 129, 0.3);
+      background: var(--success-light);
+    }
+    .status-chip .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: currentColor;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .btn-icon {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    .btn-icon:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+    .btn-signout {
+      background: var(--danger-light);
+      color: var(--danger);
+      border-color: rgba(239, 68, 68, 0.3);
+    }
+    .btn-signout:hover {
+      background: #fecaca;
+      border-color: var(--danger);
+      color: #b91c1c;
+    }
+
+    /* Sub Navigation Tabs Strip */
+    .tabs-bar {
+      position: sticky;
+      top: 67px;
+      z-index: 40;
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--surface-border-subtle);
+      padding: 0 28px;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .tabs-bar::-webkit-scrollbar { display: none; }
+    .tab-btn {
+      padding: 13px 18px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: var(--transition);
+      font-family: inherit;
+      white-space: nowrap;
+    }
+    .tab-btn:hover {
+      color: var(--primary);
+    }
+    .tab-btn.active {
+      color: var(--primary);
+      border-bottom-color: var(--primary);
+    }
+    .tab-badge {
+      padding: 2px 7px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--radius-pill);
+      font-size: 10px;
+      font-weight: 800;
+    }
+
+    /* Main Container */
+    .main-content {
+      flex: 1;
+      padding: 28px;
+      max-width: 1400px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Common Card Styles */
+    .panel-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+      padding: 24px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .panel-card-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .panel-card-head h2 {
+      font-size: 20px;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .panel-card-head p {
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-top: 2px;
+    }
+
+    /* KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-bottom: 28px;
+    }
+    .kpi-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+    .kpi-card:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--primary);
+    }
+    .kpi-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      background: var(--primary-light);
+      border: 1px solid var(--surface-border);
+    }
+    .kpi-meta h4 {
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      color: var(--ink-muted);
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .kpi-meta .value {
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--ink);
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1;
+    }
+    .kpi-meta .sub {
+      font-size: 11.5px;
+      color: var(--success);
+      font-weight: 700;
+      margin-top: 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Orders Filter Toolbar */
+    .toolbar-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+    .search-input-wrap {
+      flex: 1;
+      min-width: 260px;
+      position: relative;
+    }
+    .search-input-wrap input {
+      width: 100%;
+      padding: 10px 14px 10px 36px;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      color: var(--ink);
+      font-family: inherit;
+      outline: none;
+    }
+    .search-input-wrap input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+    .search-input-wrap .search-icon {
+      position: absolute;
+      left: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 14px;
+      color: var(--ink-muted);
+      pointer-events: none;
+    }
+
+    .filter-pills-strip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .filter-pill {
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    .filter-pill:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .filter-pill.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Table Component */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--surface-border-subtle);
+    }
+    table.admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13px;
+      background: var(--surface);
+    }
+    table.admin-table th {
+      background: var(--primary-light);
+      color: var(--ink);
+      padding: 12px 14px;
+      font-weight: 800;
+      font-size: 11.5px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      border-bottom: 1px solid var(--surface-border);
+      white-space: nowrap;
+    }
+    table.admin-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--surface-border-subtle);
+      color: var(--ink);
+      vertical-align: middle;
+    }
+    table.admin-table tr:hover td {
+      background: rgba(253, 242, 248, 0.4);
+    }
+
+    /* Badges & Status */
+    .order-status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 11.5px;
+      font-weight: 800;
+    }
+    .order-status-badge.placed {
+      background: var(--gold-light);
+      color: var(--gold);
+      border: 1px solid rgba(217, 119, 6, 0.3);
+    }
+    .order-status-badge.packed {
+      background: var(--frozen-cyan-light);
+      color: var(--frozen-cyan);
+      border: 1px solid rgba(2, 132, 199, 0.3);
+    }
+    .order-status-badge.out {
+      background: #f3e8ff;
+      color: #9333ea;
+      border: 1px solid rgba(147, 51, 234, 0.3);
+    }
+    .order-status-badge.delivered {
+      background: var(--success-light);
+      color: var(--success);
+      border: 1px solid rgba(5, 150, 105, 0.3);
+    }
+    .order-status-badge.cancelled {
+      background: var(--danger-light);
+      color: var(--danger);
+      border: 1px solid rgba(220, 38, 38, 0.3);
+    }
+
+    .select-status {
+      padding: 5px 8px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--surface-border);
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 12px;
+      font-weight: 700;
+      font-family: inherit;
+      cursor: pointer;
+    }
+    .select-status:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .table-thumb {
+      width: 44px;
+      height: 44px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--surface-border);
+      background: var(--cream);
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), #9d174d);
+      color: #fff;
+      border: none;
+      padding: 9px 18px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 13px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 4px 14px var(--primary-glow);
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--primary-hover), #831843);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px var(--primary-glow);
+    }
+    .btn-secondary {
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--ink);
+      padding: 8px 16px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 12.5px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      font-family: inherit;
+    }
+    .btn-secondary:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      background: var(--primary-light);
+    }
+    .btn-table-action {
+      padding: 5px 10px;
+      font-size: 11.5px;
+      border-radius: 6px;
+      font-weight: 700;
+      border: 1px solid var(--surface-border);
+      background: var(--surface);
+      cursor: pointer;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition);
+    }
+    .btn-table-action:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .btn-table-del {
+      color: var(--danger);
+      border-color: rgba(220, 38, 38, 0.25);
+    }
+    .btn-table-del:hover {
+      background: var(--danger-light);
+      border-color: var(--danger);
+    }
+
+    /* Modal Component */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 10, 22, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .modal-box {
+      width: 100%;
+      max-width: 580px;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg);
+      padding: 28px;
+      position: relative;
+      max-height: 90vh;
+      overflow-y: auto;
+      transform: scale(0.96);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .modal-overlay.open .modal-box {
+      transform: scale(1);
+    }
+    .modal-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: none;
+      border: none;
+      font-size: 20px;
+      cursor: pointer;
+      color: var(--ink-muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-close:hover {
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    /* Form Controls */
+    .form-group {
+      margin-bottom: 16px;
+    }
+    .form-group label {
+      display: block;
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--ink-muted);
+      margin-bottom: 6px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--surface-border);
+      background: var(--surface);
+      color: var(--ink);
+      font-family: inherit;
+      font-size: 13px;
+      outline: none;
+      transition: var(--transition);
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px var(--primary-glow);
+    }
+
+    /* Auth Gate Screen */
+    .auth-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      background: radial-gradient(120% 90% at 50% 0%, #fdf2f8 0%, #faeaf4 35%, #edf5fc 70%, #fbf3f8 100%), #fdf4f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .auth-gate-box {
+      width: 100%;
+      max-width: 440px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(24px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 36px 30px;
+      box-shadow: var(--shadow-lg);
+      text-align: center;
+    }
+
+    /* Toast Notification */
+    #toastContainer {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 300;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+    .toast-msg {
+      background: #1e1022;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 700;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(244, 114, 182, 0.3);
+      animation: slideUp 0.25s ease;
+      pointer-events: auto;
+    }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-crystal-1"></div>
+  <div class="bg-crystal-2"></div>
+
+  <!-- AUTHENTICATION GATE (Visible if not authenticated) -->
+  <div id="authGate" class="auth-gate" style="display:none">
+    <div class="auth-gate-box">
+      <div style="font-size:42px;margin-bottom:12px">🔐</div>
+      <h2 style="font-size:24px;color:var(--primary);margin-bottom:6px">Atelier Admin Console</h2>
+      <p style="font-size:13px;color:var(--ink-muted);margin-bottom:22px">Enter administrative password to manage orders, catalog, stock, and live gateways.</p>
+
+      <div class="form-group" style="text-align:left">
+        <label>Admin Password</label>
+        <input type="password" id="gatePassword" placeholder="Enter admin password (e.g. admin123)" onkeydown="if(event.key==='Enter')handleAdminLogin()">
+      </div>
+
+      <button class="btn-primary" style="width:100%;height:44px;justify-content:center;margin-top:8px" onclick="handleAdminLogin()">
+        Unlock Admin Section ⚡
+      </button>
+
+      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--surface-border-subtle)">
+        <button class="btn-secondary" style="width:100%;justify-content:center;font-size:12px" onclick="document.getElementById('gatePassword').value='admin123';handleAdminLogin()">
+          ⚡ 1-Click Fill Demo Credentials (admin123)
+        </button>
+      </div>
+
+      <div style="margin-top:18px">
+        <a href="/" style="font-size:12px;color:var(--ink-muted);text-decoration:none">← Return to Client Boutique</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN ADMIN APP -->
+  <div class="admin-app" id="adminApp">
+    <!-- Top Nav Header -->
+    <header class="admin-nav">
+      <a href="/admin" class="brand-wrap">
+        <div class="brand-badge">🌸</div>
+        <div class="brand-text">
+          <h1>BloomBox Atelier</h1>
+          <span>Administrative Console</span>
+        </div>
+      </a>
+
+      <!-- Gateway Status Indicators -->
+      <div class="gateway-pills">
+        <div class="status-chip active" id="rzpStatusBadge" title="Live Razorpay Gateway">
+          <span class="dot"></span>
+          <span>Razorpay: <b id="rzpBadgeText">Live Active</b></span>
+        </div>
+        <div class="status-chip active" id="twilioStatusBadge" title="Twilio SMS OTP Provider">
+          <span class="dot"></span>
+          <span>Twilio SMS: <b id="twilioBadgeText">+17372508034</b></span>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="nav-actions">
+        <a href="/" class="btn-icon" target="_blank">
+          <span>↗ Storefront</span>
+        </a>
+        <button class="btn-icon" onclick="toggleDark()" title="Toggle Dark/Light Mode">
+          <span id="themeEmoji">🌙</span>
+        </button>
+        <button class="btn-icon btn-signout" onclick="adminSignOut()">
+          <span>Sign Out</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Sub Navigation Tabs Bar -->
+    <nav class="tabs-bar">
+      <button class="tab-btn active" onclick="switchTab('dashboard', this)">
+        <span>📊</span> Dashboard & KPIs
+      </button>
+      <button class="tab-btn" onclick="switchTab('orders', this)">
+        <span>📦</span> Orders Management <span class="tab-badge" id="tabOrderCount">0</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('customers', this)">
+        <span>👥</span> Customers & CRM <span class="tab-badge" id="tabCustomerCount">5</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('products', this)">
+        <span>🌸</span> Product Inventory <span class="tab-badge" id="tabProductCount">42</span>
+      </button>
+      <button class="tab-btn" onclick="switchTab('coupons', this)">
+        <span>🎟️</span> Promo Codes
+      </button>
+      <button class="tab-btn" onclick="switchTab('settings', this)">
+        <span>⚙️</span> Store Settings & Gateways
+      </button>
+    </nav>
+
+    <!-- Main Content Panels -->
+    <main class="main-content">
+      <!-- ================= TAB 1: DASHBOARD ================= -->
+      <section id="tab-dashboard" class="tab-panel">
+        <div class="kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-meta">
+              <h4>Total Gross Revenue</h4>
+              <div class="value" id="kpiRevenue">₹0</div>
+              <div class="sub">↑ 100% Verified Live Orders</div>
+            </div>
+            <div class="kpi-icon">💰</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-meta">
+              <h4>Total Orders</h4>
+              <div class="value" id="kpiOrders">0</div>
+              <div class="sub">Across Ranchi Atelier & Delivery Hubs</div>
+            </div>
+            <div class="kpi-icon">📦</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-meta">
+              <h4>Catalog Items</h4>
+              <div class="value" id="kpiProducts">42</div>
+              <div class="sub">100% Farm-Fresh & Combos</div>
+            </div>
+            <div class="kpi-icon">🌸</div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-meta">
+              <h4>Low Stock Alerts</h4>
+              <div class="value" id="kpiLowStock">0</div>
+              <div class="sub" style="color:var(--gold)">Units requiring replenishment</div>
+            </div>
+            <div class="kpi-icon">⚠️</div>
+          </div>
+        </div>
+
+        <!-- Recent Live Orders Panel -->
+        <div class="panel-card">
+          <div class="panel-card-head">
+            <div>
+              <h2>Recent Customer Orders</h2>
+              <p>Live incoming orders from online Razorpay & Cash-on-Delivery checkout.</p>
+            </div>
+            <button class="btn-secondary" onclick="loadStats();loadOrders();toast('Refreshed data')">↻ Refresh Live</button>
+          </div>
+
+          <div class="table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Location</th>
+                  <th>Items</th>
+                  <th>Amount</th>
+                  <th>Payment</th>
+                  <th>Status</th>
+                  <th>Quick Action</th>
+                </tr>
+              </thead>
+              <tbody id="recentOrdersBody">
+                <tr><td colspan="8" style="text-align:center;padding:24px;color:var(--ink-muted)">Loading recent orders...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 2: ORDERS MANAGEMENT ================= -->
+      <section id="tab-orders" class="tab-panel" style="display:none">
+        <div class="panel-card">
+          <div class="panel-card-head">
+            <div>
+              <h2>Orders Dispatch & Fulfillment</h2>
+              <p>Track delivery stages, verify customer addresses, and update dispatch status.</p>
+            </div>
+          </div>
+
+          <!-- Toolbar -->
+          <div class="toolbar-row">
+            <div class="search-input-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="orderSearch" placeholder="Search by customer name, phone, order ID, or address..." oninput="filterOrders()">
+            </div>
+            <div class="filter-pills-strip">
+              <button class="filter-pill active" onclick="setOrderStatusFilter('All', this)">All</button>
+              <button class="filter-pill" onclick="setOrderStatusFilter('Placed', this)">Placed</button>
+              <button class="filter-pill" onclick="setOrderStatusFilter('Packed', this)">Packed</button>
+              <button class="filter-pill" onclick="setOrderStatusFilter('Out for delivery', this)">Out for Delivery</button>
+              <button class="filter-pill" onclick="setOrderStatusFilter('Delivered', this)">Delivered</button>
+              <button class="filter-pill" onclick="setOrderStatusFilter('Cancelled', this)">Cancelled</button>
+            </div>
+          </div>
+
+          <!-- Full Orders Table -->
+          <div class="table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Date & Slot</th>
+                  <th>Customer Info</th>
+                  <th>Address & City</th>
+                  <th>Items Ordered</th>
+                  <th>Total</th>
+                  <th>Payment Method</th>
+                  <th>Order Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <tr><td colspan="9" style="text-align:center;padding:24px;color:var(--ink-muted)">Loading all orders...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB: CUSTOMERS & CRM ================= -->
+      <section id="tab-customers" class="tab-panel" style="display:none">
+        <div class="panel-card">
+          <div class="panel-card-head">
+            <div>
+              <h2>👥 Customer Profiles & Gifting CRM</h2>
+              <p>Registered clientele details, lifetime gifting value, flower & aesthetic preferences, and celebration reminders.</p>
+            </div>
+            <button class="btn-secondary" onclick="loadCustomers();toast('CRM data refreshed')">↻ Refresh CRM</button>
+          </div>
+
+          <!-- CRM Toolbar -->
+          <div class="toolbar-row">
+            <div class="search-input-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="customerSearch" placeholder="Search by customer name, phone, email, flower type, or color..." oninput="renderCustomersTable()">
+            </div>
+            <div class="filter-pills-strip" id="customerTierFilters">
+              <button class="filter-pill active" onclick="setCustomerTierFilter('All', this)">All Clients</button>
+              <button class="filter-pill" onclick="setCustomerTierFilter('VIP Platinum', this)">VIP Platinum 👑</button>
+              <button class="filter-pill" onclick="setCustomerTierFilter('Gold Member', this)">Gold Members ✨</button>
+              <button class="filter-pill" onclick="setCustomerTierFilter('Silver Member', this)">Silver Members 🌸</button>
+            </div>
+          </div>
+
+          <!-- Customers Table -->
+          <div class="table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Client Profile</th>
+                  <th>Atelier Tier</th>
+                  <th>Gifting Interests (Flowers & Colors)</th>
+                  <th>Celebration Reminders</th>
+                  <th>Lifetime Value</th>
+                  <th>Wallet & Points</th>
+                  <th>Delivery Address</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="customersTableBody">
+                <tr><td colspan="8" style="text-align:center;padding:24px;color:var(--ink-muted)">Loading Atelier customer database...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 3: PRODUCT INVENTORY ================= -->
+      <section id="tab-products" class="tab-panel" style="display:none">
+        <div class="panel-card">
+          <div class="panel-card-head">
+            <div>
+              <h2>Product Catalog & Stock Management</h2>
+              <p>Manage product pricing, inventory levels, badges, categories, and availability.</p>
+            </div>
+            <button class="btn-primary" onclick="openAddProductModal()">+ Add New Product</button>
+          </div>
+
+          <!-- Toolbar -->
+          <div class="toolbar-row">
+            <div class="search-input-wrap">
+              <span class="search-icon">🔍</span>
+              <input type="text" id="prodSearch" placeholder="Search by product name..." oninput="filterProducts()">
+            </div>
+            <div class="filter-pills-strip" id="prodCatPills">
+              <button class="filter-pill active" onclick="setProductCatFilter('All', this)">All</button>
+              <button class="filter-pill" onclick="setProductCatFilter('Flowers', this)">Flowers</button>
+              <button class="filter-pill" onclick="setProductCatFilter('Combos', this)">Combos</button>
+              <button class="filter-pill" onclick="setProductCatFilter('Soft Toys', this)">Soft Toys</button>
+              <button class="filter-pill" onclick="setProductCatFilter('Custom Hampers', this)">Hampers</button>
+              <button class="filter-pill" onclick="setProductCatFilter('Chocolates', this)">Chocolates</button>
+              <button class="filter-pill" onclick="setProductCatFilter('Snacks & Drinks', this)">Snacks</button>
+              <button class="filter-pill" onclick="setProductCatFilter('Gaming Gifts', this)">Gaming</button>
+            </div>
+          </div>
+
+          <!-- Products Table -->
+          <div class="table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Item</th>
+                  <th>Name & Category</th>
+                  <th>Price</th>
+                  <th>MRP</th>
+                  <th>Stock</th>
+                  <th>Badge & Delivery</th>
+                  <th>Active</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="productsTableBody">
+                <tr><td colspan="8" style="text-align:center;padding:24px;color:var(--ink-muted)">Loading product catalog...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 4: COUPONS & DISCOUNTS ================= -->
+      <section id="tab-coupons" class="tab-panel" style="display:none">
+        <div class="panel-card">
+          <div class="panel-card-head">
+            <div>
+              <h2>Discount Coupons & Promotions</h2>
+              <p>Create and manage discount codes for marketing campaigns.</p>
+            </div>
+            <button class="btn-primary" onclick="openAddCouponModal()">+ Create New Coupon</button>
+          </div>
+
+          <div class="table-container">
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>Code</th>
+                  <th>Type & Value</th>
+                  <th>Min Order</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="couponsTableBody">
+                <tr><td colspan="6" style="text-align:center;padding:24px;color:var(--ink-muted)">Loading coupons...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= TAB 5: SETTINGS & GATEWAYS ================= -->
+      <section id="tab-settings" class="tab-panel" style="display:none">
+        <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(360px, 1fr));gap:24px">
+          <!-- Store Settings Card -->
+          <div class="panel-card">
+            <div class="panel-card-head">
+              <div>
+                <h2>Store Delivery Settings</h2>
+                <p>Configure logistics and checkout limits.</p>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Standard Delivery Fee (₹)</label>
+              <input type="number" id="settingDeliveryFee" min="0" max="1000">
+            </div>
+            <div class="form-group">
+              <label>Cash on Delivery (COD) Maximum Order Limit (₹)</label>
+              <input type="number" id="settingCodLimit" min="500" max="100000">
+            </div>
+            <button class="btn-primary" onclick="saveStoreSettings()">Save Store Settings</button>
+          </div>
+
+          <!-- Gateway Credentials Card -->
+          <div class="panel-card">
+            <div class="panel-card-head">
+              <div>
+                <h2>Live Payment & SMS Gateways</h2>
+                <p>Direct credentials loaded from environment.</p>
+              </div>
+            </div>
+
+            <div style="margin-bottom:16px;padding:12px;background:var(--cream);border-radius:10px;border:1px solid var(--surface-border)">
+              <div style="font-weight:800;color:var(--primary);margin-bottom:4px;display:flex;align-items:center;gap:6px">
+                <span>💳</span> Razorpay Live Payment Gateway
+              </div>
+              <div style="font-size:12px;color:var(--ink-muted)">Key ID: <b style="color:var(--ink)">••••••••••••••••••••vjHL (Live)</b></div>
+              <div style="font-size:12px;color:var(--ink-muted)">Secret: <b style="color:var(--ink)">••••••••••••••••••••35p6</b></div>
+              <div style="margin-top:6px;font-size:11.5px;color:var(--success);font-weight:700">✓ Live UPI, Google Pay, Cards & Netbanking Enabled</div>
+            </div>
+
+            <div style="padding:12px;background:var(--cream);border-radius:10px;border:1px solid var(--surface-border)">
+              <div style="font-weight:800;color:var(--primary);margin-bottom:4px;display:flex;align-items:center;gap:6px">
+                <span>📱</span> Twilio SMS Service
+              </div>
+              <div style="font-size:12px;color:var(--ink-muted)">Phone: <b style="color:var(--ink)">+17372508034</b></div>
+              <div style="font-size:12px;color:var(--ink-muted)">Verify Service: <b style="color:var(--ink)">Configured (.env)</b></div>
+              <div style="margin-top:6px;font-size:11.5px;color:var(--success);font-weight:700">✓ SMS OTP Dispatch Operational</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <!-- ORDER DETAILS MODAL -->
+  <div class="modal-overlay" id="orderModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeOrderModal()">✕</button>
+      <h2 style="color:var(--primary);margin-bottom:4px" id="modalOrderTitle">Order Details</h2>
+      <div id="modalOrderContent"></div>
+    </div>
+  </div>
+
+  <!-- ADD / EDIT PRODUCT MODAL -->
+  <div class="modal-overlay" id="productModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeProductModal()">✕</button>
+      <h2 style="color:var(--primary);margin-bottom:6px" id="productModalTitle">Add New Product</h2>
+      <input type="hidden" id="editProductId">
+
+      <div class="form-group">
+        <label>Product Title / Name *</label>
+        <input type="text" id="pName" placeholder="e.g. Royal Red Roses Luxury Hat Box">
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="form-group">
+          <label>Category *</label>
+          <select id="pCat">
+            <option value="Flowers">Flowers</option>
+            <option value="Combos">Combos</option>
+            <option value="Soft Toys">Soft Toys</option>
+            <option value="Custom Hampers">Custom Hampers</option>
+            <option value="Chocolates">Chocolates</option>
+            <option value="Snacks & Drinks">Snacks & Drinks</option>
+            <option value="Gaming Gifts">Gaming Gifts</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Flower / Gift Type</label>
+          <input type="text" id="pFlowerType" placeholder="e.g. Roses, Lilies, Orchids">
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px">
+        <div class="form-group">
+          <label>Price (₹) *</label>
+          <input type="number" id="pPrice" min="1" placeholder="499">
+        </div>
+        <div class="form-group">
+          <label>MRP (₹) *</label>
+          <input type="number" id="pMrp" min="1" placeholder="699">
+        </div>
+        <div class="form-group">
+          <label>Stock Qty *</label>
+          <input type="number" id="pStock" min="0" placeholder="25">
+        </div>
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="form-group">
+          <label>Occasion</label>
+          <select id="pOccasion">
+            <option value="All">All Occasions</option>
+            <option value="Birthday">Birthday</option>
+            <option value="Anniversary">Anniversary</option>
+            <option value="Romance">Romance</option>
+            <option value="Congratulations">Congratulations</option>
+            <option value="Get Well Soon">Get Well Soon</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Delivery Tag</label>
+          <input type="text" id="pDelivery" placeholder="In 2 Hours / Midnight">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Image URL (or select local asset) *</label>
+        <input type="text" id="pImage" placeholder="/images/products/velvet-crimson-red-roses.jpg">
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px">
+        <button class="btn-secondary" onclick="closeProductModal()">Cancel</button>
+        <button class="btn-primary" onclick="saveProductForm()">Save Product</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ADD COUPON MODAL -->
+  <div class="modal-overlay" id="couponModal">
+    <div class="modal-box">
+      <button class="modal-close" onclick="closeCouponModal()">✕</button>
+      <h2 style="color:var(--primary);margin-bottom:6px">Create Discount Coupon</h2>
+
+      <div class="form-group">
+        <label>Coupon Code * (e.g. FESTIVE20)</label>
+        <input type="text" id="cCode" placeholder="WELCOME100" style="text-transform:uppercase">
+      </div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="form-group">
+          <label>Discount Type</label>
+          <select id="cType">
+            <option value="flat">Flat ₹ Off</option>
+            <option value="percent">Percentage % Off</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Discount Value *</label>
+          <input type="number" id="cVal" min="1" placeholder="50">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Minimum Order Amount (₹)</label>
+        <input type="number" id="cMin" min="0" placeholder="499">
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <input type="text" id="cDesc" placeholder="Save ₹50 on luxury fresh floral orders">
+      </div>
+
+      <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:16px">
+        <button class="btn-secondary" onclick="closeCouponModal()">Cancel</button>
+        <button class="btn-primary" onclick="saveCouponForm()">Create Coupon</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CUSTOMER CRM DOSSIER MODAL -->
+  <div class="modal-overlay" id="customerModal">
+    <div class="modal-box" style="max-width:680px">
+      <button class="modal-close" onclick="closeCustomerModal()">✕</button>
+      <div id="customerModalContent"></div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer"></div>
+
+  <script>
+    // Global State
+    let adminToken = localStorage.getItem('bb_admin_token') || '';
+    let ordersList = [];
+    let productsList = [];
+    let couponsObj = {};
+    let activeOrderStatusFilter = 'All';
+    let activeProductCatFilter = 'All';
+
+    // Theme Management
+    if (localStorage.getItem('bb_dark') === '1') {
+      document.body.classList.add('dark');
+      const em = document.getElementById('themeEmoji');
+      if (em) em.textContent = '☀️';
+    }
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+      const isDark = document.body.classList.contains('dark');
+      localStorage.setItem('bb_dark', isDark ? '1' : '0');
+      const em = document.getElementById('themeEmoji');
+      if (em) em.textContent = isDark ? '☀️' : '🌙';
+    }
+
+    // Toast Utility
+    function toast(msg) {
+      const c = document.getElementById('toastContainer');
+      const div = document.createElement('div');
+      div.className = 'toast-msg';
+      div.textContent = msg;
+      c.appendChild(div);
+      setTimeout(() => {
+        div.style.opacity = '0';
+        div.style.transform = 'translateY(10px)';
+        div.style.transition = 'all 0.25s ease';
+        setTimeout(() => div.remove(), 250);
+      }, 2800);
+    }
+
+    // Money Formatter
+    const money = n => '₹' + Math.round(Number(n) || 0).toLocaleString('en-IN');
+
+    // API Helper with Admin Token
+    async function api(path, opts = {}) {
+      opts.headers = {
+        'Content-Type': 'application/json',
+        'x-admin-password': adminToken,
+        ...(opts.headers || {})
+      };
+      const res = await fetch(path, opts);
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Server error (' + res.status + ')');
+      return data;
+    }
+
+    // Admin Auth Handler
+    async function handleAdminLogin() {
+      const p = document.getElementById('gatePassword').value.trim();
+      if (!p) return toast('Please enter the admin password');
+      try {
+        const res = await fetch('/api/admin/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ password: p })
+        });
+        const data = await res.json();
+        if (!res.ok) throw new Error(data.error || 'Access denied');
+        adminToken = data.token;
+        localStorage.setItem('bb_admin_token', adminToken);
+        document.getElementById('authGate').style.display = 'none';
+        toast('Welcome back, Atelier Admin 🌸');
+        initDashboard();
+      } catch (err) {
+        toast(err.message);
+      }
+    }
+
+    function adminSignOut() {
+      adminToken = '';
+      localStorage.removeItem('bb_admin_token');
+      document.getElementById('authGate').style.display = 'flex';
+      toast('Signed out from Admin Console');
+    }
+
+    // Check Token on Load
+    async function checkAuth() {
+      if (!adminToken) {
+        document.getElementById('authGate').style.display = 'flex';
+        return;
+      }
+      try {
+        await api('/api/admin/verify');
+        document.getElementById('authGate').style.display = 'none';
+        initDashboard();
+      } catch {
+        adminToken = '';
+        localStorage.removeItem('bb_admin_token');
+        document.getElementById('authGate').style.display = 'flex';
+      }
+    }
+
+    // Tab Navigation
+    function switchTab(tabId, btn) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      const activePanel = document.getElementById('tab-' + tabId);
+      if (activePanel) activePanel.style.display = 'block';
+      if (btn) btn.classList.add('active');
+
+      if (tabId === 'orders') loadOrders();
+      if (tabId === 'customers') loadCustomers();
+      if (tabId === 'products') loadProducts();
+      if (tabId === 'coupons') loadCoupons();
+      if (tabId === 'settings') loadSettings();
+    }
+
+    // Initial Dashboard Loader
+    async function initDashboard() {
+      await loadStats();
+      await loadOrders();
+      await loadCustomers();
+      await loadProducts();
+    }
+
+    // Load Stats & KPIs
+    async function loadStats() {
+      try {
+        const res = await api('/api/admin/stats');
+        const s = res.stats;
+        document.getElementById('kpiRevenue').textContent = money(s.totalRevenue);
+        document.getElementById('kpiOrders').textContent = s.ordersTotal;
+        document.getElementById('kpiProducts').textContent = s.productsTotal;
+        document.getElementById('kpiLowStock').textContent = s.lowStockCount;
+        document.getElementById('tabOrderCount').textContent = s.ordersTotal;
+        document.getElementById('tabProductCount').textContent = s.productsTotal;
+        const custCountEl = document.getElementById('tabCustomerCount');
+        if (custCountEl) custCountEl.textContent = s.totalCustomers || 0;
+
+        if (s.gateways) {
+          const rText = document.getElementById('rzpBadgeText');
+          if (rText) rText.textContent = s.gateways.razorpayConfigured ? 'Live Active' : 'Not Configured';
+          const tText = document.getElementById('twilioBadgeText');
+          if (tText) tText.textContent = s.gateways.twilioConfigured ? (s.gateways.twilioPhone || 'Active') : 'Not Configured';
+        }
+
+        renderRecentOrders(s.recentOrders || []);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function renderRecentOrders(list) {
+      const body = document.getElementById('recentOrdersBody');
+      if (!list.length) {
+        body.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:24px;color:var(--ink-muted)">No orders placed yet.</td></tr>';
+        return;
+      }
+      body.innerHTML = list.map(o => {
+        const statusClass = getStatusClass(o.status);
+        const isPaid = o.paymentStatus === 'paid';
+        return `
+          <tr>
+            <td><b>#${o.id}</b></td>
+            <td><b>${escapeHtml(o.name)}</b><br><small style="color:var(--ink-muted)">${o.phone}</small></td>
+            <td>${escapeHtml(o.city || 'Ranchi')}<br><small style="color:var(--ink-muted)">PIN: ${o.pin}</small></td>
+            <td><span title="${escapeHtml(o.items?.map(i=>i.product).join(', ')) || ''}">${o.items?.length || 1} item(s)</span></td>
+            <td><b>${money(o.total)}</b></td>
+            <td>
+              <span style="display:inline-block;padding:2px 8px;border-radius:var(--radius-pill);font-size:11px;font-weight:700;background:${isPaid?'var(--success-light)':'var(--gold-light)'};color:${isPaid?'var(--success)':'var(--gold)'}">
+                ${isPaid ? '✓ Paid' : 'COD Pending'}
+              </span>
+            </td>
+            <td><span class="order-status-badge ${statusClass}">${o.status}</span></td>
+            <td>
+              <button class="btn-table-action" onclick="viewOrder('${o.id}')">👁 View Details</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function getStatusClass(status) {
+      const s = (status || '').toLowerCase();
+      if (s.includes('placed')) return 'placed';
+      if (s.includes('packed')) return 'packed';
+      if (s.includes('out')) return 'out';
+      if (s.includes('deliv')) return 'delivered';
+      if (s.includes('cancel')) return 'cancelled';
+      return 'placed';
+    }
+
+    // ================= ORDERS TAB =================
+    async function loadOrders() {
+      try {
+        const res = await api('/api/orders');
+        ordersList = res.orders || [];
+        document.getElementById('tabOrderCount').textContent = ordersList.length;
+        renderOrdersTable();
+      } catch (err) {
+        toast('Failed to load orders: ' + err.message);
+      }
+    }
+
+    function setOrderStatusFilter(st, btn) {
+      activeOrderStatusFilter = st;
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderOrdersTable();
+    }
+
+    function filterOrders() {
+      renderOrdersTable();
+    }
+
+    function renderOrdersTable() {
+      const q = (document.getElementById('orderSearch')?.value || '').toLowerCase().trim();
+      let list = [...ordersList];
+
+      if (activeOrderStatusFilter !== 'All') {
+        list = list.filter(o => o.status === activeOrderStatusFilter);
+      }
+      if (q) {
+        list = list.filter(o =>
+          (o.id && o.id.toLowerCase().includes(q)) ||
+          (o.name && o.name.toLowerCase().includes(q)) ||
+          (o.phone && o.phone.includes(q)) ||
+          (o.address && o.address.toLowerCase().includes(q))
+        );
+      }
+
+      const body = document.getElementById('ordersTableBody');
+      if (!list.length) {
+        body.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:32px;color:var(--ink-muted)">No orders matching current filter.</td></tr>';
+        return;
+      }
+
+      body.innerHTML = list.map(o => {
+        const statusClass = getStatusClass(o.status);
+        const isPaid = o.paymentStatus === 'paid';
+        const dateStr = o.date ? new Date(o.date).toLocaleDateString('en-IN', { month:'short', day:'numeric', hour:'2-digit', minute:'2-digit' }) : 'Recent';
+
+        return `
+          <tr>
+            <td><b>#${o.id}</b></td>
+            <td>
+              <small style="font-weight:700">${dateStr}</small><br>
+              <span style="font-size:11px;color:var(--primary);font-weight:700">${escapeHtml(o.slot || '2-Hour Express')}</span>
+            </td>
+            <td>
+              <b>${escapeHtml(o.name)}</b><br>
+              <a href="tel:${o.phone}" style="color:var(--ink-muted);text-decoration:none">${o.phone}</a>
+            </td>
+            <td>
+              <div style="max-width:180px;font-size:11.5px;color:var(--ink-muted);overflow:hidden;text-overflow:ellipsis;white-space:nowrap" title="${escapeHtml(o.address)}">
+                ${escapeHtml(o.address)}
+              </div>
+              <small><b>${escapeHtml(o.city || 'Ranchi')}</b> (${o.pin})</small>
+            </td>
+            <td>
+              <b>${o.items?.length || 1} item(s)</b><br>
+              <small style="color:var(--ink-muted)">${escapeHtml(o.items?.map(i => `${i.qty}x ${i.product}`).join(', ') || '')}</small>
+            </td>
+            <td><b>${money(o.total)}</b></td>
+            <td>
+              <span style="display:inline-block;padding:3px 8px;border-radius:var(--radius-pill);font-size:11px;font-weight:700;background:${isPaid?'var(--success-light)':'var(--gold-light)'};color:${isPaid?'var(--success)':'var(--gold)'}">
+                ${isPaid ? '✓ Razorpay Live' : 'Cash on Delivery'}
+              </span>
+              ${o.paymentId ? `<br><small style="color:var(--ink-light);font-size:10px">${o.paymentId}</small>` : ''}
+            </td>
+            <td>
+              <select class="select-status" onchange="updateOrderStatus('${o.id}', this.value)">
+                <option value="Placed" ${o.status==='Placed'?'selected':''}>Placed</option>
+                <option value="Packed" ${o.status==='Packed'?'selected':''}>Packed</option>
+                <option value="Out for delivery" ${o.status==='Out for delivery'?'selected':''}>Out for delivery</option>
+                <option value="Delivered" ${o.status==='Delivered'?'selected':''}>Delivered</option>
+                <option value="Cancelled" ${o.status==='Cancelled'?'selected':''}>Cancelled</option>
+              </select>
+            </td>
+            <td>
+              <div style="display:flex;gap:6px">
+                <button class="btn-table-action" onclick="viewOrder('${o.id}')">👁 View</button>
+                <button class="btn-table-action btn-table-del" onclick="deleteOrder('${o.id}')">✕</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function updateOrderStatus(orderId, newStatus) {
+      try {
+        await api('/api/orders/' + encodeURIComponent(orderId), {
+          method: 'PATCH',
+          body: JSON.stringify({ status: newStatus })
+        });
+        toast('Order #' + orderId + ' updated to ' + newStatus);
+        const order = ordersList.find(o => o.id === orderId);
+        if (order) order.status = newStatus;
+        renderOrdersTable();
+        loadStats();
+      } catch (err) {
+        toast('Failed to update: ' + err.message);
+      }
+    }
+
+    async function deleteOrder(orderId) {
+      if (!confirm('Are you sure you want to delete order #' + orderId + '?')) return;
+      try {
+        await api('/api/orders/' + encodeURIComponent(orderId), { method: 'DELETE' });
+        toast('Order #' + orderId + ' removed');
+        ordersList = ordersList.filter(o => o.id !== orderId);
+        renderOrdersTable();
+        loadStats();
+      } catch (err) {
+        toast('Failed to delete: ' + err.message);
+      }
+    }
+
+    function viewOrder(orderId) {
+      const order = ordersList.find(o => o.id === orderId);
+      if (!order) return;
+      document.getElementById('modalOrderTitle').textContent = 'Order #' + order.id;
+      const isPaid = order.paymentStatus === 'paid';
+      document.getElementById('modalOrderContent').innerHTML = `
+        <div style="margin:16px 0;padding:14px;background:var(--cream);border-radius:12px;border:1px solid var(--surface-border)">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px">
+            <span style="font-weight:800;font-size:15px">${escapeHtml(order.name)}</span>
+            <span class="order-status-badge ${getStatusClass(order.status)}">${order.status}</span>
+          </div>
+          <div style="font-size:13px;color:var(--ink-muted);line-height:1.6">
+            📞 <b>${order.phone}</b><br>
+            📍 <b>${escapeHtml(order.address)}</b>, ${escapeHtml(order.city || 'Ranchi')} - ${order.pin}<br>
+            ⚡ Delivery Slot: <b>${escapeHtml(order.slot || '2-Hour Express')}</b><br>
+            💳 Payment Method: <b>${escapeHtml(order.method)}</b> (${isPaid ? 'Paid' : 'COD'})
+            ${order.paymentId ? `<br>🔑 Transaction ID: <code>${order.paymentId}</code>` : ''}
+          </div>
+        </div>
+
+        <h4 style="margin:16px 0 8px;font-size:13px;text-transform:uppercase;letter-spacing:0.5px;color:var(--ink-muted)">Items Breakdown</h4>
+        <div style="border:1px solid var(--surface-border-subtle);border-radius:10px;overflow:hidden">
+          ${(order.items || []).map(it => `
+            <div style="display:flex;justify-content:space-between;padding:10px 14px;border-bottom:1px solid var(--surface-border-subtle);font-size:13px">
+              <div>
+                <span>${it.emoji || '🎁'}</span> <b>${escapeHtml(it.product)}</b> × ${it.qty}
+              </div>
+              <div><b>${money(it.price * it.qty)}</b></div>
+            </div>
+          `).join('')}
+          <div style="display:flex;justify-content:space-between;padding:12px 14px;background:var(--primary-light);font-size:14px;font-weight:800;color:var(--primary)">
+            <span>Total Bill</span>
+            <span>${money(order.total)}</span>
+          </div>
+        </div>
+
+        <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:20px">
+          <button class="btn-secondary" onclick="closeOrderModal()">Close</button>
+        </div>
+      `;
+      document.getElementById('orderModal').classList.add('open');
+    }
+
+    function closeOrderModal() {
+      document.getElementById('orderModal').classList.remove('open');
+    }
+
+    // ================= CUSTOMERS & CRM TAB =================
+    let allCustomers = [];
+    let currentCustomerTierFilter = 'All';
+
+    async function loadCustomers() {
+      try {
+        const res = await api('/api/customers');
+        allCustomers = res.customers || [];
+        const countEl = document.getElementById('tabCustomerCount');
+        if (countEl) countEl.textContent = allCustomers.length;
+        renderCustomersTable();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function setCustomerTierFilter(tier, btn) {
+      currentCustomerTierFilter = tier;
+      document.querySelectorAll('#customerTierFilters .filter-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderCustomersTable();
+    }
+
+    function renderCustomersTable() {
+      const tbody = document.getElementById('customersTableBody');
+      if (!tbody) return;
+      const q = (document.getElementById('customerSearch')?.value || '').toLowerCase().trim();
+      let filtered = allCustomers;
+
+      if (currentCustomerTierFilter !== 'All') {
+        filtered = filtered.filter(c => (c.tier || 'Silver Member') === currentCustomerTierFilter);
+      }
+      if (q) {
+        filtered = filtered.filter(c =>
+          (c.name && c.name.toLowerCase().includes(q)) ||
+          (c.phone && c.phone.includes(q)) ||
+          (c.email && c.email.toLowerCase().includes(q)) ||
+          (c.address && c.address.toLowerCase().includes(q)) ||
+          (c.interests?.favoriteFlowers && c.interests.favoriteFlowers.some(f => f.toLowerCase().includes(q))) ||
+          (c.interests?.favoriteColors && c.interests.favoriteColors.some(col => col.toLowerCase().includes(q)))
+        );
+      }
+
+      if (!filtered.length) {
+        tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--ink-muted)">No matching customer records found in Atelier CRM.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = filtered.map(c => {
+        const flowers = c.interests?.favoriteFlowers || ['Red Roses'];
+        const colors = c.interests?.favoriteColors || ['Frozen Pink'];
+        const dates = c.interests?.celebrationDates || [];
+
+        const tierBadgeClass = c.tier === 'VIP Platinum' ? 'status-delivered' : (c.tier === 'Gold Member' ? 'status-packed' : 'status-placed');
+
+        return `
+          <tr>
+            <td>
+              <div style="font-weight:800;color:var(--primary);font-size:14px">${escapeHtml(c.name || 'BloomBox Guest')}</div>
+              <div style="font-size:12px;color:var(--ink-muted);font-family:monospace;letter-spacing:0.5px">📞 +91 ${escapeHtml(c.phone)}</div>
+              <div style="font-size:11px;color:var(--ink-light)">${escapeHtml(c.email || '—')}</div>
+            </td>
+            <td>
+              <span class="status-badge ${tierBadgeClass}">${escapeHtml(c.tier || 'Silver Member')}</span>
+            </td>
+            <td style="max-width:260px">
+              <div style="display:flex;flex-wrap:wrap;gap:4px;margin-bottom:4px">
+                ${flowers.map(f => `<span style="display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;background:var(--frozen-pink-light);color:var(--frozen-rose);border:1px solid var(--surface-border)">🌸 ${escapeHtml(f)}</span>`).join('')}
+              </div>
+              <div style="display:flex;flex-wrap:wrap;gap:4px">
+                ${colors.map(col => `<span style="display:inline-block;padding:2px 8px;border-radius:999px;font-size:10.5px;font-weight:700;background:var(--frozen-cyan-light);color:var(--frozen-cyan);border:1px solid rgba(2,132,199,0.2)">🎨 ${escapeHtml(col)}</span>`).join('')}
+              </div>
+            </td>
+            <td>
+              ${dates.length ? dates.map(d => `
+                <div style="font-size:11.5px;color:var(--ink);margin-bottom:3px;display:flex;align-items:center;gap:4px">
+                  <span>🎂</span> <b>${escapeHtml(d.title)}:</b> <span style="color:var(--primary)">${escapeHtml(d.date)}</span>
+                </div>
+              `).join('') : '<span style="font-size:11.5px;color:var(--ink-muted)">No reminders saved</span>'}
+            </td>
+            <td>
+              <div style="font-weight:800;font-size:14px;color:var(--ink)">${money(c.totalSpent || 0)}</div>
+              <div style="font-size:11px;color:var(--ink-muted)">${c.orderCount || 0} order(s)</div>
+            </td>
+            <td>
+              <div style="font-size:12px;font-weight:700;color:var(--frozen-rose)">Wallet: ${money(c.walletBalance || 0)}</div>
+              <div style="font-size:11px;color:var(--frozen-cyan)">Points: ✦ ${c.rewardPoints || 0}</div>
+            </td>
+            <td>
+              <div style="font-size:11.5px;color:var(--ink-muted);max-width:180px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis" title="${escapeHtml(c.address || '—')}">
+                📍 ${escapeHtml(c.address || 'Not specified')}
+              </div>
+            </td>
+            <td>
+              <button class="btn-table-action" onclick="openCustomerDossier('${escapeHtml(c.phone)}')">
+                <span>🔍</span> Dossier
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function openCustomerDossier(phone) {
+      try {
+        const res = await api('/api/customers/' + phone);
+        const c = res.customer;
+        if (!c) return toast('Customer not found');
+
+        const flowers = c.interests?.favoriteFlowers || [];
+        const colors = c.interests?.favoriteColors || [];
+        const dates = c.interests?.celebrationDates || [];
+        const custOrders = (ordersList || []).filter(o => o.phone === phone);
+
+        const modal = document.getElementById('customerModal');
+        const content = document.getElementById('customerModalContent');
+        content.innerHTML = `
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+            <div style="font-size:32px">👤</div>
+            <div>
+              <h2 style="font-size:22px;color:var(--primary)">${escapeHtml(c.name)}</h2>
+              <p style="font-size:12.5px;color:var(--ink-muted)">Customer ID: <code>${escapeHtml(c.id)}</code> · Active ${new Date(c.lastActive || Date.now()).toLocaleDateString('en-IN')}</p>
+            </div>
+          </div>
+
+          <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(130px, 1fr));gap:10px;margin:16px 0">
+            <div style="padding:12px;background:var(--frozen-pink-light);border-radius:12px;border:1px solid var(--surface-border);text-align:center">
+              <div style="font-size:10.5px;font-weight:800;color:var(--ink-muted);text-transform:uppercase">Lifetime Spend</div>
+              <b style="font-size:18px;color:var(--frozen-rose)">${money(c.totalSpent || 0)}</b>
+            </div>
+            <div style="padding:12px;background:var(--surface);border-radius:12px;border:1px solid var(--surface-border);text-align:center">
+              <div style="font-size:10.5px;font-weight:800;color:var(--ink-muted);text-transform:uppercase">Total Orders</div>
+              <b style="font-size:18px;color:var(--ink)">${c.orderCount || 0}</b>
+            </div>
+            <div style="padding:12px;background:var(--frozen-cyan-light);border-radius:12px;border:1px solid rgba(2,132,199,0.2);text-align:center">
+              <div style="font-size:10.5px;font-weight:800;color:var(--ink-muted);text-transform:uppercase">Tier</div>
+              <b style="font-size:15px;color:var(--frozen-cyan)">${escapeHtml(c.tier || 'Silver Member')}</b>
+            </div>
+            <div style="padding:12px;background:var(--surface);border-radius:12px;border:1px solid var(--surface-border);text-align:center">
+              <div style="font-size:10.5px;font-weight:800;color:var(--ink-muted);text-transform:uppercase">Reward Points</div>
+              <b style="font-size:18px;color:var(--primary)">✦ ${c.rewardPoints || 0}</b>
+            </div>
+          </div>
+
+          <div style="background:var(--cream);padding:14px;border-radius:12px;margin-bottom:14px;border:1px solid var(--surface-border-subtle)">
+            <h4 style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);margin-bottom:6px">Coordinates</h4>
+            <div style="font-size:13px;margin-bottom:3px"><b>Mobile:</b> +91 ${escapeHtml(c.phone)}</div>
+            <div style="font-size:13px;margin-bottom:3px"><b>Email:</b> ${escapeHtml(c.email || '—')}</div>
+            <div style="font-size:13px"><b>Primary Address:</b> ${escapeHtml(c.address || '—')}</div>
+          </div>
+
+          <div style="background:var(--surface);padding:14px;border-radius:12px;margin-bottom:14px;border:1px solid var(--surface-border)">
+            <h4 style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--primary);margin-bottom:8px">🌸 Customer Interests & Preferences</h4>
+            <div style="margin-bottom:8px">
+              <span style="font-size:12px;color:var(--ink-muted);font-weight:700">Favorite Floral Blooms:</span>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+                ${flowers.length ? flowers.map(f => `<span style="padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:700;background:var(--frozen-pink-light);color:var(--frozen-rose);border:1px solid var(--surface-border)">🌹 ${escapeHtml(f)}</span>`).join('') : '<span style="font-size:12px;color:var(--ink-muted)">No preferences logged</span>'}
+              </div>
+            </div>
+            <div style="margin-bottom:8px">
+              <span style="font-size:12px;color:var(--ink-muted);font-weight:700">Aesthetic Palette:</span>
+              <div style="display:flex;flex-wrap:wrap;gap:6px;margin-top:4px">
+                ${colors.length ? colors.map(col => `<span style="padding:3px 10px;border-radius:999px;font-size:11.5px;font-weight:700;background:var(--frozen-cyan-light);color:var(--frozen-cyan);border:1px solid rgba(2,132,199,0.2)">🎨 ${escapeHtml(col)}</span>`).join('') : '<span style="font-size:12px;color:var(--ink-muted)">None recorded</span>'}
+              </div>
+            </div>
+            <div>
+              <span style="font-size:12px;color:var(--ink-muted);font-weight:700">Celebration Reminders:</span>
+              <div style="margin-top:4px">
+                ${dates.length ? dates.map(d => `
+                  <div style="padding:8px 12px;background:var(--cream);border-radius:8px;margin-bottom:4px;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--surface-border-subtle)">
+                    <div>
+                      <b style="font-size:12.5px;color:var(--ink)">🎂 ${escapeHtml(d.title)}</b>
+                      <div style="font-size:11px;color:var(--ink-muted)">${escapeHtml(d.note || 'Celebration reminder')}</div>
+                    </div>
+                    <span style="font-size:12px;font-weight:800;color:var(--primary)">📅 ${escapeHtml(d.date)}</span>
+                  </div>
+                `).join('') : '<span style="font-size:12px;color:var(--ink-muted)">No reminders logged</span>'}
+              </div>
+            </div>
+          </div>
+
+          <div style="background:var(--surface);padding:14px;border-radius:12px;margin-bottom:14px;border:1px solid var(--surface-border)">
+            <h4 style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);margin-bottom:8px">Past Orders (${custOrders.length})</h4>
+            ${custOrders.length ? custOrders.map(o => `
+              <div style="padding:8px 0;border-bottom:1px solid var(--surface-border-subtle);display:flex;justify-content:space-between;align-items:center;font-size:12px">
+                <div>
+                  <b style="color:var(--primary)">#${o.id}</b> · <span style="color:var(--ink-muted)">${new Date(o.date).toLocaleDateString('en-IN')}</span>
+                  <div style="color:var(--ink);font-size:11.5px">${(o.items || []).map(it => `${it.qty}x ${it.product}`).join(', ')}</div>
+                </div>
+                <div style="text-align:right">
+                  <b>${money(o.total)}</b>
+                  <div style="font-size:11px;font-weight:700;color:var(--success)">${o.status}</div>
+                </div>
+              </div>
+            `).join('') : '<div style="font-size:12px;color:var(--ink-muted)">No past orders in system.</div>'}
+          </div>
+
+          <div style="text-align:right">
+            <button class="btn-secondary" onclick="closeCustomerModal()">Close Dossier</button>
+          </div>
+        `;
+        modal.classList.add('open');
+      } catch (err) {
+        toast('Failed to load dossier: ' + err.message);
+      }
+    }
+
+    function closeCustomerModal() {
+      const modal = document.getElementById('customerModal');
+      if (modal) modal.classList.remove('open');
+    }
+
+    // ================= PRODUCTS TAB =================
+    async function loadProducts() {
+      try {
+        const res = await api('/api/products?includeDisabled=1');
+        productsList = res.products || [];
+        document.getElementById('tabProductCount').textContent = productsList.length;
+        renderProductsTable();
+      } catch (err) {
+        toast('Failed to load products: ' + err.message);
+      }
+    }
+
+    function setProductCatFilter(cat, btn) {
+      activeProductCatFilter = cat;
+      const pills = document.getElementById('prodCatPills');
+      if (pills) pills.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderProductsTable();
+    }
+
+    function filterProducts() {
+      renderProductsTable();
+    }
+
+    function renderProductsTable() {
+      const q = (document.getElementById('prodSearch')?.value || '').toLowerCase().trim();
+      let list = [...productsList];
+
+      if (activeProductCatFilter !== 'All') {
+        list = list.filter(p => p.cat === activeProductCatFilter);
+      }
+      if (q) {
+        list = list.filter(p => p.name && p.name.toLowerCase().includes(q));
+      }
+
+      const body = document.getElementById('productsTableBody');
+      if (!list.length) {
+        body.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:32px;color:var(--ink-muted)">No products found in this category.</td></tr>';
+        return;
+      }
+
+      body.innerHTML = list.map(p => {
+        const stockColor = p.stock > 10 ? 'var(--success)' : p.stock > 0 ? 'var(--gold)' : 'var(--danger)';
+        const fallbackImg = '/images/products/velvet-crimson-red-roses.jpg';
+        return `
+          <tr>
+            <td><img class="table-thumb" src="${p.image || fallbackImg}" alt="${escapeHtml(p.name)}" onerror="this.src='${fallbackImg}'"></td>
+            <td>
+              <b>${escapeHtml(p.name)}</b><br>
+              <small style="color:var(--primary);font-weight:700">${escapeHtml(p.cat || 'Flowers')}</small>
+              ${p.flowerType ? `<small style="color:var(--ink-muted)"> · ${escapeHtml(p.flowerType)}</small>` : ''}
+            </td>
+            <td><b>${money(p.price)}</b></td>
+            <td><span style="color:var(--ink-muted);text-decoration:line-through">${money(p.mrp || p.price)}</span></td>
+            <td><b style="color:${stockColor}">${p.stock}</b></td>
+            <td>
+              <small style="display:inline-block;padding:2px 6px;background:var(--primary-light);border-radius:4px;font-weight:700;color:var(--primary)">${escapeHtml(p.badge || 'Fresh')}</small><br>
+              <small style="color:var(--ink-muted)">${escapeHtml(p.delivery || 'In 2 Hours')}</small>
+            </td>
+            <td>
+              <input type="checkbox" ${p.enabled ? 'checked' : ''} onchange="toggleProduct(${p.id})">
+            </td>
+            <td>
+              <div style="display:flex;gap:6px">
+                <button class="btn-table-action" onclick="editProduct(${p.id})">✎ Edit</button>
+                <button class="btn-table-action btn-table-del" onclick="deleteProduct(${p.id})">✕</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    async function toggleProduct(id) {
+      try {
+        const res = await api(`/api/products/${id}/toggle`, { method: 'POST' });
+        toast(`Product #${id} is now ${res.product.enabled ? 'ACTIVE' : 'DISABLED'}`);
+        const p = productsList.find(x => x.id === id);
+        if (p) p.enabled = res.product.enabled;
+        loadStats();
+      } catch (err) {
+        toast('Toggle failed: ' + err.message);
+      }
+    }
+
+    async function deleteProduct(id) {
+      if (!confirm('Are you sure you want to delete product #' + id + '?')) return;
+      try {
+        await api('/api/products/' + id, { method: 'DELETE' });
+        toast('Product #' + id + ' removed');
+        productsList = productsList.filter(x => x.id !== id);
+        renderProductsTable();
+        loadStats();
+      } catch (err) {
+        toast('Delete failed: ' + err.message);
+      }
+    }
+
+    function openAddProductModal() {
+      document.getElementById('editProductId').value = '';
+      document.getElementById('productModalTitle').textContent = 'Add New Product';
+      document.getElementById('pName').value = '';
+      document.getElementById('pCat').value = 'Flowers';
+      document.getElementById('pFlowerType').value = 'Roses';
+      document.getElementById('pPrice').value = '';
+      document.getElementById('pMrp').value = '';
+      document.getElementById('pStock').value = '25';
+      document.getElementById('pOccasion').value = 'All';
+      document.getElementById('pDelivery').value = 'In 2 Hours';
+      document.getElementById('pImage').value = '/images/products/velvet-crimson-red-roses.jpg';
+      document.getElementById('productModal').classList.add('open');
+    }
+
+    function editProduct(id) {
+      const p = productsList.find(x => x.id === id);
+      if (!p) return;
+      document.getElementById('editProductId').value = p.id;
+      document.getElementById('productModalTitle').textContent = 'Edit Product #' + p.id;
+      document.getElementById('pName').value = p.name || '';
+      document.getElementById('pCat').value = p.cat || 'Flowers';
+      document.getElementById('pFlowerType').value = p.flowerType || '';
+      document.getElementById('pPrice').value = p.price || '';
+      document.getElementById('pMrp').value = p.mrp || p.price || '';
+      document.getElementById('pStock').value = p.stock || 0;
+      document.getElementById('pOccasion').value = p.occasion || 'All';
+      document.getElementById('pDelivery').value = p.delivery || 'In 2 Hours';
+      document.getElementById('pImage').value = p.image || '/images/products/velvet-crimson-red-roses.jpg';
+      document.getElementById('productModal').classList.add('open');
+    }
+
+    function closeProductModal() {
+      document.getElementById('productModal').classList.remove('open');
+    }
+
+    async function saveProductForm() {
+      const id = document.getElementById('editProductId').value;
+      const name = document.getElementById('pName').value.trim();
+      const cat = document.getElementById('pCat').value;
+      const flowerType = document.getElementById('pFlowerType').value.trim();
+      const price = Number(document.getElementById('pPrice').value);
+      const mrp = Number(document.getElementById('pMrp').value) || price;
+      const stock = Number(document.getElementById('pStock').value);
+      const occasion = document.getElementById('pOccasion').value;
+      const delivery = document.getElementById('pDelivery').value.trim();
+      const image = document.getElementById('pImage').value.trim();
+
+      if (!name || price <= 0 || stock < 0) {
+        return toast('Please provide a valid product title, positive price, and stock.');
+      }
+
+      const payload = {
+        name, cat, flowerType, price, mrp, stock, occasion, delivery, image, enabled: true
+      };
+
+      try {
+        if (id) {
+          // Update
+          const res = await api('/api/products/' + id, {
+            method: 'PUT',
+            body: JSON.stringify(payload)
+          });
+          toast('Product updated successfully!');
+          const idx = productsList.findIndex(p => p.id === Number(id));
+          if (idx >= 0) productsList[idx] = res.product;
+        } else {
+          // Create
+          const res = await api('/api/products', {
+            method: 'POST',
+            body: JSON.stringify(payload)
+          });
+          toast('Product created successfully!');
+          productsList.unshift(res.product);
+        }
+        closeProductModal();
+        renderProductsTable();
+        loadStats();
+      } catch (err) {
+        toast(err.message);
+      }
+    }
+
+    // ================= COUPONS TAB =================
+    async function loadCoupons() {
+      try {
+        const res = await api('/api/coupons');
+        couponsObj = res.coupons || {};
+        renderCouponsTable();
+      } catch (err) {
+        toast('Failed to load coupons: ' + err.message);
+      }
+    }
+
+    function renderCouponsTable() {
+      const body = document.getElementById('couponsTableBody');
+      const codes = Object.keys(couponsObj);
+      if (!codes.length) {
+        body.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:24px;color:var(--ink-muted)">No active coupon codes found.</td></tr>';
+        return;
+      }
+
+      body.innerHTML = codes.map(code => {
+        const c = couponsObj[code];
+        const isEnabled = c.enabled !== false;
+        const typeStr = c.discountType === 'percent' ? `${c.discountValue || 10}% Off` : `Flat ₹${c.discountValue || 50} Off`;
+        return `
+          <tr>
+            <td><b style="color:var(--primary);font-size:14px;letter-spacing:0.5px">${code}</b></td>
+            <td><b>${typeStr}</b></td>
+            <td>₹${c.minOrder || 0}</td>
+            <td style="color:var(--ink-muted)">${escapeHtml(c.description || 'Promotional coupon')}</td>
+            <td>
+              <span style="display:inline-block;padding:2px 8px;border-radius:var(--radius-pill);font-size:11px;font-weight:700;background:${isEnabled?'var(--success-light)':'var(--danger-light)'};color:${isEnabled?'var(--success)':'var(--danger)'}">
+                ${isEnabled ? 'Active' : 'Disabled'}
+              </span>
+            </td>
+            <td>
+              <button class="btn-table-action btn-table-del" onclick="deleteCoupon('${code}')">Delete</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    function openAddCouponModal() {
+      document.getElementById('cCode').value = '';
+      document.getElementById('cVal').value = '50';
+      document.getElementById('cMin').value = '499';
+      document.getElementById('cDesc').value = '';
+      document.getElementById('couponModal').classList.add('open');
+    }
+
+    function closeCouponModal() {
+      document.getElementById('couponModal').classList.remove('open');
+    }
+
+    async function saveCouponForm() {
+      const code = document.getElementById('cCode').value.trim().toUpperCase();
+      const discountType = document.getElementById('cType').value;
+      const discountValue = Number(document.getElementById('cVal').value);
+      const minOrder = Number(document.getElementById('cMin').value) || 0;
+      const description = document.getElementById('cDesc').value.trim();
+
+      if (!code || discountValue <= 0) return toast('Please enter a valid coupon code and discount value');
+
+      try {
+        const res = await api('/api/coupons', {
+          method: 'POST',
+          body: JSON.stringify({ code, discountType, discountValue, minOrder, description, enabled: true })
+        });
+        toast('Coupon ' + code + ' created!');
+        couponsObj[code] = res.coupon;
+        closeCouponModal();
+        renderCouponsTable();
+      } catch (err) {
+        toast(err.message);
+      }
+    }
+
+    async function deleteCoupon(code) {
+      if (!confirm('Are you sure you want to delete coupon ' + code + '?')) return;
+      try {
+        await api('/api/coupons/' + encodeURIComponent(code), { method: 'DELETE' });
+        toast('Coupon ' + code + ' deleted');
+        delete couponsObj[code];
+        renderCouponsTable();
+      } catch (err) {
+        toast(err.message);
+      }
+    }
+
+    // ================= SETTINGS TAB =================
+    async function loadSettings() {
+      try {
+        const res = await api('/api/settings');
+        const s = res.settings || {};
+        document.getElementById('settingDeliveryFee').value = s.deliveryFee ?? 35;
+        document.getElementById('settingCodLimit').value = s.codLimit ?? 5000;
+      } catch (err) {
+        toast('Failed to load settings: ' + err.message);
+      }
+    }
+
+    async function saveStoreSettings() {
+      const deliveryFee = Number(document.getElementById('settingDeliveryFee').value);
+      const codLimit = Number(document.getElementById('settingCodLimit').value);
+      try {
+        await api('/api/settings', {
+          method: 'PUT',
+          body: JSON.stringify({ deliveryFee, codLimit })
+        });
+        toast('Store delivery settings saved successfully!');
+      } catch (err) {
+        toast('Save failed: ' + err.message);
+      }
+    }
+
+    function escapeHtml(str) {
+      if (!str) return '';
+      return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+    }
+
+    // Initial Auth Check
+    checkAuth();
+  </script>
+</body>
+</html>
+

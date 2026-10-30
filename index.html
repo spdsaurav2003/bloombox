@@ -1,0 +1,3704 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>BloomBox — Haute Gifting Atelier · Send Fresh Flowers, Combos & Luxury Hampers Across India</title>
+  <meta name="description" content="Send fresh flower bouquets, roses, lilies, orchids & flower combos with guaranteed 2-hour & midnight delivery across 1,000+ cities in India.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <style>
+    :root {
+      /* Frozen Pink & Crystal Luxury Palette */
+      --frozen-pink-light: #fdf2f8;
+      --frozen-pink-mid: #fbcfe8;
+      --frozen-pink-vibrant: #ec4899;
+      --frozen-rose: #be185d;
+      --frozen-rose-deep: #881337;
+      --frozen-cyan-light: #e0f2fe;
+      --frozen-cyan-mid: #bae6fd;
+      --frozen-cyan: #0284c7;
+      --frozen-gold: #fbbf24;
+      
+      --cream: #fbf7fb;
+      --surface: #ffffff;
+      --surface-glass: rgba(255, 255, 255, 0.82);
+      --surface-frosted: rgba(255, 255, 255, 0.72);
+      --surface-border: rgba(244, 114, 182, 0.22);
+      --surface-border-subtle: rgba(224, 242, 254, 0.4);
+      --ink: #1e1022;
+      --ink-muted: #6b5a70;
+      --ink-light: #9d8b9e;
+      
+      --gradient-pink-ice: linear-gradient(135deg, #fce7f3 0%, #fae8ff 35%, #e0f2fe 75%, #fdf2f8 100%);
+      --gradient-primary: linear-gradient(135deg, #f43f5e 0%, #db2777 50%, #9d174d 100%);
+      --gradient-primary-hover: linear-gradient(135deg, #fb7185 0%, #e11d48 50%, #881337 100%);
+      --gradient-ice-btn: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+      --gradient-badge-best: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      --gradient-badge-express: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      --gradient-badge-midnight: linear-gradient(135deg, #8b5cf6 0%, #6d28d9 100%);
+      --gradient-badge-luxury: linear-gradient(135deg, #ec4899 0%, #be185d 100%);
+      
+      --shadow-sm: 0 4px 16px rgba(190, 24, 93, 0.05);
+      --shadow-md: 0 12px 32px rgba(190, 24, 93, 0.09);
+      --shadow-lg: 0 24px 60px rgba(190, 24, 93, 0.14);
+      --shadow-frozen: 0 8px 24px rgba(236, 72, 153, 0.2), 0 0 15px rgba(56, 189, 248, 0.15);
+      
+      --radius-sm: 10px;
+      --radius-md: 16px;
+      --radius-lg: 24px;
+      --radius-pill: 9999px;
+      --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    body.dark {
+      --cream: #120a16;
+      --surface: #1d1222;
+      --surface-glass: rgba(29, 18, 34, 0.88);
+      --surface-frosted: rgba(29, 18, 34, 0.78);
+      --surface-border: rgba(244, 114, 182, 0.18);
+      --surface-border-subtle: rgba(56, 189, 248, 0.15);
+      --ink: #fdf7fc;
+      --ink-muted: #baa8bd;
+      --ink-light: #7b697d;
+      --frozen-pink-light: #291222;
+      --frozen-cyan-light: #0d1e2e;
+      background: #120a16;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      background: radial-gradient(120% 90% at 50% 0%, #fdf2f8 0%, #faeaf4 35%, #edf5fc 70%, #fbf3f8 100%), #fdf4f8;
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      min-height: 100vh;
+      position: relative;
+    }
+    body.dark {
+      background: radial-gradient(120% 90% at 50% 0%, #200f21 0%, #17101f 40%, #0d1724 75%, #1b0e1d 100%), #120a16;
+    }
+
+    /* Ambient Frozen Crystal Orbs in Background */
+    .bg-crystal-orb-1 {
+      position: fixed;
+      top: -100px;
+      left: -80px;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(244, 114, 182, 0.24) 0%, rgba(251, 207, 232, 0.1) 50%, transparent 70%);
+      filter: blur(60px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-crystal-orb-2 {
+      position: fixed;
+      top: 25%;
+      right: -100px;
+      width: 550px;
+      height: 550px;
+      background: radial-gradient(circle, rgba(56, 189, 248, 0.22) 0%, rgba(224, 242, 254, 0.1) 50%, transparent 70%);
+      filter: blur(70px);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .bg-crystal-orb-3 {
+      position: fixed;
+      bottom: 5%;
+      left: 15%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(236, 72, 153, 0.16) 0%, rgba(216, 180, 254, 0.1) 50%, transparent 70%);
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+    }
+
+    .wrap {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Shimmering Frozen Top Announcement Bar */
+    .announcement-bar {
+      background: linear-gradient(90deg, #831843, #be185d 25%, #ec4899 50%, #0284c7 75%, #831843);
+      background-size: 200% auto;
+      animation: frozenShimmer 8s linear infinite;
+      color: #ffffff;
+      font-size: 11.5px;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      padding: 8px 16px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      position: relative;
+      z-index: 101;
+      box-shadow: 0 2px 10px rgba(190, 24, 93, 0.2);
+    }
+    @keyframes frozenShimmer {
+      0% { background-position: 0% center; }
+      100% { background-position: 200% center; }
+    }
+    .announcement-bar span { opacity: 0.75; font-size: 10px; }
+
+    /* Sticky Frosted Luxury Header */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--surface-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--surface-border);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .nav-inner {
+      height: 74px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .logo-badge {
+      width: 44px;
+      height: 44px;
+      background: linear-gradient(135deg, #fdf2f8, #fbcfe8 50%, #e0f2fe 100%);
+      border: 1px solid rgba(244, 114, 182, 0.4);
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 23px;
+      box-shadow: var(--shadow-frozen);
+    }
+    .brand-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      line-height: 1;
+      background: linear-gradient(135deg, #881337 0%, #db2777 50%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .brand-title span {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 800;
+      color: var(--frozen-rose);
+      -webkit-text-fill-color: var(--frozen-rose);
+    }
+    .brand-subtitle {
+      font-size: 9.5px;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      font-weight: 800;
+      margin-top: 3px;
+    }
+
+    /* Location Picker with Frozen Glass Pill */
+    .nav-loc-btn {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: linear-gradient(135deg, rgba(253, 242, 248, 0.9), rgba(224, 242, 254, 0.8));
+      border: 1px solid rgba(244, 114, 182, 0.35);
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      color: var(--frozen-rose);
+      font-size: 12.5px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: var(--transition);
+      white-space: nowrap;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-loc-btn:hover {
+      background: linear-gradient(135deg, rgba(251, 207, 232, 0.95), rgba(186, 230, 253, 0.9));
+      border-color: var(--frozen-pink-vibrant);
+      transform: translateY(-1px);
+    }
+    .nav-loc-btn small {
+      color: var(--ink-muted);
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    /* Search Bar with Frosted Pill */
+    .search-container {
+      flex: 1;
+      max-width: 420px;
+      position: relative;
+    }
+    .search-input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .search-icon {
+      position: absolute;
+      left: 14px;
+      font-size: 16px;
+      color: var(--frozen-pink-vibrant);
+      pointer-events: none;
+    }
+    .search-input {
+      width: 100%;
+      padding: 10px 14px 10px 38px;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-pill);
+      background: var(--surface-frosted);
+      backdrop-filter: blur(12px);
+      color: var(--ink);
+      font-size: 13.5px;
+      font-family: inherit;
+      outline: none;
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.02) inset;
+    }
+    .search-input:focus {
+      border-color: var(--frozen-pink-vibrant);
+      background: var(--surface);
+      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.18);
+    }
+    #suggest {
+      position: absolute;
+      top: calc(100% + 6px);
+      left: 0;
+      right: 0;
+      background: var(--surface-glass);
+      backdrop-filter: blur(20px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-lg);
+      padding: 8px 0;
+      z-index: 150;
+      max-height: 280px;
+      overflow-y: auto;
+    }
+    .suggest-item {
+      padding: 8px 16px;
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .suggest-item:hover {
+      background: var(--frozen-pink-light);
+      color: var(--frozen-rose);
+    }
+
+    /* Nav Buttons */
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      outline: none;
+      transition: var(--transition);
+    }
+    .btn-icon {
+      height: 40px;
+      padding: 0 14px;
+      border-radius: var(--radius-pill);
+      background: var(--surface-frosted);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--surface-border);
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-icon:hover {
+      border-color: var(--frozen-pink-vibrant);
+      color: var(--frozen-rose);
+      transform: translateY(-1px);
+    }
+    .btn-primary {
+      background: var(--gradient-primary);
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 13.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: var(--shadow-frozen);
+    }
+    .btn-primary:hover {
+      background: var(--gradient-primary-hover);
+      box-shadow: 0 10px 30px rgba(225, 29, 72, 0.4), 0 0 20px rgba(56, 189, 248, 0.2);
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      background: var(--surface-frosted);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--surface-border);
+      color: var(--ink);
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      font-size: 13px;
+    }
+    .btn-secondary:hover {
+      border-color: var(--frozen-pink-vibrant);
+      color: var(--frozen-rose);
+      background: var(--frozen-pink-light);
+    }
+
+    .badge-count {
+      background: var(--frozen-rose-deep);
+      color: white;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: var(--radius-pill);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    /* Subcategory Sticky Scroll Bar with Frosted Glass */
+    .subcat-strip {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--surface-border);
+      overflow-x: auto;
+      white-space: nowrap;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+      position: relative;
+      z-index: 90;
+    }
+    .subcat-strip::-webkit-scrollbar { display: none; }
+    .subcat-inner {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+    }
+    .subcat-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--surface-frosted);
+      border: 1px solid var(--surface-border);
+      color: var(--ink);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+    .subcat-pill:hover, .subcat-pill.active {
+      background: var(--gradient-primary);
+      color: #ffffff;
+      border-color: transparent;
+      box-shadow: var(--shadow-frozen);
+    }
+
+    /* Frozen Pink & Crystal Glass Hero Section */
+    .hero-fnp {
+      margin: 22px 0 32px;
+      position: relative;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, rgba(253, 242, 248, 0.95) 0%, rgba(245, 232, 255, 0.9) 35%, rgba(224, 242, 254, 0.88) 75%, rgba(253, 242, 248, 0.95) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: var(--shadow-lg), 0 0 30px rgba(244, 114, 182, 0.12) inset;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      overflow: hidden;
+      padding: 44px 48px;
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 32px;
+      align-items: center;
+    }
+    body.dark .hero-fnp {
+      background: linear-gradient(135deg, rgba(35, 16, 36, 0.9) 0%, rgba(26, 18, 35, 0.9) 40%, rgba(13, 25, 38, 0.9) 100%);
+      border-color: rgba(244, 114, 182, 0.2);
+    }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 6px 14px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(244, 114, 182, 0.35);
+      border-radius: var(--radius-pill);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--frozen-rose);
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+    .hero-title {
+      font-size: clamp(34px, 4.4vw, 54px);
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+    .hero-title span {
+      background: linear-gradient(135deg, #881337 0%, #db2777 50%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-style: italic;
+    }
+    .hero-desc {
+      font-size: 15.5px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+      max-width: 530px;
+      margin-bottom: 24px;
+    }
+
+    /* Hero Delivery Box */
+    .hero-delivery-box {
+      background: var(--surface-frosted);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      box-shadow: var(--shadow-md);
+      max-width: 490px;
+    }
+    .delivery-date-toggles {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .date-toggle-btn {
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 11.5px;
+      font-weight: 800;
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      color: var(--ink);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .date-toggle-btn.active {
+      background: var(--gradient-primary);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: var(--shadow-frozen);
+    }
+    .pin-input-group {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .pin-input-group input {
+      flex: 1;
+      padding: 11px 16px;
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+      outline: none;
+      font-family: inherit;
+      background: var(--surface);
+    }
+    .pin-input-group input:focus {
+      border-color: var(--frozen-pink-vibrant);
+      box-shadow: 0 0 0 3px rgba(236, 72, 153, 0.18);
+    }
+
+    /* Hero Visual Centerpiece */
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 330px;
+    }
+    .hero-img-fnp {
+      width: 100%;
+      max-width: 380px;
+      height: 340px;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 50px rgba(190, 24, 93, 0.22), 0 0 25px rgba(56, 189, 248, 0.2);
+      border: 4px solid var(--surface);
+      transform: rotate(2deg);
+      transition: var(--transition);
+    }
+    .hero-img-fnp:hover {
+      transform: rotate(0deg) scale(1.02);
+    }
+    .hero-floating-pill {
+      position: absolute;
+      bottom: 12px;
+      left: 10px;
+      background: var(--surface-glass);
+      backdrop-filter: blur(12px);
+      padding: 9px 16px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--frozen-rose);
+      box-shadow: var(--shadow-md);
+      border: 1px solid rgba(244, 114, 182, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Trust Highlights Strip */
+    .trust-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+      margin-bottom: 34px;
+    }
+    .trust-pill-card {
+      background: var(--surface-frosted);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+    }
+    .trust-pill-card:hover {
+      transform: translateY(-2px);
+      border-color: var(--frozen-pink-vibrant);
+      box-shadow: var(--shadow-md);
+    }
+    .trust-pill-icon {
+      font-size: 24px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--frozen-pink-light), var(--frozen-cyan-light));
+      display: grid;
+      place-items: center;
+      flex-shrink: 0;
+      border: 1px solid var(--surface-border);
+    }
+    .trust-pill-card h4 {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .trust-pill-card p {
+      font-size: 11.5px;
+      color: var(--ink-muted);
+    }
+
+    /* Visual Category Circles (FNP Signature) with Frosted Shimmer */
+    .circle-cats-section {
+      margin-bottom: 34px;
+    }
+    .section-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 18px;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .section-head h2 {
+      font-size: 26px;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .section-head p {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      margin-top: 3px;
+    }
+    .circle-cats-grid {
+      display: grid;
+      grid-template-columns: repeat(8, 1fr);
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+    .circle-cat-card {
+      text-align: center;
+      background: var(--surface-frosted);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 12px 6px;
+      cursor: pointer;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+      min-width: 95px;
+    }
+    .circle-cat-card:hover {
+      border-color: var(--frozen-pink-vibrant);
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-frozen);
+    }
+    .circle-cat-card.active {
+      border-color: var(--frozen-pink-vibrant);
+      background: linear-gradient(135deg, var(--frozen-pink-light), var(--frozen-cyan-light));
+    }
+    .circle-thumb {
+      width: 66px;
+      height: 66px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 8px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 4px 12px rgba(190, 24, 93, 0.15);
+      display: block;
+    }
+    .circle-cat-card h4 {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 2px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .circle-cat-card small {
+      font-size: 10.5px;
+      color: var(--frozen-rose);
+      font-weight: 800;
+    }
+
+    /* Frosted Multi-Filter Toolbar */
+    .filter-toolbar {
+      background: var(--surface-frosted);
+      backdrop-filter: blur(16px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 16px 20px;
+      margin-bottom: 26px;
+      box-shadow: var(--shadow-sm);
+    }
+    .filter-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .filter-group-title {
+      font-size: 11.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: var(--ink-muted);
+      margin-right: 4px;
+    }
+
+    /* Color Swatches (FNP Signature) */
+    .swatch-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 12px;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .swatch-btn:hover, .swatch-btn.active {
+      border-color: var(--frozen-pink-vibrant);
+      background: linear-gradient(135deg, var(--frozen-pink-light), var(--frozen-cyan-light));
+      color: var(--frozen-rose);
+    }
+    .swatch-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Occasion Pill Buttons */
+    .occasion-pill {
+      padding: 5px 13px;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .occasion-pill:hover, .occasion-pill.active {
+      background: var(--gradient-primary);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: var(--shadow-frozen);
+    }
+
+    .sort-select {
+      padding: 8px 14px;
+      border-radius: var(--radius-pill);
+      border: 1px solid var(--surface-border);
+      background: var(--surface);
+      color: var(--ink);
+      font-size: 12.5px;
+      font-weight: 700;
+      outline: none;
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* Frosted Crystal Product Cards */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      margin-bottom: 48px;
+    }
+
+    .fnp-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+    .fnp-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg), 0 0 20px rgba(56, 189, 248, 0.15);
+      border-color: var(--frozen-pink-vibrant);
+    }
+
+    .card-media-wrap {
+      position: relative;
+      height: 225px;
+      background: linear-gradient(135deg, #fdf2f8, #f5e8f5);
+      overflow: hidden;
+    }
+    .card-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .fnp-card:hover .card-img {
+      transform: scale(1.06);
+    }
+
+    .card-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      font-size: 10.5px;
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    .badge-best { background: var(--gradient-badge-best); }
+    .badge-express { background: var(--gradient-badge-express); }
+    .badge-trending { background: var(--gradient-primary); }
+    .badge-luxury { background: var(--gradient-badge-luxury); }
+    .badge-midnight { background: var(--gradient-badge-midnight); }
+
+    .wish-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(8px);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: 15px;
+      color: var(--ink-muted);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      transition: var(--transition);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .wish-btn:hover, .wish-btn.active {
+      color: #e11d48;
+      border-color: #e11d48;
+      background: #ffffff;
+    }
+
+    .card-body {
+      padding: 16px 14px 18px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      justify-content: space-between;
+    }
+    .card-meta-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 6px;
+    }
+    .card-rating {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: linear-gradient(135deg, #059669, #10b981);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 7px;
+      border-radius: 6px;
+      box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+    }
+    .card-reviews {
+      font-size: 11px;
+      color: var(--ink-muted);
+    }
+
+    .card-title {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.35;
+      margin-bottom: 6px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      min-height: 38px;
+    }
+
+    .card-delivery-tag {
+      font-size: 11.5px;
+      color: var(--frozen-rose);
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 12px;
+    }
+
+    .card-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+    .card-price {
+      font-size: 18.5px;
+      font-weight: 800;
+      color: var(--ink);
+    }
+    .card-mrp {
+      font-size: 13px;
+      color: var(--ink-light);
+      text-decoration: line-through;
+    }
+    .card-discount {
+      font-size: 11.5px;
+      font-weight: 800;
+      color: #e11d48;
+    }
+
+    .card-action-row {
+      display: flex;
+      gap: 8px;
+    }
+    .btn-card-add {
+      flex: 1;
+      background: linear-gradient(135deg, var(--frozen-pink-light), var(--frozen-cyan-light));
+      color: var(--frozen-rose);
+      border: 1px solid rgba(244, 114, 182, 0.4);
+      padding: 10px;
+      border-radius: var(--radius-pill);
+      font-size: 13px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: var(--transition);
+    }
+    .btn-card-add:hover {
+      background: var(--gradient-primary);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: var(--shadow-frozen);
+    }
+    .qty-controls {
+      display: flex;
+      align-items: center;
+      background: var(--gradient-primary);
+      color: #fff;
+      border-radius: var(--radius-pill);
+      overflow: hidden;
+      width: 100%;
+      box-shadow: var(--shadow-frozen);
+    }
+    .qty-btn {
+      flex: 1;
+      padding: 9px;
+      color: #fff;
+      background: transparent;
+      font-weight: 800;
+      font-size: 14px;
+    }
+    .qty-num {
+      padding: 0 8px;
+      font-weight: 800;
+      font-size: 13px;
+    }
+
+    /* "Pair with Flowers" (Frosted Pink Box) */
+    .pair-section {
+      background: linear-gradient(135deg, rgba(253, 242, 248, 0.9) 0%, rgba(245, 232, 255, 0.85) 50%, rgba(224, 242, 254, 0.85) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
+      margin-bottom: 48px;
+      box-shadow: var(--shadow-md);
+      backdrop-filter: blur(16px);
+    }
+    body.dark .pair-section {
+      background: linear-gradient(135deg, #1f1122 0%, #151829 100%);
+      border-color: #382438;
+    }
+    .pair-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .pair-card {
+      background: var(--surface-glass);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 18px 16px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      backdrop-filter: blur(12px);
+    }
+    .pair-icon {
+      font-size: 38px;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .pair-card h4 {
+      font-size: 14.5px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 4px;
+    }
+    .pair-card p {
+      font-size: 12px;
+      color: var(--ink-muted);
+      margin-bottom: 12px;
+    }
+    .pair-price {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--frozen-rose);
+      margin-bottom: 10px;
+    }
+
+    /* Interactive Hamper/Bouquet Atelier (Preserved) */
+    .studio-container {
+      background: var(--surface-glass);
+      backdrop-filter: blur(18px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+      box-shadow: var(--shadow-md);
+      margin-bottom: 48px;
+    }
+    .studioGrid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+    }
+    .preview-box {
+      background: linear-gradient(135deg, rgba(253, 244, 247, 0.9), rgba(246, 233, 241, 0.9));
+      border-radius: var(--radius-lg);
+      border: 2px dashed rgba(236, 72, 153, 0.35);
+      padding: 32px 24px;
+      text-align: center;
+      min-height: 320px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .previewEmoji { font-size: 64px; margin-bottom: 12px; }
+    .previewList { font-size: 13.5px; color: var(--ink); margin-bottom: 12px; }
+    .preview-message-card {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 14px;
+      color: var(--frozen-rose);
+      background: rgba(255,255,255,0.8);
+      padding: 8px 14px;
+      border-radius: 8px;
+      box-shadow: var(--shadow-sm);
+    }
+    .studio-steps-nav {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .studio-step-pill {
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      background: var(--surface);
+      border: 1px solid var(--surface-border);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--ink-muted);
+      cursor: pointer;
+      white-space: nowrap;
+    }
+    .studio-step-pill.active {
+      background: var(--gradient-primary);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: var(--shadow-frozen);
+    }
+    .choiceGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin: 14px 0;
+    }
+    .choice {
+      border: 1.5px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 14px 10px;
+      text-align: center;
+      background: var(--surface);
+      cursor: pointer;
+      font-size: 12px;
+      transition: var(--transition);
+      position: relative;
+    }
+    .choice:hover {
+      border-color: var(--frozen-rose);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+    .choice.selected {
+      border: 2px solid var(--frozen-rose);
+      background: linear-gradient(135deg, var(--frozen-pink-light), #ffffff);
+      box-shadow: 0 4px 14px rgba(190, 24, 93, 0.16);
+    }
+    .choice.selected::after {
+      content: "✓";
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--gradient-primary);
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .choice strong { display: block; font-size: 26px; margin-bottom: 6px; }
+    .choice b { display: block; font-size: 12.5px; color: var(--ink); margin-bottom: 2px; }
+    .choice .price-tag { font-size: 12px; font-weight: 800; color: var(--frozen-rose); }
+    .choice .desc-tag { font-size: 10.5px; color: var(--ink-muted); margin-top: 3px; line-height: 1.3; }
+
+    /* Trust & Guarantee Section */
+    .fnp-trust-section {
+      margin-bottom: 48px;
+    }
+    .fnp-trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+    .fnp-trust-card {
+      background: var(--surface-frosted);
+      backdrop-filter: blur(14px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-lg);
+      padding: 26px 20px;
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+    .fnp-trust-card .icon {
+      font-size: 34px;
+      margin-bottom: 12px;
+      display: inline-block;
+    }
+    .fnp-trust-card h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .fnp-trust-card p {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      line-height: 1.5;
+    }
+
+    /* Testimonials */
+    .reviews-section {
+      margin-bottom: 48px;
+    }
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .review-card {
+      background: var(--surface-glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      box-shadow: var(--shadow-sm);
+    }
+    .review-stars {
+      color: #fbbf24;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+    .review-quote {
+      font-size: 13.5px;
+      line-height: 1.5;
+      color: var(--ink);
+      margin-bottom: 14px;
+      font-style: italic;
+    }
+    .review-author {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--surface-border);
+      padding-top: 10px;
+    }
+    .review-name { font-size: 12.5px; font-weight: 800; color: var(--ink); }
+    .review-city { font-size: 11.5px; color: var(--frozen-rose); font-weight: 700; }
+
+    /* FAQ Section */
+    .faq-section {
+      margin-bottom: 56px;
+    }
+    .faq-item {
+      background: var(--surface-glass);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--surface-border);
+      border-radius: var(--radius-md);
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-question {
+      padding: 16px 20px;
+      font-size: 14.5px;
+      font-weight: 700;
+      color: var(--ink);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .faq-answer {
+      padding: 0 20px 16px;
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      line-height: 1.6;
+      display: none;
+    }
+    .faq-item.open .faq-answer { display: block; }
+    .faq-item.open .faq-question span { transform: rotate(180deg); }
+
+    /* Footer in Deep Velvet Rose */
+    .fnp-footer {
+      background: linear-gradient(135deg, #4c0519 0%, #881337 50%, #4c0519 100%);
+      color: #fdf2f8;
+      padding: 50px 0 32px;
+      font-size: 13px;
+      position: relative;
+      z-index: 10;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr 1fr;
+      gap: 32px;
+      margin-bottom: 36px;
+    }
+    .footer-col h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #ffffff;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 14px;
+    }
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .footer-links a {
+      color: #fce7f3;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    .footer-links a:hover {
+      color: #ffffff;
+      padding-left: 4px;
+    }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      color: #fbcfe8;
+      font-size: 12px;
+    }
+
+    /* Cart Drawer with Frosted Glass */
+    .drawerBg {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 10, 22, 0.65);
+      backdrop-filter: blur(10px);
+      z-index: 200;
+      display: none;
+    }
+    .drawerBg.open { display: block; }
+    .drawer {
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: min(480px, 100%);
+      background: var(--surface-glass);
+      backdrop-filter: blur(24px);
+      border-left: 1px solid var(--surface-border);
+      box-shadow: var(--shadow-lg);
+      padding: 26px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      animation: slideInRight 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    @keyframes slideInRight { from { transform: translateX(100%); } to { transform: translateX(0); } }
+    .cartline {
+      display: grid;
+      grid-template-columns: 56px 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--surface-border);
+    }
+    .cartline-thumb {
+      width: 54px;
+      height: 54px;
+      border-radius: 12px;
+      object-fit: cover;
+      background: var(--cream);
+      border: 1px solid var(--surface-border);
+    }
+
+    /* Modal Framework */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 10, 22, 0.7);
+      backdrop-filter: blur(12px);
+      z-index: 250;
+      display: none;
+      place-items: center;
+      padding: 20px;
+    }
+    .modal.open { display: grid; }
+    .panel {
+      background: var(--surface-glass);
+      backdrop-filter: blur(24px);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-lg), 0 0 25px rgba(244, 114, 182, 0.15);
+      padding: 30px;
+      width: min(580px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+    .close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--surface);
+      color: var(--ink);
+      border: 1px solid var(--surface-border);
+      display: grid;
+      place-items: center;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(40px);
+      background: var(--frozen-rose-deep);
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: var(--radius-pill);
+      font-size: 13.5px;
+      font-weight: 700;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      z-index: 1000;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255, 182, 193, 0.4);
+    }
+    #toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    /* Sticky Bottom Mobile Bar */
+    .stickyCart {
+      position: fixed;
+      bottom: 16px;
+      left: 16px;
+      right: 16px;
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: var(--radius-pill);
+      padding: 12px 20px;
+      display: none;
+      align-items: center;
+      justify-content: space-between;
+      box-shadow: var(--shadow-lg);
+      z-index: 95;
+    }
+    .bottomNav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--surface-glass);
+      backdrop-filter: blur(16px);
+      border-top: 1px solid var(--surface-border);
+      display: none;
+      justify-content: space-around;
+      padding: 8px 6px;
+      z-index: 90;
+    }
+    .bottomNav button {
+      background: none;
+      border: none;
+      color: var(--ink-muted);
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2px;
+    }
+    .bottomNav button.active { color: var(--frozen-rose); }
+
+    @media (max-width: 1024px) {
+      .products-grid { grid-template-columns: repeat(3, 1fr); }
+      .circle-cats-grid { grid-template-columns: repeat(4, 1fr); }
+      .pair-grid { grid-template-columns: repeat(2, 1fr); }
+      .trust-strip { grid-template-columns: repeat(2, 1fr); }
+      .fnp-trust-grid { grid-template-columns: repeat(2, 1fr); }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero-fnp { grid-template-columns: 1fr; padding: 26px 20px; }
+      .hero-visual { display: none; }
+      .products-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .card-media-wrap { height: 160px; }
+      .circle-cats-grid { grid-template-columns: repeat(4, 1fr); gap: 8px; }
+      .studioGrid { grid-template-columns: 1fr; }
+      .bottomNav { display: flex; }
+      .stickyCart { bottom: 64px; }
+      .search-container { display: none; }
+      .nav-loc-btn small { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient Frozen Pink Orbs -->
+  <div class="bg-crystal-orb-1"></div>
+  <div class="bg-crystal-orb-2"></div>
+  <div class="bg-crystal-orb-3"></div>
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div>⚡ FREE 2-HOUR FLOWER DELIVERY ON ORDERS OVER ₹499</div>
+    <span>•</span>
+    <div>🌙 MIDNIGHT SURPRISE DELIVERY IN 1,000+ CITIES</div>
+    <span>•</span>
+    <div>🌸 100% FARM-FRESH CUT BLOOMS IN HYDRATING PACKS</div>
+  </div>
+
+  <!-- Sticky Luxury Navigation -->
+  <header class="top-nav">
+    <div class="wrap nav-inner">
+      <div class="brand-logo" onclick="scrollTo({top:0,behavior:'smooth'})">
+        <div class="logo-badge">💐</div>
+        <div>
+          <div class="brand-title">Bloom<span>Box</span></div>
+          <div class="brand-subtitle">Haute Floral Atelier · FNP Inspired</div>
+        </div>
+      </div>
+
+      <!-- City / Pincode Delivery Picker -->
+      <button class="nav-loc-btn" onclick="openLocationModal()" title="Ranchi Delivery Hubs & Pincodes">
+        <span>📍</span>
+        <span id="navCurrentCity">Ranchi</span>
+        <small id="navPincodeTag">(834001)</small>
+        <span style="font-size:10px;opacity:0.7">▼</span>
+      </button>
+
+      <!-- Search Input -->
+      <div class="search-container">
+        <div class="search-input-wrapper">
+          <span class="search-icon">⌕</span>
+          <input id="search" class="search-input" placeholder="Search roses, lilies, orchids, combos, cakes…" autocomplete="off">
+        </div>
+        <div id="suggest" style="display:none"></div>
+      </div>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <a href="/admin" class="btn-icon" title="Atelier Admin Portal" style="text-decoration:none">
+          <span>⚙️</span>
+          <span>Admin</span>
+        </a>
+        <button class="btn-icon" onclick="openTrackingModal()" title="Track Order Status">
+          <span>🚚</span>
+          <span>Track</span>
+        </button>
+        <button class="btn-icon" onclick="toggleDark()" title="Toggle Dark/Light">◐</button>
+        <button class="btn-icon" id="navAuthBtn" onclick="handleNavAuthClick()" title="Client Sign In & Account">
+          <span id="navAuthIcon">👤</span>
+          <span id="navAuthText">Sign In</span>
+        </button>
+        <button class="btn-primary" onclick="openCart()">
+          <span>🛍</span>
+          <span>Bag</span>
+          <span class="badge-count" id="cartCount">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Sticky Sub-Category Bar with Frosted Glass -->
+  <div class="subcat-strip">
+    <div class="wrap subcat-inner" id="subcatStrip">
+      <button class="subcat-pill active" onclick="filterBySubcat('All')"><span class="pill-emoji">🌸</span> All Flowers</button>
+      <button class="subcat-pill" onclick="filterBySubcat('Roses')"><span class="pill-emoji">🌹</span> Roses</button>
+      <button class="subcat-pill" onclick="filterBySubcat('Lilies')"><span class="pill-emoji">⚜️</span> Lilies</button>
+      <button class="subcat-pill" onclick="filterBySubcat('Orchids')"><span class="pill-emoji">🪻</span> Orchids</button>
+      <button class="subcat-pill" onclick="filterBySubcat('Carnations')"><span class="pill-emoji">🌺</span> Carnations</button>
+      <button class="subcat-pill" onclick="filterBySubcat('Combos')"><span class="pill-emoji">🎂</span> Flowers & Cake</button>
+      <button class="subcat-pill" onclick="filterBySubcat('Teddy')"><span class="pill-emoji">🧸</span> Flowers & Teddy</button>
+      <button class="subcat-pill" onclick="filterBySubcat('Chocolates')"><span class="pill-emoji">🍬</span> Flower & Chocolate</button>
+      <button class="subcat-pill" onclick="filterBySubcat('Luxury')"><span class="pill-emoji">🎁</span> Luxury Boxes</button>
+      <button class="subcat-pill" onclick="filterBySubcat('Vase')"><span class="pill-emoji">🏺</span> Glass Vases</button>
+      <button class="subcat-pill" onclick="filterBySpeed('In 2 Hours')"><span class="pill-emoji">⚡</span> 2-Hour Delivery</button>
+    </div>
+  </div>
+
+  <main class="wrap">
+    <!-- FNP Flowers Hero Section (Frozen Pink Luxury Gradient) -->
+    <section class="hero-fnp">
+      <div>
+        <div class="hero-eyebrow">
+          <span>✦</span> FROZEN CRYSTAL FRESHNESS · 2-HOUR DISPATCH
+        </div>
+        <h1 class="hero-title">
+          Send Fresh Flowers Online with <br>
+          <span>Guaranteed 2-Hour Delivery</span>
+        </h1>
+        <p class="hero-desc">
+          Dewy farm-fresh roses, oriental lilies, and celebratory floral combos handcrafted by certified florists. Delivered with love and icy-fresh hydration across 1,000+ cities.
+        </p>
+
+        <!-- Delivery Checker Box -->
+        <div class="hero-delivery-box">
+          <div class="delivery-date-toggles">
+            <button class="date-toggle-btn active" onclick="setDateSlot('today', this)">⚡ Today</button>
+            <button class="date-toggle-btn" onclick="setDateSlot('tomorrow', this)">📅 Tomorrow</button>
+            <button class="date-toggle-btn" onclick="setDateSlot('midnight', this)">🌙 Midnight 12 AM</button>
+          </div>
+          <div class="pin-input-group">
+            <input id="pin" inputmode="numeric" maxlength="6" value="834001" placeholder="Enter Ranchi pincode (e.g. 834001)">
+            <button class="btn-primary" onclick="checkPin()">Check Express</button>
+          </div>
+          <div style="font-size:11.5px;color:var(--frozen-rose);font-weight:700;margin-top:8px" id="pinMsg">
+            ⚡ Express 2-Hour & Midnight delivery active exclusively across all Ranchi localities (834001 - 834010)!
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <img class="hero-img-fnp" src="/images/products/velvet-crimson-red-roses.jpg" alt="Fresh luxury rose bouquet">
+        <div class="hero-floating-pill">
+          <span>🛵</span>
+          <span>2-Hour Delivery Active in <b id="heroCityName">Ranchi</b> (Jharkhand)</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust Highlights Strip -->
+    <section class="trust-strip">
+      <div class="trust-pill-card">
+        <div class="trust-pill-icon">🌸</div>
+        <div>
+          <h4>100% Farm-Fresh</h4>
+          <p>Dewy water-pack delivery</p>
+        </div>
+      </div>
+      <div class="trust-pill-card">
+        <div class="trust-pill-icon">⚡</div>
+        <div>
+          <h4>2-Hour Express</h4>
+          <p>Delivered on time or free</p>
+        </div>
+      </div>
+      <div class="trust-pill-card">
+        <div class="trust-pill-icon">🌙</div>
+        <div>
+          <h4>Midnight 12 AM</h4>
+          <p>Surprise birthday deliveries</p>
+        </div>
+      </div>
+      <div class="trust-pill-card">
+        <div class="trust-pill-icon">🏆</div>
+        <div>
+          <h4>3M+ Happy Smiles</h4>
+          <p>4.9★ India's top rated</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visual Circular Categories with Verified Imagery -->
+    <section class="circle-cats-section">
+      <div class="section-head">
+        <div>
+          <h2>Explore By Floral Collection</h2>
+          <p>Handcrafted bouquets, exotic stems, and celebratory gift pairings.</p>
+        </div>
+      </div>
+      <div class="circle-cats-grid" id="circleCats">
+        <div class="circle-cat-card" onclick="filterBySubcat('Roses')">
+          <img class="circle-thumb" src="/images/products/velvet-crimson-red-roses.jpg" alt="Roses">
+          <h4>Roses</h4>
+          <small>From ₹499</small>
+        </div>
+        <div class="circle-cat-card" onclick="filterBySubcat('Lilies')">
+          <img class="circle-thumb" src="/images/products/white-oriental-lilies.jpg" alt="Lilies">
+          <h4>Lilies</h4>
+          <small>From ₹899</small>
+        </div>
+        <div class="circle-cat-card" onclick="filterBySubcat('Orchids')">
+          <img class="circle-thumb" src="/images/products/blue-dendrobium-orchids.jpg" alt="Orchids">
+          <h4>Orchids</h4>
+          <small>From ₹799</small>
+        </div>
+        <div class="circle-cat-card" onclick="filterBySubcat('Carnations')">
+          <img class="circle-thumb" src="/images/products/carnations-bunch.jpg" alt="Carnations">
+          <h4>Carnations</h4>
+          <small>From ₹449</small>
+        </div>
+        <div class="circle-cat-card" onclick="filterBySubcat('Combos')">
+          <img class="circle-thumb" src="/images/products/roses-truffle-cake.jpg" alt="Flower & Cake">
+          <h4>Flower & Cake</h4>
+          <small>From ₹999</small>
+        </div>
+        <div class="circle-cat-card" onclick="filterBySubcat('Teddy')">
+          <img class="circle-thumb" src="/images/products/roses-teddy-combo.jpg" alt="Flower & Teddy">
+          <h4>Flower & Teddy</h4>
+          <small>From ₹849</small>
+        </div>
+        <div class="circle-cat-card" onclick="filterBySubcat('Luxury')">
+          <img class="circle-thumb" src="/images/products/roses-hat-box.jpg" alt="Luxury Boxes">
+          <h4>Luxury Boxes</h4>
+          <small>From ₹1499</small>
+        </div>
+        <div class="circle-cat-card" onclick="filterBySubcat('Vase')">
+          <img class="circle-thumb" src="/images/products/lilies-roses-vase.jpg" alt="Glass Vases">
+          <h4>Glass Vases</h4>
+          <small>From ₹799</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- FNP Multi-Filter Toolbar with Frosted Shimmer -->
+    <section class="filter-toolbar">
+      <div class="filter-row">
+        <!-- Occasion Filter -->
+        <div class="filter-group">
+          <span class="filter-group-title">Occasion:</span>
+          <button class="occasion-pill active" onclick="filterByOccasion('All', this)">All</button>
+          <button class="occasion-pill" onclick="filterByOccasion('Birthday', this)">Birthday</button>
+          <button class="occasion-pill" onclick="filterByOccasion('Anniversary', this)">Anniversary</button>
+          <button class="occasion-pill" onclick="filterByOccasion('Romance', this)">Romance</button>
+          <button class="occasion-pill" onclick="filterByOccasion('Congratulations', this)">Congratulations</button>
+          <button class="occasion-pill" onclick="filterByOccasion('Get Well Soon', this)">Get Well Soon</button>
+        </div>
+
+        <!-- Sort By -->
+        <div class="filter-group">
+          <span class="filter-group-title">Sort By:</span>
+          <select id="sortSelect" class="sort-select" onchange="handleSortChange(this.value)">
+            <option value="recommended">Recommended (Popular)</option>
+            <option value="price-low">Price: Low to High</option>
+            <option value="price-high">Price: High to Low</option>
+            <option value="rating">Customer Rating</option>
+            <option value="fastest">Earliest Delivery</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="filter-row" style="margin-top:14px;border-top:1px dashed var(--surface-border);padding-top:12px">
+        <!-- Color Swatches (FNP Signature) -->
+        <div class="filter-group">
+          <span class="filter-group-title">Flower Color:</span>
+          <button class="swatch-btn active" onclick="filterByColor('All', this)">All</button>
+          <button class="swatch-btn" onclick="filterByColor('Red', this)"><span class="swatch-dot" style="background:#e11d48"></span> Red</button>
+          <button class="swatch-btn" onclick="filterByColor('Pink', this)"><span class="swatch-dot" style="background:#ec4899"></span> Pink</button>
+          <button class="swatch-btn" onclick="filterByColor('Yellow', this)"><span class="swatch-dot" style="background:#fbbf24"></span> Yellow</button>
+          <button class="swatch-btn" onclick="filterByColor('White', this)"><span class="swatch-dot" style="background:#ffffff;border:1px solid #baa8bd"></span> White</button>
+          <button class="swatch-btn" onclick="filterByColor('Purple', this)"><span class="swatch-dot" style="background:#8b5cf6"></span> Purple</button>
+          <button class="swatch-btn" onclick="filterByColor('Mixed', this)"><span class="swatch-dot" style="background:linear-gradient(135deg,#e11d48,#fbbf24,#ec4899)"></span> Mixed</button>
+        </div>
+
+        <div style="font-size:12.5px;color:var(--ink-muted);font-weight:700" id="resultsCount">
+          Showing 16 Fresh Flower Arrangements
+        </div>
+      </div>
+    </section>
+
+    <!-- FNP Main Product Grid -->
+    <section>
+      <div id="productGrid" class="products-grid"></div>
+    </section>
+
+    <!-- "Pair with Flowers" (Frosted Pink Combos Section) -->
+    <section class="pair-section">
+      <div class="section-head" style="margin-bottom:6px">
+        <div>
+          <h2>Pair with Fresh Flowers ✨</h2>
+          <p>Add fresh-baked cakes, luxury teddy bears, or gourmet chocolates to complete your celebration.</p>
+        </div>
+      </div>
+
+      <div class="pair-grid">
+        <div class="pair-card">
+          <div>
+            <span class="pair-icon">🎂</span>
+            <h4>Dutch Truffle Cake</h4>
+            <p>500g rich chocolate cake freshly baked with ganache.</p>
+          </div>
+          <div>
+            <div class="pair-price">₹499</div>
+            <button class="btn-primary" style="width:100%;justify-content:center" onclick="addQuickAddon(106)">+ Add Cake</button>
+          </div>
+        </div>
+
+        <div class="pair-card">
+          <div>
+            <span class="pair-icon">🧸</span>
+            <h4>Plush Cuddle Bear</h4>
+            <p>12-inch super soft plush bear with satin bow.</p>
+          </div>
+          <div>
+            <div class="pair-price">₹349</div>
+            <button class="btn-primary" style="width:100%;justify-content:center" onclick="addQuickAddon(1)">+ Add Teddy</button>
+          </div>
+        </div>
+
+        <div class="pair-card">
+          <div>
+            <span class="pair-icon">🍬</span>
+            <h4>Ferrero Rocher (16 Pcs)</h4>
+            <p>Crispy hazelnut chocolate confections in gold box.</p>
+          </div>
+          <div>
+            <div class="pair-price">₹349</div>
+            <button class="btn-primary" style="width:100%;justify-content:center" onclick="addQuickAddon(16)">+ Add Chocolates</button>
+          </div>
+        </div>
+
+        <div class="pair-card">
+          <div>
+            <span class="pair-icon">💌</span>
+            <h4>Wax-Sealed Message Card</h4>
+            <p>Handwritten heartfelt card with custom message.</p>
+          </div>
+          <div>
+            <div class="pair-price">₹49 (Complimentary)</div>
+            <button class="btn-secondary" style="width:100%;justify-content:center" onclick="toast('Wax-sealed note will be included free at checkout!')">✓ Included</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bespoke Hamper & Bouquet Atelier (Interactive Custom Studio) -->
+    <section class="studio-container" id="studioSection">
+      <div class="section-head">
+        <div>
+          <h2>✦ The Bespoke Bouquet & Hamper Studio</h2>
+          <p>Choose your luxury box, handpick fresh roses, plush keepsakes, and preview in real time.</p>
+        </div>
+        <button class="btn-secondary" onclick="surpriseMe()">Curate Surprise Mix ✨</button>
+      </div>
+
+      <div class="studio-steps-nav" id="steps"></div>
+
+      <div class="studioGrid">
+        <div>
+          <div class="preview-box" id="preview">
+            <div style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:rgba(255,255,255,0.9);border-radius:999px;font-size:11px;font-weight:800;color:var(--frozen-rose);margin-bottom:10px;border:1px solid var(--surface-border)">
+              LIVE BESPOKE PREVIEW ✨
+            </div>
+            <div class="previewEmoji">🎀</div>
+            <div style="font-weight:800;font-size:16px;color:var(--ink);margin-bottom:6px" id="previewBoxTitle">Pink Velvet Box</div>
+            <div id="previewItemsContainer" style="display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-bottom:12px;max-width:340px"></div>
+            <div class="preview-message-card" id="previewMsgCard">“Wishing you boundless joy and happiness!”</div>
+            <div style="margin-top:12px;display:flex;align-items:center;gap:10px;font-size:11.5px;font-weight:700;color:var(--ink-muted)">
+              <span id="capacity">Capacity: 2 / 5 items</span>
+              <span>•</span>
+              <span id="previewRibbon" style="color:var(--frozen-cyan)">Wrap: Blush Rose Gold Silk</span>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px">
+            <div>
+              <small style="color:var(--ink-muted);font-size:11px;font-weight:700;text-transform:uppercase">Studio Total</small>
+              <div class="serif" style="font-size:28px;font-weight:700;color:var(--frozen-rose)" id="studioTotal">₹1,047</div>
+            </div>
+            <button class="btn-primary" onclick="addBouquet()">Add Custom Hamper to Bag 🛍</button>
+          </div>
+        </div>
+
+        <div id="studioControls"></div>
+      </div>
+    </section>
+
+    <!-- FNP Quality & Trust Highlights -->
+    <section class="fnp-trust-section">
+      <div class="section-head">
+        <div>
+          <h2>Why 3 Million+ Customers Trust BloomBox Flowers</h2>
+          <p>India's highest rated online florist with uncompromised freshness.</p>
+        </div>
+      </div>
+      <div class="fnp-trust-grid">
+        <div class="fnp-trust-card">
+          <div class="icon">🌿</div>
+          <h3>100% Farm-Fresh Guarantee</h3>
+          <p>Cut direct from grower farms hours before dispatch, shipped in hydrating water packs so blooms arrive dewy and vibrant.</p>
+        </div>
+        <div class="fnp-trust-card">
+          <div class="icon">⏱️</div>
+          <h3>Guaranteed On-Time Delivery</h3>
+          <p>Express 2-hour and midnight 12:00 AM delivery across 1,000+ cities in India, tracked in real-time by GPS.</p>
+        </div>
+        <div class="fnp-trust-card">
+          <div class="icon">💐</div>
+          <h3>Handcrafted by Florists</h3>
+          <p>Every arrangement is individually curated by certified master floral artists with signature paper wraps and silk ribbons.</p>
+        </div>
+        <div class="fnp-trust-card">
+          <div class="icon">🔒</div>
+          <h3>100% Secure Checkout</h3>
+          <p>Protected by Razorpay bank-grade 256-bit encryption. Supports UPI, Google Pay, Credit/Debit Cards, and Cash on Delivery.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Verified Customer Testimonials -->
+    <section class="reviews-section">
+      <div class="section-head">
+        <div>
+          <h2>Love From Our Gifting Community</h2>
+          <p>Read real verified reviews from customers across India.</p>
+        </div>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">“The red roses were exceptionally fresh, and the midnight delivery in Lalpur, Ranchi arrived at exactly 12:01 AM! My wife was completely spellbound.”</p>
+          <div class="review-author">
+            <span class="review-name">Rohit Malhotra</span>
+            <span class="review-city">Lalpur, Ranchi · Verified Buyer</span>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">“Ordered the Oriental White Lilies and Chocolate Truffle Cake for my mother's birthday in Morabadi, Ranchi. The fragrance filled the entire house! 10/10 service.”</p>
+          <div class="review-author">
+            <span class="review-name">Ananya Sen</span>
+            <span class="review-city">Morabadi, Ranchi · Verified Buyer</span>
+          </div>
+        </div>
+        <div class="review-card">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-quote">“Ordered from London for delivery to my sister in Doranda, Ranchi. The 2-hour express delivery was so smooth, and the wax-sealed card was a lovely luxury touch.”</p>
+          <div class="review-author">
+            <span class="review-name">Vikram Joshi</span>
+            <span class="review-city">Doranda, Ranchi · Verified Buyer</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Frequently Asked Questions -->
+    <section class="faq-section">
+      <div class="section-head">
+        <div>
+          <h2>Frequently Asked Questions</h2>
+          <p>Everything you need to know about fresh flower ordering & delivery.</p>
+        </div>
+      </div>
+
+      <div class="faq-item open" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>How does the 2-hour express flower delivery work?</span>
+          <span>▾</span>
+        </div>
+        <div class="faq-answer">
+          Our partner florist hubs are stationed across 1,000+ cities in India. Once you place an express order, blooms are selected from our temperature-controlled cold room, assembled fresh by our florists, and dispatched via our dedicated courier fleet within 120 minutes.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>Can I get flowers delivered at exactly 12:00 Midnight?</span>
+          <span>▾</span>
+        </div>
+        <div class="faq-answer">
+          Yes! Select the <b>Midnight 12 AM</b> delivery slot during checkout. Our riders deliver between 11:45 PM and 12:15 AM to ensure the surprise is timed for birthdays and anniversaries.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>How do you ensure flowers remain fresh during transit?</span>
+          <span>▾</span>
+        </div>
+        <div class="faq-answer">
+          Stems are secured with specialised floral hydration sponge gel and breathable packaging that preserves moisture and fragrance throughout the delivery journey.
+        </div>
+      </div>
+
+      <div class="faq-item" onclick="toggleFaq(this)">
+        <div class="faq-question">
+          <span>Can I include a personalized message card?</span>
+          <span>▾</span>
+        </div>
+        <div class="faq-answer">
+          Yes! Every bouquet and hamper includes a complimentary wax-sealed handwritten message card. You can write your custom text during checkout.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Comprehensive Gifting Footer in Deep Velvet Rose -->
+  <footer class="fnp-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <div class="brand-logo" style="margin-bottom:14px;color:#fff">
+            <div class="logo-badge" style="background:#be185d;border-color:#f472b6">💐</div>
+            <div>
+              <div class="brand-title" style="color:#ffffff;-webkit-text-fill-color:#ffffff">Bloom<span>Box</span></div>
+              <div class="brand-subtitle" style="color:#fbcfe8">India's Premier Online Florist</div>
+            </div>
+          </div>
+          <p style="color:#fce7f3;line-height:1.6;margin-bottom:16px">
+            Handcrafted luxury bouquets, fresh roses, exotic orchids, and celebration combos delivered in 2 hours across 1,000+ cities in India.
+          </p>
+          <div style="font-size:12px;color:#fbcfe8">
+            📞 24/7 Concierge: <b>+91 98765 43210</b> · support@bloombox.in
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Flowers by Type</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="filterBySubcat('Roses')">Red & Pink Roses</a></li>
+            <li><a href="#" onclick="filterBySubcat('Lilies')">Oriental & Asiatic Lilies</a></li>
+            <li><a href="#" onclick="filterBySubcat('Orchids')">Exotic Blue Orchids</a></li>
+            <li><a href="#" onclick="filterBySubcat('Carnations')">Pastel Carnations</a></li>
+            <li><a href="#" onclick="filterBySubcat('Luxury')">Velvet Flower Boxes</a></li>
+            <li><a href="#" onclick="filterBySubcat('Vase')">Glass Vase Arrangements</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Flowers by Occasion</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="filterByOccasion('Birthday')">Birthday Flowers & Cakes</a></li>
+            <li><a href="#" onclick="filterByOccasion('Anniversary')">Anniversary Rose Bouquets</a></li>
+            <li><a href="#" onclick="filterByOccasion('Romance')">Romantic Love Keepsakes</a></li>
+            <li><a href="#" onclick="filterByOccasion('Congratulations')">Congratulations Hampers</a></li>
+            <li><a href="#" onclick="filterByOccasion('Get Well Soon')">Get Well Soon Flowers</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Ranchi Delivery Hubs</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="selectCity('Main Road / Upper Bazar', '834001')">Flowers to Main Road (834001)</a></li>
+            <li><a href="#" onclick="selectCity('Lalpur / Circular Road', '834009')">Flowers to Lalpur (834009)</a></li>
+            <li><a href="#" onclick="selectCity('Doranda / Hinoo', '834002')">Flowers to Doranda (834002)</a></li>
+            <li><a href="#" onclick="selectCity('Morabadi / Kanke', '834008')">Flowers to Morabadi (834008)</a></li>
+            <li><a href="#" onclick="selectCity('Harmu / Ashok Nagar', '834004')">Flowers to Harmu (834004)</a></li>
+            <li><a href="#" onclick="selectCity('Bariatu / Booty More', '834005')">Flowers to Bariatu (834005)</a></li>
+            <li><a href="#" onclick="selectCity('Namkum / Chutia', '834010')">Flowers to Namkum (834010)</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© 2026 BloomBox Flowers Atelier · Inspired by FNP (Ferns N Petals) e-commerce experience.</div>
+        <div style="display:flex;gap:16px;align-items:center">
+          <a href="/admin" style="color:#fbcfe8;text-decoration:none;font-weight:700">Admin Portal ↗</a>
+          <span>•</span>
+          <a href="/login" style="color:#fbcfe8;text-decoration:none">Client Login</a>
+          <span>•</span>
+          <span>100% Safe Payments (Razorpay & COD)</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Delivery Location Selector Modal with Frosted Glass -->
+  <div class="modal" id="locationModal">
+    <div class="panel">
+      <button class="close" onclick="closeLocationModal()">✕</button>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <span style="font-size:22px">📍</span>
+        <h2 style="margin:0;color:var(--frozen-rose)">Ranchi Delivery Hubs</h2>
+      </div>
+      <p style="color:var(--ink-muted);font-size:13px;margin-bottom:16px">BloomBox delivers exclusively in Ranchi (Jharkhand). Select your locality or enter your 6-digit Ranchi pincode (834xxx / 835xxx).</p>
+
+      <div style="margin-bottom:18px">
+        <label style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:6px">Enter Ranchi Locality or Pincode</label>
+        <div style="display:flex;gap:8px">
+          <input id="modalLocInput" placeholder="e.g. Lalpur, Doranda, or 834001" style="flex:1;padding:12px;border:1px solid var(--surface-border);border-radius:var(--radius-pill);font-size:14px;background:var(--surface)">
+          <button class="btn-primary" onclick="submitCustomLocation()">Confirm</button>
+        </div>
+      </div>
+
+      <label style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:10px">Popular Ranchi Localities</label>
+      <div style="display:grid;grid-template-columns:repeat(3, 1fr);gap:8px;margin-bottom:14px">
+        <button class="btn-secondary" style="text-align:center;font-size:12px;padding:8px" onclick="selectCity('Main Road / Upper Bazar', '834001')">🌸 Main Road (834001)</button>
+        <button class="btn-secondary" style="text-align:center;font-size:12px;padding:8px" onclick="selectCity('Lalpur / Circular Rd', '834009')">🌷 Lalpur (834009)</button>
+        <button class="btn-secondary" style="text-align:center;font-size:12px;padding:8px" onclick="selectCity('Doranda / Hinoo', '834002')">🌹 Doranda (834002)</button>
+        <button class="btn-secondary" style="text-align:center;font-size:12px;padding:8px" onclick="selectCity('Morabadi / Kanke', '834008')">🪻 Morabadi (834008)</button>
+        <button class="btn-secondary" style="text-align:center;font-size:12px;padding:8px" onclick="selectCity('Harmu / Ashok Nagar', '834004')">💐 Harmu (834004)</button>
+        <button class="btn-secondary" style="text-align:center;font-size:12px;padding:8px" onclick="selectCity('Bariatu / Booty More', '834005')">⚜️ Bariatu (834005)</button>
+        <button class="btn-secondary" style="text-align:center;font-size:12px;padding:8px" onclick="selectCity('Dhurwa / Hatia', '834003')">🌻 Dhurwa (834003)</button>
+        <button class="btn-secondary" style="text-align:center;font-size:12px;padding:8px" onclick="selectCity('Namkum / Chutia', '834010')">🎁 Namkum (834010)</button>
+        <button class="btn-secondary" style="text-align:center;font-size:12px;padding:8px" onclick="selectCity('BIT Mesra / Booty', '835215')">⚡ Mesra (835215)</button>
+      </div>
+
+      <div style="padding:12px;background:linear-gradient(135deg, var(--frozen-pink-light), var(--frozen-cyan-light));border-radius:12px;border:1px solid var(--surface-border);font-size:12px;color:var(--frozen-rose)">
+        ⚡ <b>Exclusive Ranchi Coverage:</b> Farm-fresh cold-chain delivery within 2 hours or Midnight 12:00 AM across all sectors in Ranchi!
+      </div>
+    </div>
+  </div>
+
+  <!-- Cart Drawer -->
+  <div class="drawerBg" id="cartBg" onclick="if(event.target===this)closeCart()">
+    <aside class="drawer">
+      <div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+          <h2 style="font-size:22px;color:var(--frozen-rose)">Your Gifting Bag 🛍</h2>
+          <button class="close" style="position:static" onclick="closeCart()">✕</button>
+        </div>
+
+        <div id="cartItems"></div>
+
+        <!-- Coupon Section -->
+        <div style="margin:20px 0;padding:14px;background:var(--cream);border-radius:var(--radius-md);border:1px solid var(--surface-border)">
+          <label style="margin:0 0 8px;font-size:11px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block">Apply Promo Voucher</label>
+          <div style="display:flex;gap:6px">
+            <input id="couponInput" placeholder="WELCOME50 or FLOWER10" style="text-transform:uppercase;font-weight:700;padding:8px 12px;border-radius:var(--radius-pill);border:1px solid var(--surface-border);flex:1">
+            <button class="btn-secondary" onclick="applyCoupon()">Apply</button>
+          </div>
+          <div id="couponMsg" style="font-size:11.5px;color:var(--frozen-rose);margin-top:6px;font-weight:700"></div>
+        </div>
+
+        <!-- Pricing Breakdown -->
+        <div style="border-top:1px solid var(--surface-border);padding-top:14px;font-size:13px">
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <span style="color:var(--ink-muted)">Item Subtotal</span>
+            <b id="subtotalText">₹0</b>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px">
+            <span style="color:var(--ink-muted)">Express Delivery</span>
+            <span id="deliveryText">₹35</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;margin-bottom:6px" id="discountRow">
+            <span style="color:var(--ink-muted)">Voucher Savings</span>
+            <span style="color:#e11d48;font-weight:700" id="discountText">-₹0</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:17px;font-weight:800;margin-top:12px;border-top:1px dashed var(--surface-border);padding-top:10px">
+            <span>Total Payable</span>
+            <span style="color:var(--frozen-rose)" id="totalText">₹0</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:20px">
+        <button class="btn-primary" style="width:100%;height:48px;justify-content:center;font-size:14.5px" onclick="checkout()">
+          <span>Proceed to Checkout</span>
+          <span>→</span>
+        </button>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Shared Universal Modal -->
+  <div class="modal" id="modal">
+    <div class="panel" id="modalPanel"></div>
+  </div>
+
+  <!-- Mobile Bottom Sticky Cart -->
+  <div class="stickyCart" id="stickyCart" onclick="openCart()">
+    <div>
+      <div style="font-size:13px;font-weight:800" id="stickyText">Your bag is waiting</div>
+      <div style="font-size:11px;opacity:0.85">Tap to view gifting bag</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:10px">
+      <b style="font-size:16px" id="stickyTotal">₹0</b>
+      <span style="background:#fff;color:var(--frozen-rose);padding:4px 10px;border-radius:var(--radius-pill);font-size:12px;font-weight:800">View Bag →</span>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Bar -->
+  <nav class="bottomNav">
+    <button class="active" onclick="scrollTo({top:0,behavior:'smooth'})"><span>🌸</span>Home</button>
+    <button onclick="document.getElementById('subcatStrip').scrollIntoView({behavior:'smooth'})"><span>▦</span>Flowers</button>
+    <button onclick="document.getElementById('studioSection').scrollIntoView({behavior:'smooth'})"><span>💐</span>Studio</button>
+    <button onclick="openCart()"><span>🛍</span>Bag (<b id="mobCartCount">0</b>)</button>
+    <button onclick="handleNavAuthClick()" id="mobileNavAuthBtn"><span id="mobileNavAuthIcon">👤</span><span id="mobileNavAuthText">Sign In</span></button>
+  </nav>
+
+  <div id="toast"></div>
+
+  <script>
+    // Safe HTML Escaping
+    function escapeHtml(str) {
+      if (str === null || str === undefined) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // Global Storage Utilities
+    const read = (k, d) => { try { return JSON.parse(localStorage.getItem('bb_' + k)) ?? d; } catch { return d; } };
+    const write = (k, v) => { try { localStorage.setItem('bb_' + k, JSON.stringify(v)); } catch {} };
+
+    let cart = read('cart', {});
+    let saved = read('saved', {});
+    let orders = read('orders', []);
+    let wishlist = read('wishlist', []);
+    let profile = read('profile', null);
+    let wallet = read('wallet', 250);
+    let points = read('points', 120);
+    let customerInterests = read('interests', {
+      favoriteFlowers: ['Red Roses', 'Pink Lilies', 'Purple Orchids'],
+      favoriteColors: ['Frozen Pink', 'Velvet Crimson'],
+      preferredOccasions: ['Anniversary', 'Birthday'],
+      celebrationDates: [
+        { title: "Partner's Birthday", date: "2026-11-14", note: "Loves red roses & lilies combo" },
+        { title: "Wedding Anniversary", date: "2026-12-25", note: "Luxury hatbox same-day" }
+      ]
+    });
+    let adminAuthenticated = Boolean(localStorage.getItem('bb_admin_token'));
+
+    // Delivery Location & Filters - Exclusively Ranchi (Jharkhand)
+    function isRanchiPincode(pin) {
+      return /^83[45]\d{3}$/.test(String(pin || '').trim());
+    }
+
+    let currentCity = read('city', 'Ranchi');
+    let currentPin = read('pin', '834001');
+    if (!currentCity.includes('Ranchi') || !isRanchiPincode(currentPin)) {
+      currentCity = 'Ranchi';
+      currentPin = '834001';
+      write('city', currentCity);
+      write('pin', currentPin);
+    }
+    let activeSubcat = 'All';
+    let activeOccasion = 'All';
+    let activeColor = 'All';
+    let activeSpeed = 'All';
+    let activeSort = 'recommended';
+    let selectedDateSlot = 'today';
+    let couponCode = '';
+
+    let backendSettings = { deliveryFee: 35, codLimit: 5000 };
+    let backendCoupons = { WELCOME50: { enabled: true }, FLOWER10: { enabled: true } };
+    let products = [];
+
+    // Studio Builder State
+    let studioStep = 0;
+    let studioBox = 'Pink Velvet Box';
+    let studioPaper = 'Blush Rose Gold';
+    let studioRibbon = 'Crimson Silk';
+    let studioMessage = 'Wishing you boundless joy and happiness!';
+    let studioItems = { 'Red Roses (x10)': 499, 'Plush Mini Teddy': 249 };
+
+    // API Helper
+    async function apiRequest(path, options = {}) {
+      const res = await fetch(path, {
+        headers: { 'Content-Type': 'application/json', ...(options.headers || {}) },
+        ...options
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || 'Server error (' + res.status + ')');
+      return data;
+    }
+
+    function adminHeaders() {
+      const token = localStorage.getItem('bb_admin_token') || (adminAuthenticated ? 'admin123' : '');
+      return token ? { 'x-admin-password': token } : {};
+    }
+
+    async function syncCustomerData() {
+      if (!profile || !profile.phone) return;
+      try {
+        const res = await fetch(`/api/customers/${profile.phone}`);
+        if (res.ok) {
+          const data = await res.json();
+          if (data.customer) {
+            if (data.customer.interests) {
+              customerInterests = data.customer.interests;
+              write('interests', customerInterests);
+            }
+            if (Number.isFinite(data.customer.walletBalance)) {
+              wallet = data.customer.walletBalance;
+              write('wallet', wallet);
+            }
+            if (Number.isFinite(data.customer.rewardPoints)) {
+              points = data.customer.rewardPoints;
+              write('points', points);
+            }
+          }
+        }
+      } catch {}
+    }
+
+    // Backend Boot
+    async function bootBackend() {
+      try {
+        const [pRes, sRes, cRes] = await Promise.all([
+          apiRequest('/api/products'),
+          apiRequest('/api/settings'),
+          apiRequest('/api/coupons')
+        ]);
+        if (pRes.products) products = pRes.products;
+        if (sRes.settings) backendSettings = sRes.settings;
+        if (cRes.coupons) backendCoupons = cRes.coupons;
+        await syncCustomerData();
+      } catch (e) {
+        console.warn('API boot using fallback', e);
+      }
+      renderProducts();
+      updateCounts();
+      buildStudio();
+    }
+
+    // Money Formatter
+    function money(n) {
+      return '₹' + Number(n || 0).toLocaleString('en-IN');
+    }
+
+    function toast(s) {
+      let t = document.getElementById('toast');
+      t.textContent = s;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2600);
+    }
+
+    function updateCounts() {
+      let n = Object.values(cart).reduce((a, b) => a + b, 0);
+      let total = cartSubtotal();
+      document.getElementById('cartCount').textContent = n;
+      document.getElementById('mobCartCount').textContent = n;
+      document.getElementById('stickyText').textContent = n ? `${n} item${n > 1 ? 's' : ''} in your bag` : 'Your bag is waiting';
+      document.getElementById('stickyTotal').textContent = money(total);
+      document.getElementById('stickyCart').style.display = n ? 'flex' : 'none';
+      updateNavAuth();
+    }
+
+    function updateNavAuth() {
+      const navText = document.getElementById('navAuthText');
+      const navIcon = document.getElementById('navAuthIcon');
+      const mobText = document.getElementById('mobileNavAuthText');
+      const mobIcon = document.getElementById('mobileNavAuthIcon');
+      const isAdmin = Boolean(localStorage.getItem('bb_admin_token') || adminAuthenticated);
+
+      if (profile && profile.name) {
+        const firstName = profile.name.split(' ')[0] || 'Profile';
+        const label = firstName + (isAdmin ? ' 👑' : '');
+        if (navText) navText.textContent = label;
+        if (navIcon) navIcon.textContent = '🌷';
+        if (mobText) mobText.textContent = label;
+        if (mobIcon) mobIcon.textContent = '🌷';
+      } else if (isAdmin) {
+        if (navText) navText.textContent = 'Admin 👑';
+        if (navIcon) navIcon.textContent = '⚙️';
+        if (mobText) mobText.textContent = 'Admin 👑';
+        if (mobIcon) mobIcon.textContent = '⚙️';
+      } else {
+        if (navText) navText.textContent = 'Sign In';
+        if (navIcon) navIcon.textContent = '👤';
+        if (mobText) mobText.textContent = 'Sign In';
+        if (mobIcon) mobIcon.textContent = '👤';
+      }
+    }
+
+    function handleNavAuthClick() {
+      if (profile || localStorage.getItem('bb_admin_token') || adminAuthenticated) openProfile();
+      else login(false);
+    }
+
+    function logoutUser() {
+      profile = null;
+      localStorage.removeItem('bb_profile');
+      updateNavAuth();
+      closeModal();
+      toast('Signed out from client account');
+    }
+
+    function logoutAdmin() {
+      adminAuthenticated = false;
+      localStorage.removeItem('bb_admin_token');
+      updateNavAuth();
+      toast('Signed out of Admin Console');
+      if (profile) openProfile();
+      else closeModal();
+    }
+
+    function cartSubtotal() {
+      return Object.entries(cart).reduce((sum, [id, q]) => sum + (getProduct(id)?.price || 0) * q, 0);
+    }
+
+    function couponDiscount(sub = cartSubtotal()) {
+      if (couponCode === 'WELCOME50') return Math.min(50, sub);
+      if (couponCode === 'FLOWER10') return Math.round(sub * 0.1);
+      return 0;
+    }
+
+    function getProduct(id) {
+      return products.find(p => p.id === +id) || { id: +id, name: 'Custom Bouquet', price: 999, emoji: '💐' };
+    }
+
+    // Product Grid Renderer (FNP Style with Verified Imagery)
+    function renderProducts() {
+      const grid = document.getElementById('productGrid');
+      if (!grid) return;
+
+      let list = products.filter(p => p.enabled !== false);
+
+      // Filter by Subcat / Type
+      if (activeSubcat === 'Roses') list = list.filter(p => (p.flowerType === 'Roses' || p.name.includes('Rose')));
+      else if (activeSubcat === 'Lilies') list = list.filter(p => (p.flowerType === 'Lilies' || p.name.includes('Lil')));
+      else if (activeSubcat === 'Orchids') list = list.filter(p => (p.flowerType === 'Orchids' || p.name.includes('Orchid')));
+      else if (activeSubcat === 'Carnations') list = list.filter(p => (p.flowerType === 'Carnations' || p.name.includes('Carnation')));
+      else if (activeSubcat === 'Combos') list = list.filter(p => (p.cat === 'Combos' || p.name.includes('Cake') || p.name.includes('Combo')));
+      else if (activeSubcat === 'Teddy') list = list.filter(p => (p.cat === 'Soft Toys' || p.name.includes('Teddy') || p.name.includes('Bear') || p.name.includes('Plush')));
+      else if (activeSubcat === 'Chocolates') list = list.filter(p => (p.cat === 'Chocolates' || p.name.includes('Choc') || p.name.includes('Ferrero') || p.name.includes('Silk')));
+      else if (activeSubcat === 'Luxury') list = list.filter(p => (p.price >= 1200 || p.name.includes('Box')));
+      else if (activeSubcat === 'Vase') list = list.filter(p => p.name.includes('Vase'));
+
+      // Filter by Occasion
+      if (activeOccasion !== 'All') {
+        list = list.filter(p => p.occasion === activeOccasion || !p.occasion);
+      }
+
+      // Filter by Color
+      if (activeColor !== 'All') {
+        list = list.filter(p => p.color === activeColor || p.name.toLowerCase().includes(activeColor.toLowerCase()));
+      }
+
+      // Filter by Delivery Speed
+      if (activeSpeed === 'In 2 Hours') {
+        list = list.filter(p => p.delivery === 'In 2 Hours' || !p.delivery);
+      } else if (activeSpeed === 'Midnight') {
+        list = list.filter(p => p.delivery === 'Midnight' || p.name.includes('Midnight') || p.cat === 'Combos');
+      }
+
+      // Sorting
+      if (activeSort === 'price-low') list.sort((a, b) => a.price - b.price);
+      else if (activeSort === 'price-high') list.sort((a, b) => b.price - a.price);
+      else if (activeSort === 'rating') list.sort((a, b) => (b.rating || 4.8) - (a.rating || 4.8));
+
+      document.getElementById('resultsCount').textContent = `Showing ${list.length} Fresh Floral Gifts in ${currentCity}`;
+
+      if (!list.length) {
+        grid.innerHTML = `
+          <div style="grid-column:1/-1;text-align:center;padding:48px 20px;background:var(--surface-frosted);border-radius:var(--radius-md);border:1px dashed var(--surface-border);backdrop-filter:blur(14px)">
+            <span style="font-size:42px">💐</span>
+            <h3 style="margin-top:10px">No arrangements found matching filters</h3>
+            <p style="color:var(--ink-muted);font-size:13px;margin:6px 0 16px">Try resetting occasion or flower color swatches.</p>
+            <button class="btn-primary" onclick="resetFilters()">Reset All Filters</button>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = list.map(p => {
+        const qty = cart[p.id] || 0;
+        const discountPct = p.mrp > p.price ? Math.round(((p.mrp - p.price) / p.mrp) * 100) : 0;
+        const rating = p.rating || 4.8;
+        const reviews = p.reviews || 840;
+        const badge = p.badge || 'Fresh';
+        const badgeClass = badge.toLowerCase().includes('best') ? 'badge-best' : badge.toLowerCase().includes('express') ? 'badge-express' : badge.toLowerCase().includes('midnight') ? 'badge-midnight' : 'badge-luxury';
+        const isWished = wishlist.includes(p.id);
+        const imgSrc = p.image || '/images/products/velvet-crimson-red-roses.jpg';
+
+        return `
+          <div class="fnp-card">
+            <div class="card-media-wrap">
+              <img class="card-img" src="${imgSrc}" alt="${p.name}" loading="lazy">
+              <span class="card-badge ${badgeClass}">${badge}</span>
+              <button class="wish-btn ${isWished ? 'active' : ''}" onclick="wish(${p.id})">♥</button>
+            </div>
+            <div class="card-body">
+              <div>
+                <div class="card-meta-top">
+                  <span class="card-rating">★ ${rating}</span>
+                  <span class="card-reviews">${reviews.toLocaleString()} reviews</span>
+                </div>
+                <h3 class="card-title" title="${p.name}">${p.name}</h3>
+                <div class="card-delivery-tag">
+                  <span>⚡</span>
+                  <span>Earliest: Today in 2 Hrs</span>
+                </div>
+              </div>
+
+              <div>
+                <div class="card-price-row">
+                  <span class="card-price">${money(p.price)}</span>
+                  ${p.mrp > p.price ? `<span class="card-mrp">${money(p.mrp)}</span>` : ''}
+                  ${discountPct ? `<span class="card-discount">${discountPct}% OFF</span>` : ''}
+                </div>
+
+                <div class="card-action-row">
+                  ${qty ? `
+                    <div class="qty-controls">
+                      <button class="qty-btn" onclick="changeQty(${p.id}, -1)">−</button>
+                      <span class="qty-num">${qty}</span>
+                      <button class="qty-btn" onclick="changeQty(${p.id}, 1)">+</button>
+                    </div>
+                  ` : `
+                    <button class="btn-card-add" onclick="addProduct(${p.id})">
+                      <span>Add to Bag</span>
+                      <span>+</span>
+                    </button>
+                  `}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    // Filter Handlers
+    function filterBySubcat(subcat) {
+      activeSubcat = subcat;
+      document.querySelectorAll('.subcat-pill').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent.includes(subcat) || (subcat === 'All' && btn.textContent.includes('All Flowers')));
+      });
+      document.querySelectorAll('.circle-cat-card').forEach(c => {
+        c.classList.toggle('active', c.querySelector('h4')?.textContent.includes(subcat));
+      });
+      renderProducts();
+    }
+
+    function filterByOccasion(occ, btn) {
+      activeOccasion = occ;
+      document.querySelectorAll('.occasion-pill').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderProducts();
+    }
+
+    function filterByColor(color, btn) {
+      activeColor = color;
+      document.querySelectorAll('.swatch-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderProducts();
+    }
+
+    function filterBySpeed(speed) {
+      activeSpeed = speed;
+      renderProducts();
+    }
+
+    function handleSortChange(val) {
+      activeSort = val;
+      renderProducts();
+    }
+
+    function resetFilters() {
+      activeSubcat = 'All';
+      activeOccasion = 'All';
+      activeColor = 'All';
+      activeSpeed = 'All';
+      activeSort = 'recommended';
+      filterBySubcat('All');
+    }
+
+    // Delivery Location Modal
+    function openLocationModal() {
+      document.getElementById('locationModal').classList.add('open');
+    }
+    function closeLocationModal() {
+      document.getElementById('locationModal').classList.remove('open');
+    }
+    document.getElementById('locationModal').addEventListener('click', e => {
+      if (e.target.id === 'locationModal') closeLocationModal();
+    });
+
+    function selectCity(city, pin) {
+      currentCity = city;
+      currentPin = pin;
+      write('city', city);
+      write('pin', pin);
+      document.getElementById('navCurrentCity').textContent = city;
+      document.getElementById('navPincodeTag').textContent = `(${pin})`;
+      document.getElementById('heroCityName').textContent = city;
+      document.getElementById('pin').value = pin;
+      closeLocationModal();
+      toast(`Delivering to ${city} (${pin})`);
+      renderProducts();
+    }
+
+    function submitCustomLocation() {
+      const val = document.getElementById('modalLocInput').value.trim();
+      if (!val) return toast('Please enter a Ranchi locality or pincode');
+      if (/^\d{6}$/.test(val)) {
+        if (!isRanchiPincode(val)) {
+          return toast('BloomBox currently delivers only in Ranchi (834xxx / 835xxx).');
+        }
+        selectCity('Ranchi (' + val + ')', val);
+      } else {
+        selectCity(val + ', Ranchi', '834001');
+      }
+    }
+
+    function setDateSlot(slot, btn) {
+      selectedDateSlot = slot;
+      document.querySelectorAll('.date-toggle-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      toast(slot === 'midnight' ? '🌙 Midnight 12:00 AM delivery selected!' : `📅 Delivery scheduled for ${slot}`);
+    }
+
+    function checkPin() {
+      const p = document.getElementById('pin').value.trim();
+      const msg = document.getElementById('pinMsg');
+      if (!/^\d{6}$/.test(p)) {
+        msg.textContent = 'Please enter a valid 6-digit delivery pincode.';
+        msg.style.color = '#e11d48';
+        return;
+      }
+      if (!isRanchiPincode(p)) {
+        msg.textContent = '⚠️ BloomBox currently delivers exclusively in Ranchi (Jharkhand). Pincode must start with 834 or 835.';
+        msg.style.color = '#e11d48';
+        toast('Delivery currently available only in Ranchi (834xxx / 835xxx)');
+        return;
+      }
+      msg.textContent = `✓ 2-Hour Express & Midnight delivery active for Ranchi pincode ${p}!`;
+      msg.style.color = 'var(--frozen-rose)';
+      toast(`Ranchi pincode ${p} verified for Express 2-Hour delivery!`);
+    }
+
+    // Cart Actions
+    function addProduct(id) {
+      cart[id] = (cart[id] || 0) + 1;
+      save();
+      renderProducts();
+      toast('Added to your gifting bag 💐');
+    }
+
+    function addQuickAddon(id) {
+      cart[id] = (cart[id] || 0) + 1;
+      save();
+      renderProducts();
+      toast('Combo item added to your bag!');
+    }
+
+    function changeQty(id, delta) {
+      let q = (cart[id] || 0) + delta;
+      if (q <= 0) delete cart[id];
+      else cart[id] = q;
+      save();
+      renderProducts();
+      renderCart();
+    }
+
+    function wish(id) {
+      let i = wishlist.indexOf(id);
+      if (i >= 0) wishlist.splice(i, 1);
+      else wishlist.push(id);
+      write('wishlist', wishlist);
+      renderProducts();
+      toast(i >= 0 ? 'Removed from wishlist' : 'Saved to your wishlist ♥');
+    }
+
+    function openCart() {
+      renderCart();
+      document.getElementById('cartBg').classList.add('open');
+    }
+    function closeCart() {
+      document.getElementById('cartBg').classList.remove('open');
+    }
+
+    function renderCart() {
+      const el = document.getElementById('cartItems');
+      const entries = Object.entries(cart);
+      if (!entries.length) {
+        el.innerHTML = '<div style="text-align:center;padding:40px 10px;color:var(--ink-muted)">Your gifting bag is currently empty.<br>Explore fresh flowers to begin!</div>';
+      } else {
+        el.innerHTML = entries.map(([id, q]) => {
+          const p = getProduct(id);
+          const imgSrc = p.image || 'https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=150&q=80';
+          return `
+            <div class="cartline">
+              <img class="cartline-thumb" src="${imgSrc}" alt="${p.name}">
+              <div>
+                <b style="font-size:13.5px;color:var(--ink)">${p.name}</b>
+                <div style="font-size:12px;color:var(--frozen-rose);font-weight:800">${money(p.price)} each</div>
+              </div>
+              <div style="display:flex;align-items:center;gap:6px">
+                <button class="btn-secondary" style="padding:2px 8px" onclick="changeQty(${id}, -1)">−</button>
+                <b style="font-size:13px">${q}</b>
+                <button class="btn-secondary" style="padding:2px 8px" onclick="changeQty(${id}, 1)">+</button>
+              </div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      const sub = cartSubtotal();
+      const disc = couponDiscount(sub);
+      const delivery = sub >= 499 ? 0 : backendSettings.deliveryFee;
+      const total = Math.max(0, sub + delivery - disc);
+
+      document.getElementById('subtotalText').textContent = money(sub);
+      document.getElementById('deliveryText').textContent = delivery === 0 ? 'FREE' : money(delivery);
+      document.getElementById('discountText').textContent = '-' + money(disc);
+      document.getElementById('totalText').textContent = money(total);
+    }
+
+    function applyCoupon() {
+      let c = document.getElementById('couponInput').value.trim().toUpperCase();
+      if (backendCoupons[c]?.enabled) {
+        couponCode = c;
+        document.getElementById('couponMsg').textContent = '✓ Voucher ' + c + ' applied!';
+        toast('Voucher applied successfully');
+      } else {
+        couponCode = '';
+        document.getElementById('couponMsg').textContent = 'Invalid voucher. Try WELCOME50 or FLOWER10.';
+      }
+      renderCart();
+    }
+
+    function save() {
+      write('cart', cart);
+      write('orders', orders);
+      write('wishlist', wishlist);
+      write('wallet', wallet);
+      write('points', points);
+      updateCounts();
+    }
+
+    // Modal Helpers
+    function showModal(content) {
+      document.getElementById('modalPanel').innerHTML = content;
+      document.getElementById('modal').classList.add('open');
+    }
+    function closeModal() {
+      document.getElementById('modal').classList.remove('open');
+    }
+    document.getElementById('modal').addEventListener('click', e => {
+      if (e.target.id === 'modal') closeModal();
+    });
+
+    // Checkout Flow
+    function checkout() {
+      if (!Object.keys(cart).length) return toast('Your gifting bag is empty');
+      closeCart();
+      if (!profile) {
+        login(true);
+        return;
+      }
+      showCheckout();
+    }
+
+    function showCheckout() {
+      let sub = cartSubtotal();
+      let delivery = sub >= 499 ? 0 : backendSettings.deliveryFee;
+      let total = Math.max(0, sub + delivery - couponDiscount(sub));
+
+      showModal(`
+        <button class="close" onclick="closeModal()">✕</button>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">
+          <span style="font-size:22px">💐</span>
+          <h2 style="margin:0;color:var(--frozen-rose)">Secure Flower Checkout</h2>
+        </div>
+        <p style="color:var(--ink-muted);font-size:13px;margin-bottom:16px">Enter recipient address and wax-sealed greeting message.</p>
+
+        <form onsubmit="placeOrder(event)">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div style="grid-column:1/-1">
+              <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:4px">Recipient Name</label>
+              <input id="addrName" required value="${profile?.name || ''}" placeholder="e.g. Priya Sharma" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--surface-border);background:var(--surface)">
+            </div>
+            <div>
+              <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:4px">Recipient Mobile</label>
+              <input id="addrPhone" required pattern="[6-9][0-9]{9}" maxlength="10" value="${profile?.phone || ''}" placeholder="10-digit number" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--surface-border);background:var(--surface)">
+            </div>
+            <div>
+              <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:4px">Delivery Pincode (Ranchi Only)</label>
+              <input id="addrPin" required pattern="83[45][0-9]{3}" maxlength="6" value="${currentPin || '834001'}" placeholder="e.g. 834001" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--surface-border);background:var(--surface)">
+            </div>
+            <div style="grid-column:1/-1">
+              <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:4px">Delivery Address in Ranchi</label>
+              <textarea id="addrText" required rows="2" placeholder="House/Flat number, Landmark, Locality in Ranchi, Jharkhand" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--surface-border);font-family:inherit;background:var(--surface)">${profile?.address || ''}</textarea>
+            </div>
+            <div style="grid-column:1/-1">
+              <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:4px">Wax-Sealed Card Message (Complimentary)</label>
+              <input id="cardMsg" placeholder="e.g. Happy Birthday Aditi! With love, Rahul" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--surface-border);background:var(--surface)">
+            </div>
+            <div>
+              <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:4px">Delivery Slot</label>
+              <select id="slot" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--surface-border);background:var(--surface)">
+                <option>⚡ Instant Delivery · 10–30 min</option>
+                <option>⚡ 2-Hour Express Delivery</option>
+                <option>Today Evening · 6–8 PM</option>
+                <option>🌙 Midnight Surprise · 11:45 PM - 12:15 AM</option>
+                <option>Tomorrow Morning · 9–11 AM</option>
+              </select>
+            </div>
+            <div>
+              <label style="font-size:11px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:4px">Payment Mode</label>
+              <select id="payMethod" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--surface-border);background:var(--surface)">
+                <option value="UPI / Online Payment">Online (Razorpay / UPI / Cards)</option>
+                <option value="Cash on Delivery">Cash on Delivery (COD)</option>
+              </select>
+            </div>
+          </div>
+
+          <div style="margin-top:16px;padding:12px;background:linear-gradient(135deg, var(--frozen-pink-light), var(--frozen-cyan-light));border-radius:12px;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--surface-border)">
+            <span style="font-weight:800">Total Payable:</span>
+            <b style="font-size:18px;color:var(--frozen-rose)">${money(total)}</b>
+          </div>
+
+          <button type="submit" id="placeOrderBtn" class="btn-primary" style="width:100%;margin-top:16px;height:46px;justify-content:center;font-size:14px">
+            Confirm & Place Flower Order ✨
+          </button>
+        </form>
+      `);
+    }
+
+    function handleOrderSuccess(order) {
+      orders.unshift(order);
+      write('orders', orders);
+      cart = {};
+      save();
+      updateCounts();
+      closeModal();
+      showModal(`
+        <div style="text-align:center;padding:20px 0">
+          <span style="font-size:52px">🎉</span>
+          <h2 style="color:var(--frozen-rose);margin:10px 0 6px">Order Placed Successfully!</h2>
+          <p style="color:var(--ink-muted);font-size:13.5px;margin-bottom:16px">Order ID: <b>#${order.id}</b> · ${escapeHtml(order.slot)}</p>
+          <div style="padding:14px;background:var(--cream);border-radius:12px;margin-bottom:20px;text-align:left;font-size:13px;border:1px solid var(--surface-border)">
+            <div><b>Recipient:</b> ${escapeHtml(order.name)} (${escapeHtml(order.phone)})</div>
+            <div><b>Address:</b> ${escapeHtml(order.address)} · PIN ${escapeHtml(order.pin)} (Ranchi)</div>
+            <div style="margin-top:4px"><b>Payment:</b> ${order.paymentStatus === 'paid' ? '<span style="color:#059669;font-weight:700">✓ Paid Online (Razorpay)</span>' : '<span style="color:#d97706;font-weight:700">Cash on Delivery</span>'} · <b>${money(order.total)}</b></div>
+            ${order.paymentId ? `<div style="font-size:11.5px;color:var(--ink-muted);margin-top:4px"><b>Transaction ID:</b> <code>${escapeHtml(order.paymentId)}</code></div>` : ''}
+          </div>
+          <button class="btn-primary" style="width:100%;justify-content:center" onclick="closeModal();openTracking('${order.id}')">Track Flower Delivery 🛵</button>
+        </div>
+      `);
+    }
+
+    async function placeOrder(e) {
+      e.preventDefault();
+      const btn = document.getElementById('placeOrderBtn');
+      btn.disabled = true;
+      btn.textContent = 'Processing Order…';
+
+      const items = Object.entries(cart).map(([id, q]) => {
+        const p = getProduct(id);
+        return { productId: +id, product: p.name, emoji: p.emoji || '💐', qty: q, price: p.price };
+      });
+
+      const orderPayload = {
+        name: document.getElementById('addrName').value.trim(),
+        phone: document.getElementById('addrPhone').value.trim(),
+        pin: document.getElementById('addrPin').value.trim(),
+        city: 'Ranchi',
+        address: document.getElementById('addrText').value.trim(),
+        slot: document.getElementById('slot').value,
+        method: document.getElementById('payMethod').value,
+        total: cartSubtotal() + (cartSubtotal() >= 499 ? 0 : backendSettings.deliveryFee) - couponDiscount(),
+        items
+      };
+
+      if (!isRanchiPincode(orderPayload.pin)) {
+        btn.disabled = false;
+        btn.textContent = 'Confirm & Place Flower Order ✨';
+        toast('Delivery is exclusive to Ranchi (834xxx / 835xxx). Please enter a Ranchi delivery pincode.');
+        return;
+      }
+
+      if (orderPayload.method === 'Cash on Delivery') {
+        try {
+          const res = await apiRequest('/api/orders', { method: 'POST', body: JSON.stringify(orderPayload) });
+          handleOrderSuccess(res.order);
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = 'Confirm & Place Flower Order ✨';
+          toast(err.message || 'Could not place order');
+        }
+      } else {
+        // Online Payment via Razorpay (UPI, Google Pay, PhonePe, Cards, NetBanking)
+        try {
+          btn.textContent = 'Opening Secure Gateway…';
+          const prep = await apiRequest('/api/payment/create-order', {
+            method: 'POST',
+            body: JSON.stringify({ amount: orderPayload.total })
+          });
+
+          if (!window.Razorpay) {
+            throw new Error('Razorpay SDK failed to load. Please choose Cash on Delivery or check your connection.');
+          }
+
+          const rzpOptions = {
+            key: prep.keyId,
+            amount: prep.amount,
+            currency: prep.currency || 'INR',
+            name: 'BloomBox Haute Florals',
+            description: `Ranchi Delivery · ${orderPayload.slot}`,
+            order_id: prep.orderId,
+            prefill: {
+              name: orderPayload.name,
+              contact: orderPayload.phone
+            },
+            notes: {
+              city: 'Ranchi',
+              pin: orderPayload.pin,
+              address: orderPayload.address
+            },
+            theme: {
+              color: '#db2777'
+            },
+            modal: {
+              ondismiss: function() {
+                btn.disabled = false;
+                btn.textContent = 'Confirm & Place Flower Order ✨';
+                toast('Payment cancelled. You can retry or choose Cash on Delivery.');
+              }
+            },
+            handler: async function(paymentResponse) {
+              btn.textContent = 'Verifying Payment…';
+              try {
+                // 1. Verify cryptographic HMAC SHA256 signature
+                await apiRequest('/api/payment/verify', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                    razorpay_order_id: paymentResponse.razorpay_order_id,
+                    razorpay_payment_id: paymentResponse.razorpay_payment_id,
+                    razorpay_signature: paymentResponse.razorpay_signature,
+                    expectedAmount: orderPayload.total
+                  })
+                });
+
+                // 2. Finalize order with verified payment ID
+                const orderRes = await apiRequest('/api/orders', {
+                  method: 'POST',
+                  body: JSON.stringify({
+                    ...orderPayload,
+                    paymentId: paymentResponse.razorpay_payment_id
+                  })
+                });
+
+                handleOrderSuccess(orderRes.order);
+              } catch (verifyErr) {
+                btn.disabled = false;
+                btn.textContent = 'Confirm & Place Flower Order ✨';
+                toast('Payment verification failed: ' + verifyErr.message);
+              }
+            }
+          };
+
+          const rzpInstance = new window.Razorpay(rzpOptions);
+          rzpInstance.on('payment.failed', function(resp) {
+            btn.disabled = false;
+            btn.textContent = 'Confirm & Place Flower Order ✨';
+            toast('Payment failed: ' + (resp.error?.description || 'Transaction unsuccessful'));
+          });
+          rzpInstance.open();
+        } catch (err) {
+          btn.disabled = false;
+          btn.textContent = 'Confirm & Place Flower Order ✨';
+          toast(err.message || 'Payment initiation failed. Please try Cash on Delivery.');
+        }
+      }
+    }
+
+    // Tracking Modal
+    function openTrackingModal() {
+      if (!orders.length) return toast('No active orders found to track');
+      openTracking(orders[0].id);
+    }
+
+    function openTracking(id) {
+      const order = orders.find(o => o.id === id) || orders[0];
+      if (!order) return toast('Order not found');
+      const stages = ['Placed', 'Packed', 'Out for delivery', 'Delivered'];
+      const curIdx = Math.max(0, stages.indexOf(order.status));
+
+      showModal(`
+        <button class="close" onclick="closeModal()">✕</button>
+        <h2 style="color:var(--frozen-rose);margin-bottom:4px">Track Flower Order</h2>
+        <p style="color:var(--ink-muted);font-size:13px;margin-bottom:20px">Order #${order.id} · Dispatched from BloomBox Hub</p>
+
+        <div style="display:flex;justify-content:space-between;margin-bottom:24px;position:relative">
+          ${stages.map((st, i) => `
+            <div style="text-align:center;flex:1">
+              <div style="width:34px;height:34px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;background:${i <= curIdx ? 'var(--gradient-primary)' : 'var(--cream)'};color:${i <= curIdx ? '#fff' : 'var(--ink-light)'};font-size:13px;font-weight:800;border:2px solid ${i <= curIdx ? 'transparent' : 'var(--surface-border)'}">
+                ${i <= curIdx ? '✓' : i + 1}
+              </div>
+              <div style="font-size:11px;font-weight:700;color:${i <= curIdx ? 'var(--frozen-rose)' : 'var(--ink-muted)'}">${st}</div>
+            </div>
+          `).join('')}
+        </div>
+
+        <div style="padding:14px;background:linear-gradient(135deg, var(--frozen-pink-light), var(--frozen-cyan-light));border-radius:14px;font-size:13px;color:var(--frozen-rose);margin-bottom:16px;border:1px solid var(--surface-border)">
+          🛵 <b>Express Delivery Status:</b> Rider assigned with water-pack hydration box. Expected arrival within delivery slot.
+        </div>
+        <button class="btn-secondary" style="width:100%;text-align:center" onclick="closeModal()">Close Tracking</button>
+      `);
+    }
+
+    // Profile & Auth
+    function openProfile() {
+      const isAdmin = Boolean(localStorage.getItem('bb_admin_token') || adminAuthenticated);
+      if (!profile && !isAdmin) return login(false);
+
+      const clientName = profile ? profile.name : 'Atelier Administrator';
+      const clientSub = profile ? (profile.phone || profile.email || 'Client') : 'Super Admin Account';
+
+      showModal(`
+        <button class="close" onclick="closeModal()">✕</button>
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:var(--frozen-pink-light);border-radius:var(--radius-pill);font-size:11px;font-weight:800;color:var(--frozen-rose);margin-bottom:8px;border:1px solid var(--surface-border)">
+          ${isAdmin ? '👑 ATELIER ADMIN PRIVILEGES' : '🌸 CLIENT ACCOUNT'}
+        </div>
+        <h2 style="color:var(--frozen-rose);margin-bottom:4px">Your Gifting Account</h2>
+        <p style="font-size:16px;font-weight:700">Namaste, ${escapeHtml(clientName)} 🌷</p>
+        <p style="color:var(--ink-muted);font-size:13px">${escapeHtml(clientSub)}</p>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px 0">
+          <div style="background:linear-gradient(135deg, var(--frozen-pink-light), var(--frozen-cyan-light));padding:14px;border-radius:14px;text-align:center;border:1px solid var(--surface-border)">
+            <b style="font-size:22px;color:var(--frozen-rose)">${money(wallet)}</b>
+            <div style="font-size:12px;color:var(--ink-muted);font-weight:700">Gifting Wallet</div>
+          </div>
+          <div style="background:var(--surface);padding:14px;border-radius:14px;text-align:center;border:1px solid var(--surface-border)">
+            <b style="font-size:22px;color:var(--frozen-cyan)">✦ ${points}</b>
+            <div style="font-size:12px;color:var(--ink-muted);font-weight:700">Reward Points</div>
+          </div>
+        </div>
+
+        <!-- Customer Interests & Celebration Reminders -->
+        <div style="margin-bottom:16px;padding:14px;background:var(--surface);border-radius:14px;border:1px solid var(--surface-border);text-align:left">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
+            <span style="font-weight:800;font-size:12.5px;color:var(--frozen-rose);display:flex;align-items:center;gap:6px">
+              <span>🌸</span> Gifting Interests & Preferences
+            </span>
+            <button class="btn-secondary" style="font-size:11px;padding:4px 10px;font-weight:800;cursor:pointer" onclick="openInterestsModal()">Edit ✎</button>
+          </div>
+
+          <div style="font-size:12px;margin-bottom:6px">
+            <span style="color:var(--ink-muted);font-weight:700">Favorite Floral Blooms:</span>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:3px">
+              ${(customerInterests.favoriteFlowers || ['Red Roses', 'Pink Lilies']).map(f => `<span style="padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;background:var(--frozen-pink-light);color:var(--frozen-rose);border:1px solid var(--surface-border)">🌹 ${escapeHtml(f)}</span>`).join('')}
+            </div>
+          </div>
+
+          <div style="font-size:12px;margin-bottom:8px">
+            <span style="color:var(--ink-muted);font-weight:700">Preferred Color Palette:</span>
+            <div style="display:flex;flex-wrap:wrap;gap:4px;margin-top:3px">
+              ${(customerInterests.favoriteColors || ['Frozen Pink']).map(c => `<span style="padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;background:var(--frozen-cyan-light);color:var(--frozen-cyan);border:1px solid rgba(2,132,199,0.2)">🎨 ${escapeHtml(c)}</span>`).join('')}
+            </div>
+          </div>
+
+          <div style="font-size:12px">
+            <span style="color:var(--ink-muted);font-weight:700">Upcoming Celebration Reminders:</span>
+            <div style="margin-top:4px">
+              ${(customerInterests.celebrationDates && customerInterests.celebrationDates.length) ? customerInterests.celebrationDates.map(d => `
+                <div style="padding:6px 10px;background:var(--cream);border-radius:8px;font-size:11.5px;display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;border:1px solid var(--surface-border-subtle)">
+                  <div><b>🎂 ${escapeHtml(d.title)}</b> <span style="color:var(--ink-muted);font-size:10.5px">(${escapeHtml(d.note || 'Special occasion')})</span></div>
+                  <span style="font-weight:800;color:var(--frozen-rose)">${escapeHtml(d.date)}</span>
+                </div>
+              `).join('') : '<div style="color:var(--ink-muted);font-size:11.5px">No celebration reminders set yet. Tap Edit to record anniversaries or birthdays.</div>'}
+            </div>
+          </div>
+        </div>
+
+        <!-- Dedicated Admin Section inside Account Modal -->
+        <div style="margin-bottom:16px;padding:14px;background:linear-gradient(135deg, rgba(190, 24, 93, 0.08), rgba(2, 132, 199, 0.08));border-radius:14px;border:1px solid var(--surface-border);text-align:left">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px">
+            <span style="font-weight:800;font-size:12.5px;color:var(--frozen-rose);display:flex;align-items:center;gap:6px">
+              <span>⚙️</span> Atelier Admin Portal
+            </span>
+            <span style="display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:${isAdmin ? 'var(--success)' : 'var(--ink-muted)'}">
+              <span style="width:7px;height:7px;border-radius:50%;background:${isAdmin ? 'var(--success)' : '#9ca3af'}"></span>
+              ${isAdmin ? 'Logged In (Admin)' : 'Not Signed In'}
+            </span>
+          </div>
+
+          ${isAdmin ? `
+            <p style="font-size:12px;color:var(--ink-muted);margin-bottom:12px">Manage live orders, update delivery dispatch, edit product stock & pricing.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+              <a href="/admin" class="btn-primary" style="text-decoration:none;justify-content:center;font-size:12px;padding:9px 12px">Launch Admin Panel ↗</a>
+              <button class="btn-secondary" style="color:var(--danger);border-color:rgba(220,38,38,0.3);font-size:12px;padding:9px 12px;font-weight:800" onclick="logoutAdmin()">Admin Logout</button>
+            </div>
+          ` : `
+            <p style="font-size:12px;color:var(--ink-muted);margin-bottom:12px">Sign in with administrative password to manage catalog, orders, and store settings.</p>
+            <div style="display:flex;gap:8px">
+              <button class="btn-primary" style="flex:1;justify-content:center;font-size:12px;padding:9px 12px" onclick="openAdminInlineLogin()">Sign In as Admin 🔐</button>
+              <a href="/admin" class="btn-secondary" style="text-decoration:none;font-size:12px;padding:9px 12px">Open /admin ↗</a>
+            </div>
+          `}
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <button class="btn-primary" onclick="showOrders()">Past Orders (${orders.length})</button>
+          <a href="/login" class="btn-secondary" style="text-align:center;text-decoration:none">Account & Sign In Settings ↗</a>
+          ${profile ? `
+            <button class="btn-secondary" style="color:#e11d48;border-color:rgba(225,29,72,0.3);font-weight:800" onclick="logoutUser()">Sign Out / Logout</button>
+          ` : ''}
+        </div>
+      `);
+    }
+
+    function openAdminInlineLogin() {
+      showModal(`
+        <button class="close" onclick="openProfile()">✕</button>
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:var(--frozen-pink-light);border-radius:var(--radius-pill);font-size:11px;font-weight:800;color:var(--frozen-rose);margin-bottom:8px;border:1px solid var(--surface-border)">
+          🔐 ATELIER ADMIN AUTHENTICATION
+        </div>
+        <h2 style="color:var(--frozen-rose);margin-bottom:6px">Admin Sign In</h2>
+        <p style="font-size:13px;color:var(--ink-muted);margin-bottom:16px">Enter admin password to access live dashboard, orders, and products.</p>
+
+        <label style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:6px">Admin Password</label>
+        <input type="password" id="modalAdminPassword" placeholder="Enter password (e.g. admin123)" style="width:100%;padding:10px;border-radius:10px;border:1px solid var(--surface-border);background:var(--surface)" onkeydown="if(event.key==='Enter')submitAdminLogin()">
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px">
+          <button class="btn-primary" style="justify-content:center" onclick="submitAdminLogin()">Unlock Admin ⚡</button>
+          <button class="btn-secondary" style="justify-content:center;font-size:12px" onclick="document.getElementById('modalAdminPassword').value='admin123';submitAdminLogin()">1-Click (admin123)</button>
+        </div>
+
+        <div style="margin-top:16px;text-align:center">
+          <a onclick="openProfile()" style="cursor:pointer;font-size:12px;color:var(--ink-muted)">← Back to Profile</a>
+        </div>
+      `);
+    }
+
+    async function submitAdminLogin() {
+      const p = document.getElementById('modalAdminPassword')?.value.trim();
+      if (!p) return toast('Please enter the admin password');
+      try {
+        const res = await apiRequest('/api/admin/login', {
+          method: 'POST',
+          body: JSON.stringify({ password: p })
+        });
+        localStorage.setItem('bb_admin_token', res.token);
+        adminAuthenticated = true;
+        updateNavAuth();
+        toast('Admin authenticated successfully! 👑');
+        openProfile();
+      } catch (err) {
+        toast(err.message);
+      }
+    }
+
+    function showOrders() {
+      showModal(`
+        <button class="close" onclick="closeModal()">✕</button>
+        <h2 style="color:var(--frozen-rose);margin-bottom:12px">Past Orders</h2>
+        <div style="max-height:360px;overflow-y:auto;display:flex;flex-direction:column;gap:10px">
+          ${orders.length ? orders.map(o => `
+            <div style="background:var(--cream);border-radius:12px;padding:12px;display:flex;justify-content:space-between;align-items:center;border:1px solid var(--surface-border)">
+              <div>
+                <b>#${o.id}</b> · ${money(o.total)}
+                <div style="font-size:11.5px;color:var(--ink-muted)">${new Date(o.date).toLocaleDateString()} · ${o.status}</div>
+              </div>
+              <button class="btn-secondary" style="padding:4px 10px;font-size:12px" onclick="openTracking('${o.id}')">Track</button>
+            </div>
+          `).join('') : '<div style="color:var(--ink-muted)">No past orders found.</div>'}
+        </div>
+      `);
+    }
+
+    const AVAILABLE_FLOWERS = ['Red Roses', 'Pink Roses', 'White Lilies', 'Purple Orchids', 'Yellow Roses', 'Blue Orchids', 'Carnations', 'Sunflowers'];
+    const AVAILABLE_COLORS = ['Frozen Pink', 'Velvet Crimson', 'Pure White', 'Royal Purple', 'Sunshine Yellow', 'Ice Blue', 'Pastel Peach'];
+
+    function openInterestsModal() {
+      const curFlowers = customerInterests.favoriteFlowers || ['Red Roses', 'Pink Lilies'];
+      const curColors = customerInterests.favoriteColors || ['Frozen Pink'];
+      const curDates = customerInterests.celebrationDates || [];
+
+      showModal(`
+        <button class="close" onclick="openProfile()">✕</button>
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:3px 10px;background:var(--frozen-pink-light);border-radius:var(--radius-pill);font-size:11px;font-weight:800;color:var(--frozen-rose);margin-bottom:8px;border:1px solid var(--surface-border)">
+          🌸 PERSONAL GIFTING PREFERENCES
+        </div>
+        <h2 style="color:var(--frozen-rose);margin-bottom:6px">Gifting Interests & Reminders</h2>
+        <p style="font-size:13px;color:var(--ink-muted);margin-bottom:18px">Personalize your floral preferences, color palette, and key dates for tailored gifting experiences.</p>
+
+        <!-- Flower affinities -->
+        <div style="margin-bottom:16px;text-align:left">
+          <label style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:8px">1. Favorite Blooms (Select multiple)</label>
+          <div style="display:flex;flex-wrap:wrap;gap:6px" id="interestFlowersGroup">
+            ${AVAILABLE_FLOWERS.map(f => {
+              const active = curFlowers.includes(f);
+              return `<button type="button" class="btn-interest-chip ${active ? 'active' : ''}" data-val="${f}" onclick="toggleInterestChip(this)" style="padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid ${active ? 'var(--frozen-rose)' : 'var(--surface-border)'};background:${active ? 'var(--gradient-primary)' : 'var(--surface)'};color:${active ? '#fff' : 'var(--ink)'};cursor:pointer;transition:all 0.2s">🌸 ${f}</button>`;
+            }).join('')}
+          </div>
+        </div>
+
+        <!-- Color affinities -->
+        <div style="margin-bottom:16px;text-align:left">
+          <label style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:8px">2. Aesthetic Color Palette</label>
+          <div style="display:flex;flex-wrap:wrap;gap:6px" id="interestColorsGroup">
+            ${AVAILABLE_COLORS.map(c => {
+              const active = curColors.includes(c);
+              return `<button type="button" class="btn-interest-chip ${active ? 'active' : ''}" data-val="${c}" onclick="toggleInterestChip(this)" style="padding:6px 12px;border-radius:999px;font-size:12px;font-weight:700;border:1px solid ${active ? 'var(--frozen-cyan)' : 'var(--surface-border)'};background:${active ? 'linear-gradient(135deg, #0284c7, #38bdf8)' : 'var(--surface)'};color:${active ? '#fff' : 'var(--ink)'};cursor:pointer;transition:all 0.2s">🎨 ${c}</button>`;
+            }).join('')}
+          </div>
+        </div>
+
+        <!-- Celebration Dates & Reminders -->
+        <div style="margin-bottom:18px;text-align:left">
+          <label style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:8px">3. Celebration Dates (Never miss an occasion)</label>
+          <div id="interestDatesContainer">
+            ${curDates.map((d, idx) => `
+              <div class="interest-date-row" style="display:grid;grid-template-columns:1.2fr 1fr 28px;gap:6px;margin-bottom:6px;align-items:center">
+                <input type="text" class="interest-date-title" value="${escapeHtml(d.title)}" placeholder="Title (e.g. Birthday)" style="padding:8px 10px;border-radius:8px;border:1px solid var(--surface-border);font-size:12px">
+                <input type="date" class="interest-date-val" value="${escapeHtml(d.date)}" style="padding:8px 10px;border-radius:8px;border:1px solid var(--surface-border);font-size:12px">
+                <button type="button" onclick="this.closest('.interest-date-row').remove()" style="background:none;border:none;color:var(--danger);font-size:16px;cursor:pointer">✕</button>
+              </div>
+            `).join('')}
+          </div>
+          <button type="button" class="btn-secondary" style="font-size:11.5px;padding:6px 12px;margin-top:6px" onclick="addInterestDateRow()">+ Add Another Reminder Date</button>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:16px">
+          <button class="btn-secondary" onclick="openProfile()">Cancel</button>
+          <button class="btn-primary" onclick="saveCustomerInterests()">Save Preferences ✨</button>
+        </div>
+      `);
+    }
+
+    function toggleInterestChip(btn) {
+      btn.classList.toggle('active');
+      const isColors = btn.closest('#interestColorsGroup');
+      const active = btn.classList.contains('active');
+      if (isColors) {
+        btn.style.borderColor = active ? 'var(--frozen-cyan)' : 'var(--surface-border)';
+        btn.style.background = active ? 'linear-gradient(135deg, #0284c7, #38bdf8)' : 'var(--surface)';
+        btn.style.color = active ? '#fff' : 'var(--ink)';
+      } else {
+        btn.style.borderColor = active ? 'var(--frozen-rose)' : 'var(--surface-border)';
+        btn.style.background = active ? 'var(--gradient-primary)' : 'var(--surface)';
+        btn.style.color = active ? '#fff' : 'var(--ink)';
+      }
+    }
+
+    function addInterestDateRow() {
+      const container = document.getElementById('interestDatesContainer');
+      if (!container) return;
+      const div = document.createElement('div');
+      div.className = 'interest-date-row';
+      div.style.cssText = 'display:grid;grid-template-columns:1.2fr 1fr 28px;gap:6px;margin-bottom:6px;align-items:center';
+      div.innerHTML = `
+        <input type="text" class="interest-date-title" placeholder="Occasion (e.g. Anniversary)" style="padding:8px 10px;border-radius:8px;border:1px solid var(--surface-border);font-size:12px">
+        <input type="date" class="interest-date-val" style="padding:8px 10px;border-radius:8px;border:1px solid var(--surface-border);font-size:12px">
+        <button type="button" onclick="this.closest('.interest-date-row').remove()" style="background:none;border:none;color:var(--danger);font-size:16px;cursor:pointer">✕</button>
+      `;
+      container.appendChild(div);
+    }
+
+    async function saveCustomerInterests() {
+      const flowers = Array.from(document.querySelectorAll('#interestFlowersGroup .btn-interest-chip.active')).map(b => b.dataset.val);
+      const colors = Array.from(document.querySelectorAll('#interestColorsGroup .btn-interest-chip.active')).map(b => b.dataset.val);
+      const rows = document.querySelectorAll('.interest-date-row');
+      const dates = [];
+      rows.forEach(r => {
+        const title = r.querySelector('.interest-date-title')?.value.trim();
+        const date = r.querySelector('.interest-date-val')?.value.trim();
+        if (title && date) dates.push({ title, date, note: 'Customer celebration reminder' });
+      });
+
+      customerInterests = {
+        favoriteFlowers: flowers.length ? flowers : ['Red Roses', 'Pink Lilies'],
+        favoriteColors: colors.length ? colors : ['Frozen Pink'],
+        preferredOccasions: ['Anniversary', 'Birthday'],
+        celebrationDates: dates
+      };
+      write('interests', customerInterests);
+
+      if (profile && profile.phone) {
+        try {
+          await fetch('/api/customers/' + profile.phone + '/interests', {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(customerInterests)
+          });
+        } catch {}
+      }
+
+      toast('Gifting preferences & reminders saved ✨');
+      openProfile();
+    }
+
+    // Modal Login
+    let authModalTab = 'otp';
+    function login(after = false, tab = 'otp') {
+      authModalTab = tab;
+      showModal(`
+        <button class="close" onclick="closeModal()">✕</button>
+        <div style="display:inline-flex;align-items:center;gap:6px;padding:4px 10px;background:var(--frozen-pink-light);border-radius:var(--radius-pill);font-size:11px;font-weight:800;color:var(--frozen-rose);margin-bottom:10px;border:1px solid var(--surface-border)">✦ CLIENT ACCESS</div>
+        <h2 style="margin-bottom:4px;color:var(--frozen-rose)">Sign In to BloomBox 🎁</h2>
+        <p style="color:var(--ink-muted);font-size:13px;margin-bottom:16px">Enter your mobile number to receive live Twilio SMS verification code.</p>
+
+        <label style="font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block;margin-bottom:6px">Mobile Number</label>
+        <div style="display:flex;gap:8px;align-items:center">
+          <span style="padding:10px 14px;background:var(--frozen-pink-light);border-radius:10px;font-weight:800;color:var(--frozen-rose);border:1px solid var(--surface-border)">+91</span>
+          <input id="loginPhone" maxlength="10" inputmode="numeric" placeholder="10-digit number" value="${profile?.phone || ''}" style="flex:1;padding:10px;border-radius:10px;border:1px solid var(--surface-border);background:var(--surface)">
+        </div>
+        <button id="sendOtpBtn" class="btn-primary" style="width:100%;margin-top:14px;height:44px;justify-content:center" onclick="sendOtp(${after})">Send Verification Code</button>
+        <div id="otpArea"></div>
+
+        <div style="position:relative;text-align:center;margin:18px 0 14px">
+          <hr style="border:none;border-top:1px solid var(--surface-border)">
+          <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:var(--surface);padding:0 8px;font-size:11px;color:var(--ink-light);font-weight:700">or 1-click test</span>
+        </div>
+
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <button class="btn-secondary" onclick="quickClientLogin('priya', ${after})">🌸 Priya (VIP)</button>
+          <button class="btn-secondary" onclick="quickClientLogin('rahul', ${after})">🍫 Rahul (Express)</button>
+        </div>
+        <div style="display:flex;justify-content:center;align-items:center;gap:12px;margin-top:14px;font-size:12px">
+          <a href="/login${after ? '?redirect=checkout' : ''}" style="color:var(--frozen-rose);text-decoration:none;font-weight:800">Dedicated Login ↗</a>
+          <span style="color:var(--ink-light)">•</span>
+          <a onclick="openAdminInlineLogin()" style="cursor:pointer;color:var(--primary);font-weight:800">Admin Sign In 🔐</a>
+        </div>
+      `);
+    }
+
+    async function sendOtp(after) {
+      let p = document.getElementById('loginPhone').value.trim().replace(/\D/g, '');
+      if (!/^[6-9]\d{9}$/.test(p)) return toast('Enter a valid 10-digit mobile number');
+      let btn = document.getElementById('sendOtpBtn');
+      if (btn) { btn.disabled = true; btn.textContent = 'Dispatching SMS…'; }
+      try {
+        let res = await apiRequest('/api/auth/send-otp', { method: 'POST', body: JSON.stringify({ phone: p }) });
+        toast(res.smsSent ? 'OTP sent via SMS!' : 'OTP generated');
+        if (btn) btn.style.display = 'none';
+        let hint = res.devOtp ? `<div style="margin:10px 0;padding:8px;background:var(--frozen-pink-light);border-radius:8px;font-size:12px;color:var(--frozen-rose);border:1px solid var(--surface-border)">Live Code: <b>${res.devOtp}</b></div>` : '';
+        document.getElementById('otpArea').innerHTML = `
+          <label style="margin-top:12px;font-size:11.5px;font-weight:800;text-transform:uppercase;color:var(--ink-muted);display:block">Enter 6-Digit OTP</label>
+          <input id="otp" maxlength="6" inputmode="numeric" placeholder="••••••" style="width:100%;padding:10px;font-size:20px;letter-spacing:8px;text-align:center;border-radius:10px;border:1px solid var(--surface-border);background:var(--surface)">
+          ${hint}
+          <button id="verifyOtpBtn" class="btn-primary" style="width:100%;margin-top:12px;height:44px;justify-content:center" onclick="verifyOtp(${after})">Verify & Continue</button>
+        `;
+      } catch (err) {
+        if (btn) { btn.disabled = false; btn.textContent = 'Send Verification Code'; }
+        toast(err.message);
+      }
+    }
+
+    async function verifyOtp(after) {
+      let p = document.getElementById('loginPhone').value.trim().replace(/\D/g, '');
+      let otp = document.getElementById('otp').value.trim();
+      if (!otp) return toast('Enter the 6-digit code');
+      try {
+        let res = await apiRequest('/api/auth/verify-otp', { method: 'POST', body: JSON.stringify({ phone: p, otp }) });
+        profile = res.profile;
+        write('profile', profile);
+        save();
+        updateNavAuth();
+        closeModal();
+        toast('Welcome back, ' + profile.name + ' 🌷');
+        if (after) showCheckout();
+      } catch (err) {
+        toast(err.message);
+      }
+    }
+
+    function quickClientLogin(key, after) {
+      profile = {
+        name: key === 'priya' ? 'Priya Sharma' : 'Rahul Verma',
+        phone: key === 'priya' ? '9876543210' : '9123456789',
+        address: 'Villa 12, Rosewood Garden, Morabadi, Ranchi - 834008'
+      };
+      write('profile', profile);
+      save();
+      updateNavAuth();
+      closeModal();
+      toast('Welcome back, ' + profile.name);
+      if (after) showCheckout();
+    }
+
+    // Interactive Atelier Studio
+    const studioSteps = ['1. Choose Box', '2. Pick Stems & Treats', '3. Paper & Ribbon', '4. Message'];
+    const studioChoices = {
+      0: [
+        { name: 'Pink Velvet Box', price: 299, emoji: '🎀', desc: 'Luxury frosted velvet presentation' },
+        { name: 'Classic Black Hat Box', price: 349, emoji: '🎩', desc: 'Matte black box with gold foil' },
+        { name: 'Gold Rim Glass Vase', price: 399, emoji: '🏺', desc: 'Heavy crystal glass floral vase' },
+        { name: 'Handcrafted Wicker Basket', price: 279, emoji: '🧺', desc: 'Artisanal country garden basket' }
+      ],
+      1: [
+        { name: 'Red Roses (x10)', price: 499, emoji: '🌹', desc: '10 Handpicked velvet roses' },
+        { name: 'Pink Dutch Roses (x10)', price: 549, emoji: '💐', desc: '10 Blushing pastel roses' },
+        { name: 'Oriental Lilies (x4)', price: 599, emoji: '⚜️', desc: '4 Giant fragrant white lilies' },
+        { name: 'Blue Orchids (x6)', price: 549, emoji: '🪻', desc: '6 Exotic Dendrobium orchids' },
+        { name: 'Plush Mini Teddy Bear', price: 249, emoji: '🧸', desc: 'Super soft cuddly keepsake' },
+        { name: 'Ferrero Rocher Box (4 pcs)', price: 199, emoji: '🍬', desc: 'Golden hazelnut truffles' },
+        { name: 'Artisanal Dark Truffles', price: 189, emoji: '🍫', desc: 'Handcrafted luxury chocolate' },
+        { name: 'Baby Breath Gypsophila', price: 149, emoji: '✨', desc: 'Dewy cloud floral fillers' }
+      ],
+      2: [
+        { name: 'Blush Rose Gold Silk', price: 0, emoji: '📜', desc: 'Signature complimentary silk ribbon' },
+        { name: 'Emerald Velvet Ribbon', price: 49, emoji: '🌿', desc: 'Deep royal velvet presentation' },
+        { name: 'Matte Jet Black & Gold', price: 49, emoji: '✨', desc: 'Monochrome haute finish' },
+        { name: 'Frozen Pink Satin', price: 49, emoji: '❄️', desc: 'Crystal ice frost pink ribbon' }
+      ]
+    };
+
+    function selectStudioBox(name) {
+      studioBox = name;
+      updateStudioPreview();
+      renderStudioControls();
+    }
+
+    function toggleStudioItem(name, price) {
+      if (studioItems[name]) {
+        delete studioItems[name];
+      } else {
+        if (Object.keys(studioItems).length >= 5) {
+          toast('Box capacity reached (Max 5 items). Tap an item to remove it first.');
+          return;
+        }
+        studioItems[name] = price;
+      }
+      updateStudioPreview();
+      renderStudioControls();
+    }
+
+    function selectStudioPaper(name) {
+      studioPaper = name;
+      updateStudioPreview();
+      renderStudioControls();
+    }
+
+    function setStudioMessage(msg) {
+      studioMessage = msg;
+      updateStudioPreview();
+    }
+
+    function buildStudio() {
+      const stepsEl = document.getElementById('steps');
+      if (!stepsEl) return;
+      stepsEl.innerHTML = studioSteps.map((s, i) => `
+        <button class="studio-step-pill ${i === studioStep ? 'active' : ''}" onclick="setStudioStep(${i})">
+          ${s}
+        </button>
+      `).join('');
+      renderStudioControls();
+      updateStudioPreview();
+    }
+
+    function setStudioStep(i) {
+      studioStep = i;
+      buildStudio();
+    }
+
+    function renderStudioControls() {
+      const el = document.getElementById('studioControls');
+      if (!el) return;
+
+      if (studioStep === 0) {
+        el.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <h4 style="font-size:16px;color:var(--frozen-rose)">1. Select Presentation Box</h4>
+            <span style="font-size:12px;color:var(--ink-muted);font-weight:700">Step 1 of 4</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px">Choose the base packaging vessel for your custom bouquet or hamper.</p>
+          <div class="choiceGrid">
+            ${studioChoices[0].map(c => `
+              <div class="choice ${studioBox === c.name ? 'selected' : ''}" onclick="selectStudioBox('${escapeHtml(c.name)}')">
+                <strong>${c.emoji}</strong>
+                <b>${escapeHtml(c.name)}</b>
+                <div class="price-tag">${money(c.price)}</div>
+                <div class="desc-tag">${escapeHtml(c.desc)}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div style="display:flex;justify-content:flex-end;margin-top:16px">
+            <button class="btn-primary" onclick="setStudioStep(1)">Next: Pick Stems & Keepsakes →</button>
+          </div>
+        `;
+      } else if (studioStep === 1) {
+        const count = Object.keys(studioItems).length;
+        el.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <h4 style="font-size:16px;color:var(--frozen-rose)">2. Pick Fresh Floral Stems & Keepsakes</h4>
+            <span style="font-size:12px;color:var(--ink-muted);font-weight:700">Step 2 of 4 (${count}/5 Selected)</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px">Tap to add or remove floral blooms, chocolates, and plush keepsakes.</p>
+          <div class="choiceGrid">
+            ${studioChoices[1].map(c => {
+              const isSel = Boolean(studioItems[c.name]);
+              return `
+                <div class="choice ${isSel ? 'selected' : ''}" onclick="toggleStudioItem('${escapeHtml(c.name)}', ${c.price})">
+                  <strong>${c.emoji}</strong>
+                  <b>${escapeHtml(c.name)}</b>
+                  <div class="price-tag">${money(c.price)}</div>
+                  <div class="desc-tag">${escapeHtml(c.desc)}</div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px">
+            <button class="btn-secondary" onclick="setStudioStep(0)">← Back to Boxes</button>
+            <button class="btn-primary" onclick="setStudioStep(2)">Next: Paper & Ribbon →</button>
+          </div>
+        `;
+      } else if (studioStep === 2) {
+        el.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <h4 style="font-size:16px;color:var(--frozen-rose)">3. Choose Paper & Ribbon Theme</h4>
+            <span style="font-size:12px;color:var(--ink-muted);font-weight:700">Step 3 of 4</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:12px">Select wrapping texture and artisanal satin ribbon accents.</p>
+          <div class="choiceGrid">
+            ${studioChoices[2].map(c => `
+              <div class="choice ${studioPaper === c.name ? 'selected' : ''}" onclick="selectStudioPaper('${escapeHtml(c.name)}')">
+                <strong>${c.emoji}</strong>
+                <b>${escapeHtml(c.name)}</b>
+                <div class="price-tag">${c.price ? money(c.price) : 'Complimentary'}</div>
+                <div class="desc-tag">${escapeHtml(c.desc)}</div>
+              </div>
+            `).join('')}
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px">
+            <button class="btn-secondary" onclick="setStudioStep(1)">← Back to Stems</button>
+            <button class="btn-primary" onclick="setStudioStep(3)">Next: Write Card Message →</button>
+          </div>
+        `;
+      } else {
+        const quickNotes = [
+          'Wishing you boundless joy, love & happiness! 🌸',
+          'Happy Birthday to someone incredibly special! 🎂',
+          'Happy Anniversary! Here is to forever together. 💍',
+          'With all my love and deepest affection. ❤️',
+          'Heartiest Congratulations on this amazing milestone! 🎉'
+        ];
+        el.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+            <h4 style="font-size:16px;color:var(--frozen-rose)">4. Complimentary Wax-Sealed Note Card</h4>
+            <span style="font-size:12px;color:var(--ink-muted);font-weight:700">Step 4 of 4</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--ink-muted);margin-bottom:10px">Type your personalized message or select one of our curated wishes:</p>
+
+          <div style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px">
+            ${quickNotes.map(n => `
+              <button type="button" class="btn-secondary" style="font-size:11px;padding:4px 10px;font-weight:700" onclick="document.getElementById('studioMsgInput').value='${escapeHtml(n)}';setStudioMessage('${escapeHtml(n)}')">
+                ${escapeHtml(n)}
+              </button>
+            `).join('')}
+          </div>
+
+          <textarea id="studioMsgInput" rows="3" oninput="setStudioMessage(this.value)" placeholder="Write your heartfelt note here…" style="width:100%;padding:12px;border-radius:12px;border:1px solid var(--surface-border);background:var(--surface);font-family:inherit;font-size:13px;line-height:1.5">${escapeHtml(studioMessage)}</textarea>
+
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px">
+            <button class="btn-secondary" onclick="setStudioStep(2)">← Back to Ribbon</button>
+            <button class="btn-primary" onclick="addBouquet()">Complete & Add to Bag 🛍</button>
+          </div>
+        `;
+      }
+    }
+
+    function updateStudioTotal() {
+      const boxObj = studioChoices[0].find(b => b.name === studioBox) || studioChoices[0][0];
+      const paperObj = studioChoices[2].find(p => p.name === studioPaper) || studioChoices[2][0];
+      let t = (boxObj ? boxObj.price : 299) + (paperObj ? paperObj.price : 0);
+      Object.values(studioItems).forEach(p => t += p);
+
+      const count = Object.keys(studioItems).length;
+      const totalEl = document.getElementById('studioTotal');
+      if (totalEl) totalEl.textContent = money(t);
+      const capEl = document.getElementById('capacity');
+      if (capEl) capEl.textContent = `Capacity: ${count} / 5 items`;
+      return t;
+    }
+
+    function updateStudioPreview() {
+      const box = document.getElementById('preview');
+      if (!box) return;
+
+      const boxObj = studioChoices[0].find(b => b.name === studioBox) || studioChoices[0][0];
+      const paperObj = studioChoices[2].find(p => p.name === studioPaper) || studioChoices[2][0];
+
+      const emojiEl = box.querySelector('.previewEmoji');
+      if (emojiEl) emojiEl.textContent = boxObj ? boxObj.emoji : '🎀';
+
+      const titleEl = document.getElementById('previewBoxTitle');
+      if (titleEl) titleEl.textContent = studioBox;
+
+      const itemsContainer = document.getElementById('previewItemsContainer');
+      const itemNames = Object.keys(studioItems);
+      if (itemsContainer) {
+        if (!itemNames.length) {
+          itemsContainer.innerHTML = '<span style="font-size:12px;color:var(--ink-muted);font-style:italic">No items chosen yet. Select in Step 2!</span>';
+        } else {
+          itemsContainer.innerHTML = itemNames.map(name => {
+            const itemObj = studioChoices[1].find(it => it.name === name);
+            const em = itemObj ? itemObj.emoji : '🌸';
+            return `
+              <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 8px;border-radius:999px;font-size:11px;font-weight:700;background:rgba(255,255,255,0.9);color:var(--frozen-rose);border:1px solid var(--surface-border);box-shadow:0 1px 4px rgba(0,0,0,0.04)">
+                <span>${em}</span>
+                <span>${escapeHtml(name)}</span>
+                <span style="cursor:pointer;color:var(--ink-light);margin-left:2px" onclick="toggleStudioItem('${escapeHtml(name)}', 0);event.stopPropagation()" title="Remove item">✕</span>
+              </span>
+            `;
+          }).join('');
+        }
+      }
+
+      const msgCard = document.getElementById('previewMsgCard');
+      if (msgCard) msgCard.textContent = `“${studioMessage || 'Warmest wishes!'}”`;
+
+      const ribbonEl = document.getElementById('previewRibbon');
+      if (ribbonEl) ribbonEl.textContent = `Wrap: ${studioPaper}` + (paperObj && paperObj.price ? ` (+${money(paperObj.price)})` : ' (Free)');
+
+      updateStudioTotal();
+    }
+
+    function surpriseMe() {
+      studioBox = 'Gold Rim Glass Vase';
+      studioItems = {
+        'Oriental Lilies (x4)': 599,
+        'Blue Orchids (x6)': 549,
+        'Ferrero Rocher Box (4 pcs)': 199
+      };
+      studioPaper = 'Emerald Velvet Ribbon';
+      studioMessage = 'May your special celebration bloom with endless fragrance & joy!';
+      studioStep = 0;
+      buildStudio();
+      updateStudioPreview();
+      toast('🪄 Curated a bestselling luxury florist mix for you!');
+    }
+
+    function addBouquet() {
+      const itemsList = Object.keys(studioItems);
+      if (!itemsList.length) {
+        setStudioStep(1);
+        return toast('Please select at least 1 flower or keepsake in Step 2!');
+      }
+
+      const total = updateStudioTotal();
+      const customId = Date.now();
+      const boxObj = studioChoices[0].find(b => b.name === studioBox) || studioChoices[0][0];
+
+      let img = '/images/products/royal-red-roses-hat-box.jpg';
+      if (studioBox.includes('Vase')) img = '/images/products/white-oriental-lilies.jpg';
+      else if (studioBox.includes('Basket')) img = '/images/products/celebration-gourmet-hamper.jpg';
+      else if (studioBox.includes('Velvet')) img = '/images/products/forever-red-roses-heart.jpg';
+
+      const customProduct = {
+        id: customId,
+        name: `Custom Atelier Hamper: ${studioBox}`,
+        price: total,
+        mrp: total + 350,
+        emoji: boxObj.emoji,
+        image: img,
+        weight: `${itemsList.length} items (${itemsList.join(', ')}) · ${studioPaper}`,
+        cat: 'Custom Hampers',
+        badge: 'Handcrafted',
+        delivery: 'In 2 Hours',
+        enabled: true
+      };
+
+      products.push(customProduct);
+      cart[customId] = 1;
+      save();
+      updateCounts();
+      openCart();
+      toast('Custom bespoke hamper added to your bag! 🛍✨');
+    }
+
+    // Search Suggestions
+    const searchInput = document.getElementById('search');
+    const suggestBox = document.getElementById('suggest');
+    searchInput?.addEventListener('input', e => {
+      const q = e.target.value.trim().toLowerCase();
+      if (!q) { suggestBox.style.display = 'none'; return; }
+      const matches = products.filter(p => p.name.toLowerCase().includes(q) || p.cat.toLowerCase().includes(q)).slice(0, 5);
+      if (!matches.length) { suggestBox.style.display = 'none'; return; }
+      suggestBox.innerHTML = matches.map(m => `
+        <div class="suggest-item" onclick="selectSearch(${m.id})">
+          <span>${m.emoji || '🌸'}</span>
+          <b>${m.name}</b>
+          <span style="margin-left:auto;color:var(--frozen-rose);font-weight:700">${money(m.price)}</span>
+        </div>
+      `).join('');
+      suggestBox.style.display = 'block';
+    });
+
+    function selectSearch(id) {
+      suggestBox.style.display = 'none';
+      addProduct(id);
+    }
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.search-container')) suggestBox.style.display = 'none';
+    });
+
+    // Dark Theme Toggle
+    function toggleDark() {
+      document.body.classList.toggle('dark');
+      write('dark', document.body.classList.contains('dark'));
+    }
+    if (read('dark', false)) document.body.classList.add('dark');
+
+    // FAQ Accordion
+    function toggleFaq(el) {
+      el.classList.toggle('open');
+    }
+
+    // Admin Access
+    function adminLogin() {
+      const p = prompt('Enter Atelier Admin Password:');
+      if (p === 'admin123') {
+        adminAuthenticated = true;
+        toast('Admin portal unlocked');
+        showModal(`
+          <button class="close" onclick="closeModal()">✕</button>
+          <h2 style="color:var(--frozen-rose);margin-bottom:12px">Admin Dashboard</h2>
+          <p style="font-size:13px;color:var(--ink-muted);margin-bottom:16px">Orders received: <b>${orders.length}</b></p>
+          <div style="max-height:300px;overflow-y:auto;display:flex;flex-direction:column;gap:8px">
+            ${orders.map(o => `
+              <div style="padding:10px;background:var(--cream);border-radius:10px;font-size:12px;border:1px solid var(--surface-border)">
+                <b>#${o.id}</b> · ${o.name} (${o.phone}) · <b>${money(o.total)}</b> (${o.status})
+              </div>
+            `).join('')}
+          </div>
+        `);
+      } else if (p) {
+        toast('Incorrect password');
+      }
+    }
+
+    // Initial Load
+    buildStudio();
+    bootBackend();
+  </script>
+</body>
+</html>

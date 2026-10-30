@@ -1,0 +1,29 @@
+BLOOMBOX TWILIO SMS OTP SETUP
+
+Your Twilio credentials are kept safe in your private .env file:
+- Account SID: (Loaded from .env)
+- API Key SID: (Loaded from .env)
+- API Client Secret: (Loaded from .env)
+
+TO ENABLE LIVE SMS DISPATCH:
+
+1. Finish creating the API Key in Twilio:
+   - In your Twilio Console tab (Create API Key), check "Got it! I have saved my Client ID and Client secret..." and click the blue "Finish" button so Twilio activates the key.
+
+2. Get a Twilio Phone Number (Free on trial):
+   - In the Twilio Console, navigate to: Phone Numbers > Manage > Buy a number (or click "Get a phone number" on the Console Home).
+   - Once acquired, open .env and add the number in E.164 format (with country code, e.g.):
+     TWILIO_PHONE_NUMBER=+1234567890
+
+3. (Trial accounts only) Verify Destination Numbers:
+   - Twilio trial accounts can only send SMS to numbers verified on the account.
+   - Go to: Phone Numbers > Manage > Verified Caller IDs, and verify your mobile number.
+
+4. (Optional Alternative) Primary Auth Token:
+   - On the Twilio Console Home page, click the eye icon next to "Auth Token" to reveal your 32-character Auth Token.
+   - You can paste this in .env under TWILIO_AUTH_TOKEN=.
+
+TESTING & DEVELOPMENT MODE:
+- When SMS cannot be delivered (e.g. while configuring the phone number or on unverified trial numbers), BloomBox automatically logs the 6-digit OTP in the server terminal and displays a test badge in the UI.
+- The standard demo OTP 1234 is also accepted as a development fallback.
+

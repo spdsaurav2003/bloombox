@@ -1,0 +1,1 @@
+BloomBox gifting-store demo. Node.js server.js serves index.html and /api routes. Extract the archive and run npm start, or double-click START BLOOMBOX.bat on Windows. OTP and payments are still simulated until real providers and credentials are configured.

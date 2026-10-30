@@ -1,0 +1,28 @@
+BLOOMBOX GIFTING STORE — QUICK START
+
+This is the updated BloomBox gifting storefront. Grocery categories are removed. The shop focuses on:
+- Soft toys and teddy bears
+- Flowers and flower + chocolate combos
+- Custom hampers
+- Gaming gifts
+- Chocolates
+- Snacks and drinks (Lay's, chips, cold coffee, cookies, popcorn)
+
+RUN ON WINDOWS
+1. Install Node.js 18 or newer if needed: https://nodejs.org/
+2. Extract the complete ZIP into a normal folder, for example Desktop\BloomBox.
+3. Open that folder in VS Code.
+4. Open Terminal > New Terminal.
+5. Run: npm install
+6. Run: npm start
+7. Open: http://localhost:3000
+
+The custom hamper studio lets customers choose a box, flowers/soft toys/snacks, chocolates, extras and a message. The preview updates to show selected items, wrapping colour, message and total before adding the hamper to cart.
+
+PAYMENTS AND OTP
+- Razorpay integration is included for payments (requires RAZORPAY_KEY_ID and RAZORPAY_KEY_SECRET in .env).
+- Twilio SMS OTP authentication is now integrated into customer login (/api/auth/send-otp and /api/auth/verify-otp). Twilio credentials are configured in .env. See TWILIO-SETUP.txt for adding your Twilio Phone Number and activating live SMS dispatch.
+- Orders are stored in data/db.json. For a production store, use a persistent database and configure backups/security before accepting live customer orders.
+
+DEPLOYMENT
+For Render, use Build Command: npm install and Start Command: npm start. Add Razorpay keys only under Render > service > Environment. Deploy only after local testing.

@@ -1,0 +1,12 @@
+RAZORPAY SETUP (TEST MODE FIRST)
+
+1. Create/sign in to your Razorpay account: https://dashboard.razorpay.com/
+2. Generate Test API keys from Account & Settings > API Keys.
+3. Set these variables in the server environment (never in index.html):
+   RAZORPAY_KEY_ID=your_test_key_id
+   RAZORPAY_KEY_SECRET=your_test_key_secret
+4. Restart the server. On Render, add them under the service Environment section and redeploy.
+5. Test checkout with Razorpay's official test credentials/instructions.
+6. Only switch to Live keys after account activation and successful end-to-end verification.
+
+Do not commit .env files or share the secret key. This project does NOT currently include real SMS OTP integration. Do not accept real orders until payment verification, persistent order storage, authentication, refund/cancellation handling and operational fulfilment have been tested.

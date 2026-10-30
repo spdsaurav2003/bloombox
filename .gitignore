@@ -1,0 +1,20 @@
+# Environment variables (Crucial: Protects Razorpay & Twilio secrets)
+.env
+.env.local
+.env.*.local
+
+# Dependency directories
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Database temporary write files
+data/*.tmp
+
