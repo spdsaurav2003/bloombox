@@ -578,7 +578,7 @@ async function handle(req, res) {
     if (!/^[6-9]\d{9}$/.test(String(body.phone || ''))) return json(res, 400, {error:'A valid 10-digit Indian mobile number is required.'});
     const pin = String(body.pin || '').trim();
     if (!/^\d{6}$/.test(pin)) return json(res, 400, {error:'A valid 6-digit pincode is required.'});
-    if (!/^83[45]\d{3}$/.test(pin)) return json(res, 400, {error:'Blinkit Ranchi delivers exclusively within Ranchi (Jharkhand). Delivery is restricted to Ranchi pincodes (834001 - 834010, 835xxx).'});
+    if (!/^83[45]\d{3}$/.test(pin)) return json(res, 400, {error:'BloomBox delivers exclusively within Ranchi (Jharkhand). Delivery is restricted to Ranchi pincodes (834001 - 834010, 835xxx).'});
     if (!String(body.name || '').trim() || !String(body.address || '').trim()) return json(res, 400, {error:'Name and delivery address are required.'});
     const staged = [];
     let itemsTotal = 0;
