@@ -209,6 +209,29 @@
     .header-btn:hover {
       background: var(--border-subtle);
     }
+    .admin-pill-btn {
+      background: #f3f4f6;
+      color: #1c1c1c;
+      border: 1px solid var(--border-color);
+      padding: 9px 14px;
+      border-radius: var(--radius-sm);
+      font-weight: 700;
+      font-size: 13.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .admin-pill-btn:hover {
+      background: #e5e7eb;
+      border-color: #d1d5db;
+    }
+    .admin-pill-btn.is-active {
+      background: var(--blinkit-green-light);
+      color: var(--blinkit-green-dark);
+      border-color: #86efac;
+    }
     .header-cart-btn {
       background: var(--blinkit-green);
       color: #ffffff;
@@ -991,8 +1014,12 @@
 
     /* Responsive */
     @media (max-width: 768px) {
-      .header-inner { gap: 10px; }
+      .header-inner { gap: 8px; padding: 10px 12px; }
       .location-box { display: none; }
+      .header-actions { gap: 6px; }
+      .admin-pill-btn { padding: 8px 10px; font-size: 12px; }
+      .header-btn { padding: 8px 10px; font-size: 12px; }
+      .header-cart-btn { padding: 8px 14px; font-size: 12.5px; }
       .product-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
@@ -1040,10 +1067,10 @@
 
       <!-- Header Actions -->
       <div class="header-actions">
-        <a href="/admin" class="header-btn" title="Dark Store Operations">
+        <button class="admin-pill-btn" onclick="openAdminModal()" id="headerAdminBtn" title="BloomBox Dark Store Operations">
           <span>⚙️</span>
-          <span style="display: none; @media(min-width: 900px){display:inline;}">Dark Store</span>
-        </a>
+          <span>Admin</span>
+        </button>
         <button class="header-btn" onclick="openAuthModal()" id="authBtn">
           <span>👤</span>
           <span id="authBtnText">Login</span>
@@ -1338,6 +1365,7 @@
       renderCategoryRail();
       updateLocationDisplay();
       updateAuthDisplay();
+      updateAdminButtonState();
       startSearchCycling();
 
       try {
@@ -2036,7 +2064,14 @@
             </div>
 
             <button class="header-cart-btn" style="width:100%;justify-content:center;margin-bottom:8px" onclick="openOrderHistory()">View Order History 📦</button>
-            <button class="header-btn" style="width:100%;justify-content:center;color:var(--danger-color)" onclick="handleLogout()">Logout</button>
+            <button class="header-btn" style="width:100%;justify-content:center;color:var(--danger-color);margin-bottom:12px" onclick="handleLogout()">Logout</button>
+
+            <div style="padding-top:12px;border-top:1px dashed var(--border-color);font-size:12px">
+              ${localStorage.getItem('bb_admin_token')
+                ? `<span style="color:#0c831f;font-weight:800">⚡ Dark Store Admin Active</span> · <a href="/admin" style="color:var(--blinkit-green);font-weight:800;text-decoration:none">Open Dashboard →</a>`
+                : `<a href="javascript:void(0)" onclick="closeModal();openAdminModal()" style="color:var(--text-muted);text-decoration:none;font-weight:700">⚙️ Dark Store Admin Portal</a>`
+              }
+            </div>
           </div>
         `);
       } else {
@@ -2056,6 +2091,12 @@
 
             <button type="submit" class="header-cart-btn" style="width:100%;justify-content:center;height:44px">Continue to 8-Min Groceries →</button>
           </form>
+
+          <div style="margin-top:14px;text-align:center">
+            <a href="javascript:void(0)" onclick="closeModal();openAdminModal()" style="font-size:12px;color:var(--text-muted);font-weight:700;text-decoration:none">
+              Dark Store Staff? <b>Sign In as Admin ⚙️</b>
+            </a>
+          </div>
         `);
       }
     }
@@ -2082,6 +2123,125 @@
     function updateAuthDisplay() {
       const btnText = document.getElementById('authBtnText');
       btnText.textContent = profile ? profile.name.split(' ')[0] : 'Login';
+    }
+
+    // Admin Hub & Authentication Handlers
+    function updateAdminButtonState() {
+      const btn = document.getElementById('headerAdminBtn');
+      if (!btn) return;
+      const isAdmin = Boolean(localStorage.getItem('bb_admin_token'));
+      if (isAdmin) {
+        btn.classList.add('is-active');
+        btn.innerHTML = `<span>⚙️</span><span>Admin</span><span style="width:7px;height:7px;border-radius:50%;background:#16a34a;display:inline-block;" title="Logged in as Admin"></span>`;
+        btn.title = 'BloomBox Dark Store Operations (Logged In)';
+      } else {
+        btn.classList.remove('is-active');
+        btn.innerHTML = `<span>⚙️</span><span>Admin</span>`;
+        btn.title = 'BloomBox Dark Store Operations — Sign In';
+      }
+    }
+
+    function openAdminModal() {
+      const isAdmin = Boolean(localStorage.getItem('bb_admin_token'));
+      if (isAdmin) {
+        showModal(`
+          <button class="modal-close-btn" onclick="closeModal()">✕</button>
+          <div style="text-align:center;padding:6px 0">
+            <div style="font-size:38px;margin-bottom:8px">⚡</div>
+            <div style="display:inline-flex;align-items:center;gap:6px;background:#e8f7ed;color:#0c831f;padding:4px 12px;border-radius:9999px;font-size:11.5px;font-weight:800;margin-bottom:12px">
+              <span style="width:8px;height:8px;border-radius:50%;background:#0c831f"></span>
+              AUTHENTICATED ATELIER ADMIN
+            </div>
+            <h3 style="font-size:18px;font-weight:800">BloomBox Dark Store Operations</h3>
+            <p style="font-size:13px;color:var(--text-muted);margin:4px 0 16px 0">Logged in with full privileges for Ranchi hubs (Lalpur & Doranda).</p>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:18px;text-align:left">
+              <div style="padding:12px;background:#f9fafb;border-radius:8px;border:1px solid #f3f4f6">
+                <div style="font-size:11px;color:var(--text-muted);font-weight:700">CATALOGUE</div>
+                <div style="font-size:18px;font-weight:900;color:var(--text-main)">${products.length} Products</div>
+              </div>
+              <div style="padding:12px;background:#f9fafb;border-radius:8px;border:1px solid #f3f4f6">
+                <div style="font-size:11px;color:var(--text-muted);font-weight:700">STATUS</div>
+                <div style="font-size:13.5px;font-weight:900;color:#0c831f;margin-top:2px">● 8-Min Delivery Active</div>
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:10px">
+              <a href="/admin" class="btn-checkout" style="justify-content:center;text-decoration:none">
+                Launch Full Admin Dashboard 🚀
+              </a>
+              <button class="header-btn" style="width:100%;justify-content:center;color:var(--danger-color);border:1px solid #fecaca;background:#fef2f2;padding:10px" onclick="handleAdminLogout()">
+                Sign Out from Admin
+              </button>
+            </div>
+          </div>
+        `);
+      } else {
+        showModal(`
+          <button class="modal-close-btn" onclick="closeModal()">✕</button>
+          <div style="text-align:center;padding:4px 0">
+            <div style="font-size:38px;margin-bottom:6px">⚙️</div>
+            <h3 style="font-size:18px;font-weight:800">BloomBox Admin Console</h3>
+            <p style="font-size:13px;color:var(--text-muted);margin:4px 0 16px 0">Enter administrator password to manage 8-min grocery stock, orders, and dark store operations.</p>
+
+            <form onsubmit="handleAdminInlineLogin(event)" style="text-align:left">
+              <label style="font-size:11.5px;font-weight:800;color:var(--text-muted);text-transform:uppercase">Admin Password</label>
+              <input type="password" id="inlineAdminPassword" required placeholder="Enter admin password (e.g. admin123)" style="width:100%;height:44px;border-radius:8px;border:1px solid var(--border-color);padding:0 12px;font-family:inherit;font-size:14px;margin:6px 0 12px 0">
+
+              <button type="submit" id="inlineAdminSubmitBtn" class="header-cart-btn" style="width:100%;justify-content:center;height:44px;font-size:14px">
+                Sign In as Admin ⚡
+              </button>
+            </form>
+
+            <div style="margin-top:14px;padding-top:14px;border-top:1px dashed var(--border-color)">
+              <button class="header-btn" style="width:100%;justify-content:center;font-size:12px;background:#f3f4f6;padding:9px" onclick="document.getElementById('inlineAdminPassword').value='admin123';document.getElementById('inlineAdminSubmitBtn').click()">
+                ⚡ 1-Click Fill Demo Credentials (admin123)
+              </button>
+            </div>
+
+            <div style="margin-top:12px">
+              <a href="/admin" style="font-size:12px;color:var(--blinkit-green);font-weight:700;text-decoration:none">Or go directly to /admin →</a>
+            </div>
+          </div>
+        `);
+      }
+    }
+
+    async function handleAdminInlineLogin(e) {
+      e.preventDefault();
+      const p = document.getElementById('inlineAdminPassword').value.trim();
+      if (!p) return toast('Please enter the admin password');
+      const submitBtn = document.getElementById('inlineAdminSubmitBtn');
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Verifying credentials...';
+      }
+      try {
+        const res = await apiRequest('/api/admin/login', {
+          method: 'POST',
+          body: JSON.stringify({ password: p })
+        });
+        localStorage.setItem('bb_admin_token', res.token);
+        updateAdminButtonState();
+        closeModal();
+        toast('Welcome back, Admin! Redirecting to Dark Store Dashboard 🚀');
+        setTimeout(() => {
+          window.location.href = '/admin';
+        }, 700);
+      } catch (err) {
+        toast(err.message || 'Incorrect admin password');
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Sign In as Admin ⚡';
+        }
+      }
+    }
+
+    function handleAdminLogout() {
+      localStorage.removeItem('bb_admin_token');
+      updateAdminButtonState();
+      closeModal();
+      toast('Signed out from Admin Console');
     }
 
     function openOrderHistory() {
