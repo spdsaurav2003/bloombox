@@ -578,7 +578,7 @@ async function handle(req, res) {
     if (!/^[6-9]\d{9}$/.test(String(body.phone || ''))) return json(res, 400, {error:'A valid 10-digit Indian mobile number is required.'});
     const pin = String(body.pin || '').trim();
     if (!/^\d{6}$/.test(pin)) return json(res, 400, {error:'A valid 6-digit pincode is required.'});
-    if (!/^83[45]\d{3}$/.test(pin)) return json(res, 400, {error:'BloomBox delivers exclusively within Ranchi (Jharkhand). Delivery is restricted to Ranchi pincodes (834001 - 834010, 835xxx).'});
+    if (!/^83[45]\d{3}$/.test(pin)) return json(res, 400, {error:'Blinkit Ranchi delivers exclusively within Ranchi (Jharkhand). Delivery is restricted to Ranchi pincodes (834001 - 834010, 835xxx).'});
     if (!String(body.name || '').trim() || !String(body.address || '').trim()) return json(res, 400, {error:'Name and delivery address are required.'});
     const staged = [];
     let itemsTotal = 0;
@@ -601,13 +601,13 @@ async function handle(req, res) {
     const cod = body.method === 'Cash on Delivery';
     if (cod && itemsTotal > Number(db.settings.codLimit || 5000)) return json(res, 400, {error:`COD is limited to ₹${db.settings.codLimit || 5000}. Please choose prepaid payment.`});
     for (const line of staged) line.product.stock -= line.qty;
-    const id = `BB${Date.now().toString().slice(-7)}${crypto.randomInt(10,99)}`;
+    const id = `BLK${Date.now().toString().slice(-7)}${crypto.randomInt(10,99)}`;
     const order = {
-      id, items: body.items.map(item => ({productId:Number(item.productId), product:String(item.product || 'Custom bouquet').slice(0,120), emoji:String(item.emoji || '🎁').slice(0,12), qty:Number(item.qty), price:Number(item.price)})),
+      id, items: body.items.map(item => ({productId:Number(item.productId), product:String(item.product || 'Quick Mart Item').slice(0,120), emoji:String(item.emoji || '🛍️').slice(0,12), qty:Number(item.qty), price:Number(item.price)})),
       total: Number.isFinite(Number(body.total)) ? Math.max(0, Number(body.total)) : itemsTotal,
       method: String(body.method || 'UPI').slice(0,40), status:'Placed',
       name:String(body.name).trim().slice(0,120), phone:String(body.phone), address:String(body.address).trim().slice(0,500), city:'Ranchi', pin:String(body.pin),
-      slot:String(body.slot || 'Instant · 10–30 min').slice(0,80), tip:Math.max(0,Number(body.tip)||0), date:new Date().toISOString(), demoPayment:body.method !== 'Cash on Delivery', paymentId:String(body.paymentId || ''), paymentStatus:body.method === 'Cash on Delivery' ? 'pending' : 'paid'
+      slot:String(body.slot || '⚡ 8–10 Mins Instant Delivery').slice(0,80), tip:Math.max(0,Number(body.tip)||0), date:new Date().toISOString(), demoPayment:body.method !== 'Cash on Delivery', paymentId:String(body.paymentId || ''), paymentStatus:body.method === 'Cash on Delivery' ? 'pending' : 'paid'
     };
     db.orders.unshift(order);
     upsertCustomer({ phone: body.phone, name: body.name, address: body.address, orderAmount: order.total });

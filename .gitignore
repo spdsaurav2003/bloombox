@@ -18,3 +18,7 @@ Thumbs.db
 # Database temporary write files
 data/*.tmp
 
+
+# Raw user photos source
+/PHOTOS/
+
