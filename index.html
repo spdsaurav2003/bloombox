@@ -627,69 +627,229 @@
 
     /* Studio Container for Gifting */
     .studio-box-banner {
-      background: linear-gradient(135deg, #fdf2f8 0%, #fff1f2 50%, #fef3c7 100%);
-      border: 1px solid #fecdd3;
+      background: linear-gradient(135deg, #fff5f8 0%, #fdf2f8 45%, #fffbeb 100%);
+      border: 1.5px solid #fbcfe8;
       border-radius: var(--radius-lg);
       padding: 24px;
       margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(190, 24, 93, 0.06);
     }
     .studio-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 18px;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
+      border-bottom: 1px dashed #fbcfe8;
+      padding-bottom: 14px;
     }
     .studio-header h3 {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 800;
       color: #881337;
+    }
+    .studio-layout {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 22px;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .studio-layout {
+        grid-template-columns: 1fr;
+      }
     }
     .studio-steps-rail {
       display: flex;
       gap: 8px;
       overflow-x: auto;
       margin-bottom: 16px;
+      padding-bottom: 4px;
     }
     .studio-step-btn {
-      padding: 6px 14px;
+      padding: 8px 16px;
       border-radius: var(--radius-pill);
       font-size: 12px;
-      font-weight: 700;
-      border: 1px solid #fbcfe8;
+      font-weight: 800;
+      border: 1.5px solid #fbcfe8;
       background: #ffffff;
       cursor: pointer;
       color: #881337;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      white-space: nowrap;
+    }
+    .studio-step-btn:hover {
+      border-color: #be185d;
+      background: #fff1f2;
     }
     .studio-step-btn.active {
       background: #be185d;
       color: #ffffff;
       border-color: #be185d;
+      box-shadow: 0 2px 10px rgba(190, 24, 93, 0.25);
     }
     .choice-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(135px, 1fr));
-      gap: 10px;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 12px;
       margin-bottom: 16px;
     }
     .studio-choice-card {
       background: #ffffff;
       border: 1.5px solid #fbcfe8;
-      border-radius: var(--radius-sm);
+      border-radius: var(--radius-md);
       padding: 10px;
       text-align: center;
       cursor: pointer;
       transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .studio-choice-card:hover {
+      transform: translateY(-2px);
+      border-color: #f472b6;
+      box-shadow: 0 4px 14px rgba(190, 24, 93, 0.12);
     }
     .studio-choice-card.selected {
       border-color: #be185d;
       background: #fff1f2;
-      box-shadow: 0 2px 8px rgba(190, 24, 93, 0.15);
+      box-shadow: 0 4px 14px rgba(190, 24, 93, 0.2);
     }
-    .studio-choice-emoji { font-size: 24px; margin-bottom: 4px; }
-    .studio-choice-name { font-size: 11.5px; font-weight: 700; color: #1c1c1c; }
-    .studio-choice-price { font-size: 11px; font-weight: 800; color: #be185d; }
+    .studio-choice-thumb {
+      width: 100%;
+      height: 84px;
+      border-radius: 8px;
+      object-fit: cover;
+      margin-bottom: 8px;
+      background: #fdf2f8;
+      border: 1px solid #fce7f3;
+    }
+    .studio-choice-emoji {
+      font-size: 32px;
+      height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+    .studio-choice-name {
+      font-size: 12px;
+      font-weight: 800;
+      color: #1c1c1c;
+      line-height: 1.25;
+      margin-bottom: 4px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .studio-choice-price {
+      font-size: 12px;
+      font-weight: 900;
+      color: #be185d;
+    }
+    .studio-badge-check {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      width: 18px;
+      height: 18px;
+      background: #be185d;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 10px;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+    .studio-choice-card.selected .studio-badge-check {
+      display: flex;
+    }
+    .stem-counter-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 6px;
+      width: 100%;
+    }
+    .stem-btn {
+      width: 26px;
+      height: 26px;
+      border-radius: 6px;
+      border: 1px solid #f472b6;
+      background: #fff;
+      color: #be185d;
+      font-weight: 900;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+    }
+    .stem-btn:hover {
+      background: #be185d;
+      color: #fff;
+    }
+    .stem-qty-label {
+      font-weight: 900;
+      font-size: 12.5px;
+      min-width: 20px;
+      text-align: center;
+      color: #881337;
+    }
+
+    /* Live Preview Right Card */
+    .studio-preview-card {
+      background: #ffffff;
+      border: 1.5px solid #fbcfe8;
+      border-radius: var(--radius-lg);
+      padding: 18px;
+      box-shadow: 0 4px 18px rgba(190, 24, 93, 0.08);
+      position: sticky;
+      top: 90px;
+    }
+    .studio-preview-img-wrap {
+      width: 100%;
+      height: 170px;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 14px;
+      border: 1px solid #fce7f3;
+      background: #fff1f2;
+      position: relative;
+    }
+    .studio-preview-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .studio-receipt-list {
+      max-height: 160px;
+      overflow-y: auto;
+      font-size: 12px;
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .studio-receipt-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4px 0;
+      border-bottom: 1px dashed #f3f4f6;
+    }
 
     /* Cart Slide-out Drawer */
     .cart-backdrop {
@@ -1141,20 +1301,53 @@
         <div>
           <span style="font-size: 11px; font-weight: 800; color: #be185d; text-transform: uppercase;">✦ BloomBox Instant Luxury Gifting</span>
           <h3>The Bespoke Bouquet & Hamper Studio</h3>
-          <p style="font-size: 13px; color: #6b5a70;">Build your custom presentation box with fresh blooms, teddy keepsakes & chocolates.</p>
+          <p style="font-size: 13px; color: #6b5a70;">Design and customize your own arrangement live with fresh stems, signature wraps, plushies & chocolates.</p>
         </div>
-        <button class="header-btn" style="background:#be185d;color:#fff" onclick="surpriseMe()">Curate Surprise Mix ✨</button>
+        <div style="display:flex;gap:8px;align-items:center">
+          <button class="header-btn" style="background:#fff;border:1px solid #fbcfe8;color:#be185d;font-size:12px;padding:7px 12px" onclick="resetStudio()">↺ Start Fresh</button>
+          <button class="header-btn" style="background:#be185d;color:#fff;font-size:12px;padding:7px 14px" onclick="surpriseMe()">Curate Surprise Mix ✨</button>
+        </div>
       </div>
 
-      <div class="studio-steps-rail" id="studioStepsRail"></div>
-      <div id="studioControls"></div>
-
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:14px;border-top:1px dashed #fbcfe8">
-        <div>
-          <small style="font-size:11px;color:#881337;font-weight:700">Studio Hamper Total</small>
-          <div style="font-size:22px;font-weight:900;color:#be185d" id="studioTotal">₹1,047</div>
+      <div class="studio-layout">
+        <!-- Left: Interactive Configurator Controls -->
+        <div class="studio-builder-pane">
+          <div class="studio-steps-rail" id="studioStepsRail"></div>
+          <div id="studioControls"></div>
+          
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:12px;border-top:1px dashed #fbcfe8">
+            <button class="header-btn" id="studioPrevBtn" style="font-size:12px;border:1px solid #fbcfe8;background:#fff;color:#881337;padding:7px 14px" onclick="stepStudioNav(-1)">← Previous Step</button>
+            <button class="header-btn" id="studioNextBtn" style="font-size:12px;background:#be185d;color:#fff;font-weight:800;padding:7px 16px" onclick="stepStudioNav(1)">Next Step →</button>
+          </div>
         </div>
-        <button class="header-cart-btn" style="background:#be185d" onclick="addStudioBouquet()">Add Custom Hamper to Cart 🛍</button>
+
+        <!-- Right: Live Visual Preview & Instant Breakdown -->
+        <div class="studio-preview-card">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+            <span style="font-size:11.5px;font-weight:800;color:#881337;text-transform:uppercase">Live Custom Preview</span>
+            <span style="font-size:10px;font-weight:900;background:#fce7f3;color:#be185d;padding:2px 8px;border-radius:9999px">Bespoke Atelier</span>
+          </div>
+
+          <div class="studio-preview-img-wrap">
+            <img id="studioPreviewImg" src="/images/photos/velvet-red-roses-black-gold.jpeg" alt="Custom Bouquet Preview">
+          </div>
+
+          <div style="font-size:14px;font-weight:900;color:#1c1c1c" id="studioPreviewTitle">Custom Atelier Bouquet</div>
+          <div style="font-size:11.5px;color:var(--text-muted);margin-top:2px" id="studioPreviewSubtitle">Matte Black & Gold Cone Wrap</div>
+
+          <div class="studio-receipt-list" id="studioReceiptList">
+            <!-- Populated reactively via JS -->
+          </div>
+
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin:12px 0 14px 0;padding-top:10px;border-top:1.5px solid #fbcfe8">
+            <span style="font-size:12px;color:#881337;font-weight:800">Total Custom Price:</span>
+            <span style="font-size:22px;font-weight:900;color:#be185d" id="studioTotal">₹499</span>
+          </div>
+
+          <button class="header-cart-btn" style="width:100%;justify-content:center;background:#be185d;height:44px;font-size:13.5px" onclick="addStudioBouquet()">
+            Add Custom Bouquet to Cart 🛍
+          </button>
+        </div>
       </div>
     </div>
 
@@ -2268,70 +2461,97 @@
 
     // Bespoke Hamper & Bouquet Atelier (Studio Functions)
     let studioStep = 0;
-    let studioBox = 'Pink Velvet Box';
-    let studioPaper = 'Blush Rose Gold Silk';
-    let studioItems = { 'Red Roses (x10)': 499, 'Plush Mini Teddy Bear': 249 };
-    let studioMessage = 'Wishing you boundless joy and happiness!';
+    const studioSteps = [
+      '1. Presentation Wrap / Base',
+      '2. Fresh Blooms & Stems',
+      '3. Chocolates & Plushies',
+      '4. Ribbon & Free Message Card'
+    ];
 
-    const studioSteps = ['1. Choose Box', '2. Pick Stems & Treats', '3. Paper & Ribbon', '4. Message'];
     const studioChoices = {
       0: [
-        { name: 'Pink Velvet Box', price: 299, emoji: '🎀' },
-        { name: 'Classic Black Hat Box', price: 349, emoji: '🎩' },
-        { name: 'Gold Rim Glass Vase', price: 399, emoji: '🏺' },
-        { name: 'Wicker Basket', price: 279, emoji: '🧺' }
+        { name: 'Matte Black & Gold Cone Wrap', price: 199, image: '/images/photos/velvet-red-roses-black-gold.jpeg', preview: '/images/photos/velvet-red-roses-black-gold.jpeg' },
+        { name: 'Vintage Newspaper Artisanal Wrap', price: 149, image: '/images/photos/pink-stargazer-lilies-peach-roses.jpeg', preview: '/images/photos/pink-stargazer-lilies-peach-roses.jpeg' },
+        { name: 'Blush Gold-Rim Luxury Wrap', price: 199, image: '/images/photos/white-roses-gold-wrap.jpeg', preview: '/images/photos/white-roses-gold-wrap.jpeg' },
+        { name: 'Handcrafted Woven Basket', price: 299, image: '/images/photos/flower-basket-peach-roses-asters.jpeg', preview: '/images/photos/flower-basket-peach-roses-asters.jpeg' },
+        { name: 'Black Marble Luxury Cone Wrap', price: 249, image: '/images/photos/penguin-plush-bouquet.jpeg', preview: '/images/photos/penguin-plush-bouquet.jpeg' },
+        { name: 'Lavender Heart Romantic Wrap', price: 179, image: '/images/photos/red-roses-lilac-wrap.jpeg', preview: '/images/photos/red-roses-lilac-wrap.jpeg' }
       ],
       1: [
-        { name: 'Red Roses (x10)', price: 499, emoji: '🌹' },
-        { name: 'Pink Dutch Roses', price: 549, emoji: '💐' },
-        { name: 'White Lilies (x4)', price: 599, emoji: '⚜️' },
-        { name: 'Blue Orchids (x6)', price: 549, emoji: '🪻' },
-        { name: 'Plush Mini Teddy Bear', price: 249, emoji: '🧸' },
-        { name: 'Ferrero Rocher Box', price: 199, emoji: '🍬' },
-        { name: 'Artisanal Truffles', price: 189, emoji: '🍫' }
+        { name: 'Velvet Crimson Red Roses', price: 39, unit: 'stem', image: '/images/photos/velvet-red-roses-black-gold.jpeg', defaultQty: 5 },
+        { name: 'Oriental White Lilies', price: 129, unit: 'stem', image: '/images/photos/white-lilies-pink-roses.jpeg', defaultQty: 2 },
+        { name: 'Exotic Blue Dendrobium Orchids', price: 89, unit: 'stem', image: '/images/photos/blue-orchids-white-roses.jpeg', defaultQty: 4 },
+        { name: 'Sunshine Golden Sunflowers', price: 119, unit: 'stem', image: '/images/photos/sunflowers-babys-breath.jpeg', defaultQty: 2 },
+        { name: 'Pink Stargazer Lilies', price: 139, unit: 'stem', image: '/images/photos/pink-stargazer-lilies-peach-roses.jpeg', defaultQty: 2 },
+        { name: 'Peach & Apricot Roses', price: 49, unit: 'stem', image: '/images/photos/peach-apricot-roses-bouquet.jpeg', defaultQty: 5 },
+        { name: 'Pristine White Roses', price: 45, unit: 'stem', image: '/images/photos/pure-white-roses-black-wrap.jpeg', defaultQty: 5 },
+        { name: 'Cloud Baby\'s Breath Fillers', price: 99, unit: 'bunch', image: '/images/photos/blushing-pink-roses-dewdrop.jpeg', defaultQty: 1 }
       ],
       2: [
-        { name: 'Blush Rose Gold Silk', price: 0, emoji: '📜' },
-        { name: 'Emerald Velvet Ribbon', price: 49, emoji: '🌿' },
-        { name: 'Frozen Pink Satin', price: 49, emoji: '❄️' }
+        { name: 'Ferrero Rocher Luxury Box', price: 249, image: '/images/photos/ferrero-rocher-roses-luxury.jpeg' },
+        { name: 'KitKat Chocolate Cones Bouquet Set', price: 149, image: '/images/photos/kitkat-roses-chocolate-bouquet.jpeg' },
+        { name: 'Cadbury Dairy Milk & 5-Star Mix', price: 199, image: '/images/photos/cadbury-dairy-milk-bouquet.jpeg' },
+        { name: 'Cute Pink Teddy Bear Plushie', price: 299, image: '/images/photos/pink-teddy-bear-bouquet.jpeg' },
+        { name: 'Cute Blue Bunny Plushie', price: 349, image: '/images/photos/blue-bunny-plush-bouquet.jpeg' },
+        { name: 'Chubby Penguin Plushie', price: 399, image: '/images/photos/penguin-plush-bouquet.jpeg' },
+        { name: 'Gothic Kuromi Anime Plushie', price: 499, image: '/images/photos/kuromi-gothic-plush-bouquet.jpeg' },
+        { name: 'Shagun ₹100 Currency Notes Fan', price: 499, image: '/images/photos/currency-notes-shagun-bouquet.jpeg' }
       ]
     };
 
+    let studioBase = studioChoices[0][0];
+    let studioStems = { 'Velvet Crimson Red Roses': 5 };
+    let studioAddons = { 'Ferrero Rocher Luxury Box': true };
+    let studioRibbon = 'Gold Satin';
+    let studioOccasion = 'Happy Birthday 🎂';
+    let studioRecipient = 'Aditi';
+    let studioMessage = 'Wishing you boundless joy, smile, and sweetness every day!';
+
     function initStudio() {
       const rail = document.getElementById('studioStepsRail');
+      if (!rail) return;
       rail.innerHTML = studioSteps.map((s, i) => `
-        <button class="studio-step-btn ${i === studioStep ? 'active' : ''}" onclick="setStudioStep(${i})">${s}</button>
+        <button class="studio-step-btn ${i === studioStep ? 'active' : ''}" onclick="setStudioStep(${i})">
+          <span>${i === 0 ? '🎁' : i === 1 ? '💐' : i === 2 ? '🧸' : '💌'}</span>
+          <span>${s}</span>
+        </button>
       `).join('');
       renderStudioStep();
+      updateStudioPreview();
     }
 
     function setStudioStep(i) {
-      studioStep = i;
+      studioStep = Math.max(0, Math.min(3, i));
       initStudio();
+    }
+
+    function stepStudioNav(delta) {
+      setStudioStep(studioStep + delta);
     }
 
     function renderStudioStep() {
       const ctrl = document.getElementById('studioControls');
+      if (!ctrl) return;
+
+      const prevBtn = document.getElementById('studioPrevBtn');
+      const nextBtn = document.getElementById('studioNextBtn');
+      if (prevBtn) prevBtn.style.visibility = studioStep === 0 ? 'hidden' : 'visible';
+      if (nextBtn) {
+        nextBtn.textContent = studioStep === 3 ? 'Review & Add to Cart 🛍' : 'Next Step →';
+        nextBtn.onclick = studioStep === 3 ? addStudioBouquet : () => stepStudioNav(1);
+      }
+
       if (studioStep === 0) {
+        // Step 1: Presentation Wrap / Base Box
         ctrl.innerHTML = `
+          <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:12px">Select your presentation style (handcrafted artisanal wraps & baskets):</div>
           <div class="choice-grid">
-            ${studioChoices[0].map(c => `
-              <div class="studio-choice-card ${studioBox === c.name ? 'selected' : ''}" onclick="studioBox='${escapeHtml(c.name)}';renderStudioStep()">
-                <div class="studio-choice-emoji">${c.emoji}</div>
-                <div class="studio-choice-name">${escapeHtml(c.name)}</div>
-                <div class="studio-choice-price">${money(c.price)}</div>
-              </div>
-            `).join('')}
-          </div>
-        `;
-      } else if (studioStep === 1) {
-        ctrl.innerHTML = `
-          <div class="choice-grid">
-            ${studioChoices[1].map(c => {
-              const isSel = Boolean(studioItems[c.name]);
+            ${studioChoices[0].map(c => {
+              const isSel = studioBase.name === c.name;
               return `
-                <div class="studio-choice-card ${isSel ? 'selected' : ''}" onclick="toggleStudioItem('${escapeHtml(c.name)}', ${c.price})">
-                  <div class="studio-choice-emoji">${c.emoji}</div>
+                <div class="studio-choice-card ${isSel ? 'selected' : ''}" onclick="selectStudioBase('${escapeHtml(c.name)}')">
+                  <div class="studio-badge-check">✓</div>
+                  <img class="studio-choice-thumb" src="${c.image}" alt="${escapeHtml(c.name)}" onerror="this.onerror=null;this.src='/images/photos/velvet-red-roses-black-gold.jpeg'">
                   <div class="studio-choice-name">${escapeHtml(c.name)}</div>
                   <div class="studio-choice-price">${money(c.price)}</div>
                 </div>
@@ -2339,71 +2559,251 @@
             }).join('')}
           </div>
         `;
-      } else if (studioStep === 2) {
+      } else if (studioStep === 1) {
+        // Step 2: Pick Stems & Blooms (Customer configures counts!)
         ctrl.innerHTML = `
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:12.5px;color:var(--text-muted)">
+            <span>Add or customize your fresh stems:</span>
+            <span style="font-weight:800;color:#be185d">${Object.values(studioStems).reduce((a,b)=>a+b, 0)} total stems selected</span>
+          </div>
           <div class="choice-grid">
-            ${studioChoices[2].map(c => `
-              <div class="studio-choice-card ${studioPaper === c.name ? 'selected' : ''}" onclick="studioPaper='${escapeHtml(c.name)}';renderStudioStep()">
-                <div class="studio-choice-emoji">${c.emoji}</div>
-                <div class="studio-choice-name">${escapeHtml(c.name)}</div>
-                <div class="studio-choice-price">${c.price ? money(c.price) : 'Free'}</div>
-              </div>
-            `).join('')}
+            ${studioChoices[1].map(c => {
+              const qty = studioStems[c.name] || 0;
+              const isSel = qty > 0;
+              return `
+                <div class="studio-choice-card ${isSel ? 'selected' : ''}">
+                  <img class="studio-choice-thumb" src="${c.image}" alt="${escapeHtml(c.name)}" onerror="this.onerror=null;this.src='/images/photos/velvet-red-roses-black-gold.jpeg'">
+                  <div class="studio-choice-name">${escapeHtml(c.name)}</div>
+                  <div class="studio-choice-price">${money(c.price)} / ${c.unit}</div>
+                  
+                  <div class="stem-counter-row">
+                    ${qty === 0 ? `
+                      <button class="header-btn" style="width:100%;justify-content:center;font-size:11px;padding:5px 8px;background:#fdf2f8;color:#be185d;border:1px solid #fbcfe8" onclick="changeStemCount('${escapeHtml(c.name)}', ${c.defaultQty})">+ ADD</button>
+                    ` : `
+                      <button class="stem-btn" onclick="changeStemCount('${escapeHtml(c.name)}', -1)">−</button>
+                      <span class="stem-qty-label">${qty}</span>
+                      <button class="stem-btn" onclick="changeStemCount('${escapeHtml(c.name)}', 1)">+</button>
+                    `}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        `;
+      } else if (studioStep === 2) {
+        // Step 3: Chocolates & Plushies
+        ctrl.innerHTML = `
+          <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:12px">Elevate with premium chocolates, cute plushies, or celebration shagun:</div>
+          <div class="choice-grid">
+            ${studioChoices[2].map(c => {
+              const isSel = Boolean(studioAddons[c.name]);
+              return `
+                <div class="studio-choice-card ${isSel ? 'selected' : ''}" onclick="toggleStudioAddon('${escapeHtml(c.name)}')">
+                  <div class="studio-badge-check">✓</div>
+                  <img class="studio-choice-thumb" src="${c.image}" alt="${escapeHtml(c.name)}" onerror="this.onerror=null;this.src='/images/photos/ferrero-rocher-roses-luxury.jpeg'">
+                  <div class="studio-choice-name">${escapeHtml(c.name)}</div>
+                  <div class="studio-choice-price">${money(c.price)}</div>
+                  <button class="header-btn" style="width:100%;justify-content:center;font-size:11px;padding:4px 8px;margin-top:6px;border:1px solid ${isSel ? '#be185d' : '#fbcfe8'};background:${isSel ? '#be185d' : '#fff'};color:${isSel ? '#fff' : '#881337'}">
+                    ${isSel ? '✓ Included' : '+ Add'}
+                  </button>
+                </div>
+              `;
+            }).join('')}
           </div>
         `;
       } else {
+        // Step 4: Greeting Card & Ribbon Customizer
         ctrl.innerHTML = `
-          <textarea rows="2" style="width:100%;border-radius:8px;border:1px solid #fbcfe8;padding:8px;font-family:inherit;font-size:12.5px" oninput="studioMessage=this.value">${escapeHtml(studioMessage)}</textarea>
+          <div style="background:#fff;border:1.5px solid #fbcfe8;border-radius:12px;padding:16px;text-align:left">
+            <label style="font-size:11.5px;font-weight:800;color:#881337;text-transform:uppercase">1. Satin Ribbon Color</label>
+            <div style="display:flex;gap:8px;margin:8px 0 16px 0;flex-wrap:wrap">
+              ${['Gold Satin', 'Crimson Red Velvet', 'Blush Baby Pink', 'Royal Blue', 'Emerald Green'].map(r => `
+                <button type="button" class="header-btn" style="font-size:12px;padding:6px 12px;border:1.5px solid ${studioRibbon === r ? '#be185d' : '#fbcfe8'};background:${studioRibbon === r ? '#fce7f3' : '#fff'};color:${studioRibbon === r ? '#be185d' : '#1c1c1c'};font-weight:700" onclick="studioRibbon='${r}';renderStudioStep();updateStudioPreview()">${studioRibbon === r ? '● ' : ''}${r}</button>
+              `).join('')}
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px">
+              <div>
+                <label style="font-size:11.5px;font-weight:800;color:#881337;text-transform:uppercase">2. Occasion</label>
+                <select style="width:100%;height:38px;border-radius:8px;border:1px solid #fbcfe8;padding:0 10px;font-family:inherit;font-size:13px;margin-top:4px" onchange="studioOccasion=this.value;updateStudioPreview()">
+                  ${['Happy Birthday 🎂', 'Happy Anniversary 💍', 'I Love You ❤️', 'Congratulations 🥂', 'Just Because ✨', 'Get Well Soon 🌸'].map(occ => `
+                    <option value="${occ}" ${studioOccasion === occ ? 'selected' : ''}>${occ}</option>
+                  `).join('')}
+                </select>
+              </div>
+
+              <div>
+                <label style="font-size:11.5px;font-weight:800;color:#881337;text-transform:uppercase">3. Recipient Name</label>
+                <input type="text" value="${escapeHtml(studioRecipient)}" placeholder="e.g. Aditi, Rahul, Mom" style="width:100%;height:38px;border-radius:8px;border:1px solid #fbcfe8;padding:0 10px;font-family:inherit;font-size:13px;margin-top:4px" oninput="studioRecipient=this.value;updateStudioPreview()">
+              </div>
+            </div>
+
+            <label style="font-size:11.5px;font-weight:800;color:#881337;text-transform:uppercase">4. Personalized Handwritten Card Note (FREE)</label>
+            <textarea rows="3" style="width:100%;border-radius:8px;border:1px solid #fbcfe8;padding:10px;font-family:inherit;font-size:13px;margin-top:4px" placeholder="Write your heartfelt message here..." oninput="studioMessage=this.value;updateStudioPreview()">${escapeHtml(studioMessage)}</textarea>
+          </div>
         `;
       }
-
-      updateStudioTotal();
     }
 
-    function toggleStudioItem(name, price) {
-      if (studioItems[name]) delete studioItems[name];
-      else studioItems[name] = price;
+    function selectStudioBase(name) {
+      const b = studioChoices[0].find(x => x.name === name);
+      if (b) {
+        studioBase = b;
+        renderStudioStep();
+        updateStudioPreview();
+      }
+    }
+
+    function changeStemCount(name, delta) {
+      const cur = studioStems[name] || 0;
+      const next = Math.max(0, cur + delta);
+      if (next === 0) delete studioStems[name];
+      else studioStems[name] = next;
       renderStudioStep();
+      updateStudioPreview();
     }
 
-    function updateStudioTotal() {
-      const boxObj = studioChoices[0].find(b => b.name === studioBox) || studioChoices[0][0];
-      const paperObj = studioChoices[2].find(p => p.name === studioPaper) || studioChoices[2][0];
-      let t = (boxObj ? boxObj.price : 299) + (paperObj ? paperObj.price : 0);
-      Object.values(studioItems).forEach(p => t += p);
-      document.getElementById('studioTotal').textContent = money(t);
-      return t;
+    function toggleStudioAddon(name) {
+      if (studioAddons[name]) delete studioAddons[name];
+      else studioAddons[name] = true;
+      renderStudioStep();
+      updateStudioPreview();
+    }
+
+    function updateStudioPreview() {
+      let total = studioBase ? studioBase.price : 199;
+      const receipts = [];
+
+      // Base
+      receipts.push({
+        title: `Base: ${studioBase.name}`,
+        price: studioBase.price,
+        removable: false
+      });
+
+      // Stems
+      for (const [sName, qty] of Object.entries(studioStems)) {
+        if (qty > 0) {
+          const item = studioChoices[1].find(x => x.name === sName);
+          const p = item ? item.price : 39;
+          const sub = qty * p;
+          total += sub;
+          receipts.push({
+            title: `${qty}x ${sName}`,
+            price: sub,
+            action: `changeStemCount('${escapeHtml(sName)}', -${qty})`
+          });
+        }
+      }
+
+      // Addons
+      for (const aName of Object.keys(studioAddons)) {
+        const item = studioChoices[2].find(x => x.name === aName);
+        if (item) {
+          total += item.price;
+          receipts.push({
+            title: item.name,
+            price: item.price,
+            action: `toggleStudioAddon('${escapeHtml(aName)}')`
+          });
+        }
+      }
+
+      // Free Perks
+      receipts.push({ title: `Ribbon: ${studioRibbon}`, price: 0, free: true });
+      if (studioRecipient || studioMessage) {
+        receipts.push({ title: `Gift Card: For ${escapeHtml(studioRecipient || 'Someone Special')} (${studioOccasion.split(' ')[0]})`, price: 0, free: true });
+      }
+
+      // Update DOM
+      const titleEl = document.getElementById('studioPreviewTitle');
+      const subEl = document.getElementById('studioPreviewSubtitle');
+      const imgEl = document.getElementById('studioPreviewImg');
+      const listEl = document.getElementById('studioReceiptList');
+      const totalEl = document.getElementById('studioTotal');
+
+      if (titleEl) titleEl.textContent = `Custom Atelier Bouquet (${studioBase.name.split(' ')[0]} Wrap)`;
+      if (subEl) {
+        const totalStems = Object.values(studioStems).reduce((a,b)=>a+b, 0);
+        const addonCount = Object.keys(studioAddons).length;
+        subEl.textContent = `${totalStems} Fresh Stems · ${addonCount} Treats · ${studioRibbon}`;
+      }
+
+      // Select matching authentic preview photo
+      if (imgEl && studioBase) {
+        imgEl.src = studioBase.preview || '/images/photos/velvet-red-roses-black-gold.jpeg';
+      }
+
+      if (listEl) {
+        listEl.innerHTML = receipts.map(r => `
+          <div class="studio-receipt-item">
+            <span style="color:var(--text-main);font-weight:600;display:flex;align-items:center;gap:6px">
+              ${r.free ? '<span style="color:#059669">✓</span>' : '●'} ${r.title}
+            </span>
+            <div style="display:flex;align-items:center;gap:6px">
+              <span style="font-weight:800;color:${r.free ? '#059669' : '#be185d'}">${r.free ? 'FREE' : money(r.price)}</span>
+              ${r.action ? `<button style="background:none;border:none;color:#9ca3af;cursor:pointer;font-size:12px;padding:0 2px" onclick="${r.action}" title="Remove">✕</button>` : ''}
+            </div>
+          </div>
+        `).join('');
+      }
+
+      if (totalEl) totalEl.textContent = money(total);
+      return total;
+    }
+
+    function resetStudio() {
+      studioBase = studioChoices[0][0];
+      studioStems = {};
+      studioAddons = {};
+      studioStep = 0;
+      initStudio();
+      toast('Custom studio reset! Ready to design your dream bouquet ✨');
     }
 
     function surpriseMe() {
-      studioBox = 'Gold Rim Glass Vase';
-      studioItems = { 'White Lilies (x4)': 599, 'Blue Orchids (x6)': 549 };
-      studioPaper = 'Frozen Pink Satin';
+      studioBase = studioChoices[0][1]; // Vintage wrap
+      studioStems = {
+        'Oriental White Lilies': 2,
+        'Sunshine Golden Sunflowers': 2,
+        'Velvet Crimson Red Roses': 5,
+        'Cloud Baby\'s Breath Fillers': 1
+      };
+      studioAddons = {
+        'Ferrero Rocher Luxury Box': true
+      };
+      studioRibbon = 'Gold Satin';
+      studioOccasion = 'Just For You ❤️';
       studioStep = 0;
       initStudio();
-      toast('Florist surprise mix curated!');
+      toast('Florist Signature Surprise mix loaded with real blooms & treats!');
     }
 
     function addStudioBouquet() {
-      const t = updateStudioTotal();
+      const t = updateStudioPreview();
       const customId = Date.now();
+      const stemSummary = Object.entries(studioStems).filter(([_, q]) => q > 0).map(([n, q]) => `${q}x ${n}`).join(', ') || 'Fresh Stems';
+      const addonSummary = Object.keys(studioAddons).join(', ');
+
       const customProd = {
         id: customId,
-        name: `Custom Atelier Hamper (${studioBox})`,
+        name: `Custom Bouquet: ${studioBase.name}`,
         cat: 'Flowers & Gifting',
-        weight: `${Object.keys(studioItems).length} items`,
+        weight: `${stemSummary}${addonSummary ? ' + ' + addonSummary : ''}`,
         price: t,
         mrp: t + 250,
         emoji: '💐',
-        image: '/images/photos/ferrero-rocher-roses-luxury.jpeg',
-        enabled: true
+        image: studioBase.preview || '/images/photos/ferrero-rocher-roses-luxury.jpeg',
+        enabled: true,
+        note: `Ribbon: ${studioRibbon} | To: ${studioRecipient || 'Special One'} | Message: "${studioMessage}"`
       };
+
       products.push(customProd);
       cart[customId] = 1;
       write('cart', cart);
       updateCartBadge();
       openCart();
-      toast('Custom hamper added to cart!');
+      toast('Your custom-crafted bouquet has been added to cart! 🛍✨');
     }
 
     // Startup
