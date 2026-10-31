@@ -607,7 +607,7 @@ async function handle(req, res) {
       total: Number.isFinite(Number(body.total)) ? Math.max(0, Number(body.total)) : itemsTotal,
       method: String(body.method || 'UPI').slice(0,40), status:'Placed',
       name:String(body.name).trim().slice(0,120), phone:String(body.phone), address:String(body.address).trim().slice(0,500), city:'Ranchi', pin:String(body.pin),
-      slot:String(body.slot || '⚡ 8–10 Mins Instant Delivery').slice(0,80), tip:Math.max(0,Number(body.tip)||0), date:new Date().toISOString(), demoPayment:body.method !== 'Cash on Delivery', paymentId:String(body.paymentId || ''), paymentStatus:body.method === 'Cash on Delivery' ? 'pending' : 'paid'
+      slot:String(body.slot || '⚡ Instant Express Delivery').slice(0,80), tip:Math.max(0,Number(body.tip)||0), date:new Date().toISOString(), demoPayment:body.method !== 'Cash on Delivery', paymentId:String(body.paymentId || ''), paymentStatus:body.method === 'Cash on Delivery' ? 'pending' : 'paid'
     };
     db.orders.unshift(order);
     upsertCustomer({ phone: body.phone, name: body.name, address: body.address, orderAmount: order.total });

@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>BloomBox — 8-Minute Grocery, Essentials & Gifting in Ranchi</title>
-  <meta name="description" content="Order fresh milk, vegetables, fruits, snacks, cold drinks, staples, flowers and daily essentials in 8 minutes across Ranchi.">
+  <title>BloomBox — Instant Grocery, Essentials & Gifting in Ranchi</title>
+  <meta name="description" content="Order fresh milk, vegetables, fruits, snacks, cold drinks, staples, flowers and daily essentials with instant delivery across Ranchi.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
@@ -495,7 +495,7 @@
       transform: scale(1.05);
     }
     
-    /* Delivery Badge (8 MINS) */
+    /* Delivery Badge (INSTANT) */
     .card-eta-badge {
       position: absolute;
       top: 6px;
@@ -1036,7 +1036,7 @@
 
   <!-- Top Strip -->
   <div class="top-strip">
-    <span>⚡ <b>BloomBox 8-Minute Delivery</b> active across all Ranchi Dark Stores (Lalpur, Harmu, Doranda & Morabadi)</span>
+    <span>⚡ <b>BloomBox Instant Delivery</b> active across all Ranchi Dark Stores (Lalpur, Harmu, Doranda & Morabadi)</span>
     <span>📞 Instant Support: <b>1800-BLOOMBOX</b></span>
   </div>
 
@@ -1051,7 +1051,7 @@
       <!-- Location Selector -->
       <div class="location-box" onclick="openLocationModal()">
         <div class="location-title">
-          <span>⚡ Delivery in 8 mins</span>
+          <span>⚡ Instant Delivery</span>
           <span style="font-size: 10px;">▼</span>
         </div>
         <div class="location-subtitle" id="locSubtitle">Ranchi, Jharkhand (834001)</div>
@@ -1098,7 +1098,7 @@
     <div class="promo-banners">
       <div class="banner-card banner-yellow" onclick="filterByCategory('Dairy, Bread & Eggs')">
         <div>
-          <span class="banner-badge">8 MINS DELIVERY</span>
+          <span class="banner-badge">INSTANT DELIVERY</span>
           <div class="banner-title">Morning Dairy & Farm Eggs</div>
           <div class="banner-desc">Amul Taaza, Fresh Paneer & Butter from Lalpur Dark Store</div>
         </div>
@@ -1118,14 +1118,14 @@
         <div>
           <span class="banner-badge">ICE COLD FAST</span>
           <div class="banner-title">Chilled Drinks & Munchies</div>
-          <div class="banner-desc">Coke, Red Bull, Lay's & Kurkure delivered ice cold in 8 mins</div>
+          <div class="banner-desc">Coke, Red Bull, Lay's & Kurkure delivered ice cold & superfast</div>
         </div>
         <div class="banner-emoji">🥤</div>
       </div>
 
       <div class="banner-card banner-pink" onclick="filterByCategory('Flowers & Gifting')">
         <div>
-          <span class="banner-badge">10 MIN GIFTING</span>
+          <span class="banner-badge">EXPRESS GIFTING</span>
           <div class="banner-title">Bespoke Floral Atelier</div>
           <div class="banner-desc">Handpicked Red Roses, Lilies & Luxury Hampers packed live</div>
         </div>
@@ -1137,7 +1137,7 @@
     <div class="studio-box-banner" id="studioContainer" style="display: none;">
       <div class="studio-header">
         <div>
-          <span style="font-size: 11px; font-weight: 800; color: #be185d; text-transform: uppercase;">✦ BloomBox 10-Min Luxury Gifting</span>
+          <span style="font-size: 11px; font-weight: 800; color: #be185d; text-transform: uppercase;">✦ BloomBox Instant Luxury Gifting</span>
           <h3>The Bespoke Bouquet & Hamper Studio</h3>
           <p style="font-size: 13px; color: #6b5a70;">Build your custom presentation box with fresh blooms, teddy keepsakes & chocolates.</p>
         </div>
@@ -1162,7 +1162,7 @@
         <div class="catalog-title" id="catalogTitle">
           <span>⚡ All Products</span>
         </div>
-        <div class="catalog-count" id="catalogCount">Showing 82 items delivered in 8 minutes</div>
+        <div class="catalog-count" id="catalogCount">Showing 82 items with Instant Delivery</div>
       </div>
 
       <select class="sort-select" id="sortSelect" onchange="handleSortChange(this.value)">
@@ -1206,7 +1206,7 @@
       <div class="cart-eta-bar">
         <div class="eta-icon">⚡</div>
         <div class="eta-text">
-          <b>Delivery in 8 minutes</b>
+          <b>Instant Express Delivery</b>
           <span id="cartDrawerLoc">Delivering to Ranchi Central Hub</span>
         </div>
       </div>
@@ -1305,14 +1305,14 @@
 
     // Ranchi Delivery Locality Options
     const ranchiHubs = [
-      { name: "Lalpur Dark Store", area: "Circular Rd, Morabadi, Tharpakhna", pin: "834001", time: "8 mins" },
-      { name: "Harmu Dark Store", area: "Harmu Housing Colony, Argora, Kadru", pin: "834002", time: "8 mins" },
-      { name: "Doranda & Hinoo Dark Store", area: "Doranda Bazar, Airport Road, HEC", pin: "834002", time: "9 mins" },
-      { name: "Bariatu & RIMS Dark Store", area: "Bariatu Rd, RIMS, Booty More", pin: "834005", time: "8 mins" },
-      { name: "Morabadi Hub", area: "Morabadi Ground, Tagore Hill", pin: "834008", time: "8 mins" },
-      { name: "Namkum Hub", area: "Namkum Station, Lowadih", pin: "834010", time: "10 mins" },
-      { name: "Kanke Dark Store", area: "Kanke Road, CMPDI, Birsa Agri", pin: "834006", time: "10 mins" },
-      { name: "BIT Mesra Dark Store", area: "BIT Campus, Mesra Chowk", pin: "835215", time: "12 mins" }
+      { name: "Lalpur Dark Store", area: "Circular Rd, Morabadi, Tharpakhna", pin: "834001", time: "Instant" },
+      { name: "Harmu Dark Store", area: "Harmu Housing Colony, Argora, Kadru", pin: "834002", time: "Instant" },
+      { name: "Doranda & Hinoo Dark Store", area: "Doranda Bazar, Airport Road, HEC", pin: "834002", time: "Instant" },
+      { name: "Bariatu & RIMS Dark Store", area: "Bariatu Rd, RIMS, Booty More", pin: "834005", time: "Instant" },
+      { name: "Morabadi Hub", area: "Morabadi Ground, Tagore Hill", pin: "834008", time: "Instant" },
+      { name: "Namkum Hub", area: "Namkum Station, Lowadih", pin: "834010", time: "Instant" },
+      { name: "Kanke Dark Store", area: "Kanke Road, CMPDI, Birsa Agri", pin: "834006", time: "Instant" },
+      { name: "BIT Mesra Dark Store", area: "BIT Campus, Mesra Chowk", pin: "835215", time: "Express" }
     ];
 
     let currentHub = read('selected_hub', ranchiHubs[0]);
@@ -1444,7 +1444,7 @@
       else if (currentSort === 'price-desc') list.sort((a,b) => b.price - a.price);
       else if (currentSort === 'rating') list.sort((a,b) => (b.rating || 0) - (a.rating || 0));
 
-      countEl.textContent = `Showing ${list.length} products delivered in 8–10 mins to ${currentHub.name}`;
+      countEl.textContent = `Showing ${list.length} products with Instant Delivery to ${currentHub.name}`;
 
       if (!list.length) {
         grid.innerHTML = `
@@ -1466,7 +1466,7 @@
         return `
           <div class="product-card" data-id="${p.id}">
             <div class="card-img-wrap">
-              <span class="card-eta-badge"><span>⚡</span> 8 MINS</span>
+              <span class="card-eta-badge"><span>⚡</span> INSTANT</span>
               ${discountPct > 0 ? `<span class="card-discount-badge">${discountPct}% OFF</span>` : ''}
               <img src="${imgSrc}" alt="${escapeHtml(p.name)}" loading="lazy" onerror="this.onerror=null;this.src='https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=80'">
             </div>
@@ -1748,7 +1748,7 @@
           <span style="font-size:24px">📍</span>
           <div>
             <h3 style="font-size:18px;font-weight:800">Select Ranchi Dark Store</h3>
-            <p style="font-size:12px;color:var(--text-muted)">Guaranteed 8-minute delivery from your nearest hub</p>
+            <p style="font-size:12px;color:var(--text-muted)">Guaranteed instant delivery from your nearest hub</p>
           </div>
         </div>
 
@@ -1809,7 +1809,7 @@
         <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
           <span style="font-size:24px">⚡</span>
           <div>
-            <h3 style="font-size:18px;font-weight:800">Checkout · 8-Min Delivery</h3>
+            <h3 style="font-size:18px;font-weight:800">Checkout · Instant Delivery</h3>
             <p style="font-size:12px;color:var(--text-muted)">Delivering from ${escapeHtml(currentHub.name)}</p>
           </div>
         </div>
@@ -1850,7 +1850,7 @@
               <span style="font-size:12px;color:var(--text-muted)">Amount to Pay:</span>
               <div style="font-size:18px;font-weight:900;color:var(--blinkit-green)">${money(grandTotal)}</div>
             </div>
-            <span style="font-size:11.5px;font-weight:800;color:var(--blinkit-green-dark)">⚡ Arrives in 8–10 Mins</span>
+            <span style="font-size:11.5px;font-weight:800;color:var(--blinkit-green-dark)">⚡ Instant Express Delivery</span>
           </div>
 
           <button type="submit" id="chkSubmitBtn" class="header-cart-btn" style="width:100%;justify-content:center;height:46px;margin-top:16px;font-size:15px">
@@ -1900,7 +1900,7 @@
         address,
         pin,
         city: 'Ranchi',
-        slot: `⚡ 8–10 Mins (${currentHub.name})`,
+        slot: `⚡ Instant Delivery (${currentHub.name})`,
         method,
         tip: selectedTip,
         total: grandTotal,
@@ -1935,7 +1935,7 @@
             amount: prep.amount,
             currency: 'INR',
             name: 'BloomBox Ranchi',
-            description: `8-Min Instant Grocery Delivery (${currentHub.name})`,
+            description: `Instant Grocery Delivery (${currentHub.name})`,
             order_id: prep.orderId,
             prefill: { name, contact: phone },
             notes: { city: 'Ranchi', pin, hub: currentHub.name },
@@ -1996,7 +1996,7 @@
       showModal(`
         <div style="text-align:center;padding:14px 0">
           <span style="font-size:52px">🛵</span>
-          <h2 style="font-size:22px;color:var(--blinkit-green);margin-top:6px">Order Placed! Arriving in 8 Mins</h2>
+          <h2 style="font-size:22px;color:var(--blinkit-green);margin-top:6px">Order Placed! Arriving Instantly</h2>
           <p style="font-size:13px;color:var(--text-muted);margin-top:4px">Order ID: <b>#${order.id}</b> · ${order.slot}</p>
 
           <div style="margin:16px 0;padding:14px;background:#f9fafb;border-radius:12px;border:1px solid var(--border-color);text-align:left;font-size:12.5px;line-height:1.6">
@@ -2006,13 +2006,13 @@
           </div>
 
           <button class="header-cart-btn" style="width:100%;justify-content:center" onclick="closeModal();openLiveTracking('${order.id}')">
-            Track Live Delivery (8 Mins) 🛵
+            Track Live Delivery 🛵
           </button>
         </div>
       `);
     }
 
-    // Live 8-Min Tracking
+    // Live Tracking
     function openLiveTracking(orderId) {
       const order = orders.find(o => o.id === orderId) || orders[0];
       if (!order) return toast('No active order to track');
@@ -2029,7 +2029,7 @@
 
         <div style="height:120px;background:linear-gradient(135deg, #e0f2fe 0%, #bbf7d0 100%);border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;margin-bottom:16px;border:1px solid #86efac;overflow:hidden">
           <div style="font-size:36px;animation:scooterMove 2s infinite ease-in-out">🛵 💨</div>
-          <div style="font-size:12px;font-weight:800;color:var(--blinkit-green-dark);margin-top:4px">Rider Ramesh Kumar on TVS Jupiter is arriving in ~6 mins</div>
+          <div style="font-size:12px;font-weight:800;color:var(--blinkit-green-dark);margin-top:4px">Rider Ramesh Kumar on TVS Jupiter is arriving superfast</div>
         </div>
 
         <div style="padding:12px;background:#f9fafb;border-radius:8px;font-size:12px;line-height:1.7;margin-bottom:14px">
@@ -2079,7 +2079,7 @@
           <button class="modal-close-btn" onclick="closeModal()">✕</button>
           <div style="text-align:center;margin-bottom:16px">
             <div class="logo-text" style="font-size:32px">Bloom<span>Box</span></div>
-            <p style="font-size:13px;color:var(--text-muted);margin-top:4px">Ranchi's 8-Minute Grocery, Essentials & Gifting</p>
+            <p style="font-size:13px;color:var(--text-muted);margin-top:4px">Ranchi's Instant Grocery, Essentials & Gifting</p>
           </div>
 
           <form onsubmit="handleAuthSubmit(event)">
@@ -2089,7 +2089,7 @@
             <label style="font-size:11.5px;font-weight:800;color:var(--text-muted);text-transform:uppercase">Your Name</label>
             <input type="text" id="loginName" required placeholder="e.g. Aditi Sharma" style="width:100%;height:44px;border-radius:8px;border:1px solid var(--border-color);padding:0 12px;font-family:inherit;font-size:14px;margin:6px 0 16px 0">
 
-            <button type="submit" class="header-cart-btn" style="width:100%;justify-content:center;height:44px">Continue to 8-Min Groceries →</button>
+            <button type="submit" class="header-cart-btn" style="width:100%;justify-content:center;height:44px">Continue to Instant Groceries →</button>
           </form>
 
           <div style="margin-top:14px;text-align:center">
@@ -2162,7 +2162,7 @@
               </div>
               <div style="padding:12px;background:#f9fafb;border-radius:8px;border:1px solid #f3f4f6">
                 <div style="font-size:11px;color:var(--text-muted);font-weight:700">STATUS</div>
-                <div style="font-size:13.5px;font-weight:900;color:#0c831f;margin-top:2px">● 8-Min Delivery Active</div>
+                <div style="font-size:13.5px;font-weight:900;color:#0c831f;margin-top:2px">● Instant Delivery Active</div>
               </div>
             </div>
 
@@ -2182,7 +2182,7 @@
           <div style="text-align:center;padding:4px 0">
             <div style="font-size:38px;margin-bottom:6px">⚙️</div>
             <h3 style="font-size:18px;font-weight:800">BloomBox Admin Console</h3>
-            <p style="font-size:13px;color:var(--text-muted);margin:4px 0 16px 0">Enter administrator password to manage 8-min grocery stock, orders, and dark store operations.</p>
+            <p style="font-size:13px;color:var(--text-muted);margin:4px 0 16px 0">Enter administrator password to manage grocery stock, orders, and dark store operations.</p>
 
             <form onsubmit="handleAdminInlineLogin(event)" style="text-align:left">
               <label style="font-size:11.5px;font-weight:800;color:var(--text-muted);text-transform:uppercase">Admin Password</label>

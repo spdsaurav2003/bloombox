@@ -34,7 +34,7 @@
       "rating": 4.8,
       "reviews": 3410,
       "badge": "Bestseller",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥛",
       "image": "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -50,7 +50,7 @@
       "rating": 4.9,
       "reviews": 2890,
       "badge": "Fresh Daily",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥛",
       "image": "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -66,7 +66,7 @@
       "rating": 4.9,
       "reviews": 1940,
       "badge": "Must Have",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧈",
       "image": "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -82,7 +82,7 @@
       "rating": 4.8,
       "reviews": 1540,
       "badge": "Super Soft",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧀",
       "image": "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -98,7 +98,7 @@
       "rating": 4.7,
       "reviews": 1210,
       "badge": "Thick & Creamy",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥣",
       "image": "https://images.unsplash.com/photo-1571212515416-fef01fc43637?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -114,7 +114,7 @@
       "rating": 4.8,
       "reviews": 2100,
       "badge": "Daily Fresh",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍞",
       "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -130,7 +130,7 @@
       "rating": 4.7,
       "reviews": 890,
       "badge": "Healthy Choice",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥪",
       "image": "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -146,7 +146,7 @@
       "rating": 4.8,
       "reviews": 2420,
       "badge": "Freshly Picked",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥚",
       "image": "https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -162,7 +162,7 @@
       "rating": 4.9,
       "reviews": 1890,
       "badge": "Value Saver",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥚",
       "image": "https://images.unsplash.com/photo-1582722872445-44dc5f7e3c8f?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -178,7 +178,7 @@
       "rating": 4.8,
       "reviews": 1320,
       "badge": "Bestseller",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧀",
       "image": "https://images.unsplash.com/photo-1624806992066-5ffcf7ca186b?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -194,7 +194,7 @@
       "rating": 4.8,
       "reviews": 3890,
       "badge": "Ranchi Farm Fresh",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥔",
       "image": "https://images.unsplash.com/photo-1518977676601-b53f82aba655?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -210,7 +210,7 @@
       "rating": 4.7,
       "reviews": 2980,
       "badge": "Farm Fresh",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍅",
       "image": "https://images.unsplash.com/photo-1592924357228-91a4daadcfea?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -226,7 +226,7 @@
       "rating": 4.8,
       "reviews": 3410,
       "badge": "Daily Essential",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧅",
       "image": "https://images.unsplash.com/photo-1618512496248-a07fe83aa8cb?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -242,7 +242,7 @@
       "rating": 4.6,
       "reviews": 1420,
       "badge": "Crisp & Clean",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🌿",
       "image": "https://images.unsplash.com/photo-1589135233689-d56d11b33946?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -258,7 +258,7 @@
       "rating": 4.7,
       "reviews": 1190,
       "badge": "Fresh Picked",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🌶️",
       "image": "https://images.unsplash.com/photo-1588252303782-cb80119abd6d?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -274,7 +274,7 @@
       "rating": 4.8,
       "reviews": 950,
       "badge": "Aromatic",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🫚",
       "image": "https://images.unsplash.com/photo-1615485290382-441e4d049cb5?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -290,7 +290,7 @@
       "rating": 4.8,
       "reviews": 1820,
       "badge": "Naturally Sweet",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍌",
       "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -306,7 +306,7 @@
       "rating": 4.9,
       "reviews": 1350,
       "badge": "Crisp & Juicy",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍎",
       "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -322,7 +322,7 @@
       "rating": 4.7,
       "reviews": 1670,
       "badge": "Vitamin C Rich",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍋",
       "image": "https://images.unsplash.com/photo-1587496679742-bad502958fbf?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -338,7 +338,7 @@
       "rating": 4.8,
       "reviews": 890,
       "badge": "Crunchy",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🫑",
       "image": "https://images.unsplash.com/photo-1563565375-f3fdfdbefa83?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -354,7 +354,7 @@
       "rating": 4.8,
       "reviews": 4210,
       "badge": "All-Time Favorite",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥔",
       "image": "/images/products/lays-masala-chips.jpg",
       "enabled": true
@@ -370,7 +370,7 @@
       "rating": 4.8,
       "reviews": 3890,
       "badge": "Crispy Crunch",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥔",
       "image": "/images/products/lays-classic-chips.jpg",
       "enabled": true
@@ -386,7 +386,7 @@
       "rating": 4.9,
       "reviews": 4920,
       "badge": "Tedha Hai Par Mera Hai",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🌶️",
       "image": "/images/products/kurkure-masala-munch.jpg",
       "enabled": true
@@ -402,7 +402,7 @@
       "rating": 4.9,
       "reviews": 3120,
       "badge": "Chai Time Special",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍟",
       "image": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -418,7 +418,7 @@
       "rating": 4.8,
       "reviews": 1980,
       "badge": "Cheesy Crunch",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧀",
       "image": "/images/products/nachos-party-pack.jpg",
       "enabled": true
@@ -434,7 +434,7 @@
       "rating": 4.7,
       "reviews": 1650,
       "badge": "Movie Time",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍿",
       "image": "/images/products/popcorn-party-pack.jpg",
       "enabled": true
@@ -450,7 +450,7 @@
       "rating": 4.9,
       "reviews": 1420,
       "badge": "Imported Taste",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥫",
       "image": "https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -466,7 +466,7 @@
       "rating": 4.8,
       "reviews": 3200,
       "badge": "Chilled Ready",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥤",
       "image": "https://images.unsplash.com/photo-1622483767028-3f66f32aef97?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -482,7 +482,7 @@
       "rating": 4.9,
       "reviews": 2950,
       "badge": "Taste The Thunder",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "⚡",
       "image": "https://images.unsplash.com/photo-1554866585-cd94860890b7?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -498,7 +498,7 @@
       "rating": 4.8,
       "reviews": 2100,
       "badge": "Clear Hai",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍋",
       "image": "https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -514,7 +514,7 @@
       "rating": 4.9,
       "reviews": 1840,
       "badge": "Vitalizes Body & Mind",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🐂",
       "image": "https://images.unsplash.com/photo-1551024709-8f23befc6f87?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -530,7 +530,7 @@
       "rating": 4.8,
       "reviews": 1420,
       "badge": "No Added Preservatives",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧃",
       "image": "https://images.unsplash.com/photo-1613478223719-2ab802602423?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -546,7 +546,7 @@
       "rating": 4.7,
       "reviews": 1890,
       "badge": "Mango Magic",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥭",
       "image": "https://images.unsplash.com/photo-1546173159-315724a31696?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -562,7 +562,7 @@
       "rating": 4.8,
       "reviews": 1540,
       "badge": "Chilled Bliss",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "☕",
       "image": "/images/products/cold-coffee.jpg",
       "enabled": true
@@ -578,7 +578,7 @@
       "rating": 4.9,
       "reviews": 2190,
       "badge": "Added Minerals",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "💧",
       "image": "https://images.unsplash.com/photo-1548839140-29a749e1bc4e?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -594,7 +594,7 @@
       "rating": 4.9,
       "reviews": 5120,
       "badge": "Midnight Savior",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍜",
       "image": "https://images.unsplash.com/photo-1612927601601-6638404737ce?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -610,7 +610,7 @@
       "rating": 4.7,
       "reviews": 2100,
       "badge": "Non-Sticky",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍜",
       "image": "https://images.unsplash.com/photo-1569718212165-3a8278d5f624?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -625,8 +625,8 @@
       "stock": 50,
       "rating": 4.8,
       "reviews": 1390,
-      "badge": "Ready in 3 Mins",
-      "delivery": "8 MINS",
+      "badge": "Instant Cook",
+      "delivery": "INSTANT",
       "emoji": "🍟",
       "image": "https://images.unsplash.com/photo-1576107232684-1279f3908594?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -642,7 +642,7 @@
       "rating": 4.6,
       "reviews": 890,
       "badge": "100% Real Veggies",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥣",
       "image": "https://images.unsplash.com/photo-1547592166-23ac45744acd?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -658,7 +658,7 @@
       "rating": 4.8,
       "reviews": 1780,
       "badge": "100% Real Tomatoes",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍅",
       "image": "https://images.unsplash.com/photo-1607623814075-e51df1bdc82f?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -674,7 +674,7 @@
       "rating": 4.9,
       "reviews": 3100,
       "badge": "Badi Patti Choti Patti",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "☕",
       "image": "https://images.unsplash.com/photo-1597481499750-3e6b22637e12?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -690,7 +690,7 @@
       "rating": 4.9,
       "reviews": 2450,
       "badge": "Rich Aroma",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "☕",
       "image": "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -706,7 +706,7 @@
       "rating": 4.8,
       "reviews": 1560,
       "badge": "Tayyari Jeet Ki",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍫",
       "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -722,7 +722,7 @@
       "rating": 4.9,
       "reviews": 3890,
       "badge": "100% Whole Wheat",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🌾",
       "image": "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -738,7 +738,7 @@
       "rating": 4.8,
       "reviews": 2650,
       "badge": "Light & Healthy",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🌻",
       "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -754,7 +754,7 @@
       "rating": 4.9,
       "reviews": 2980,
       "badge": "Pure & Pungent",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🛢️",
       "image": "https://images.unsplash.com/photo-1474979266404-7eaacbcd87c5?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -770,7 +770,7 @@
       "rating": 4.8,
       "reviews": 2120,
       "badge": "Fluffy & Long Grains",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍚",
       "image": "https://images.unsplash.com/photo-1586201375761-83865001e31c?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -786,7 +786,7 @@
       "rating": 4.8,
       "reviews": 1940,
       "badge": "Rich in Protein",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🥣",
       "image": "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -802,7 +802,7 @@
       "rating": 4.9,
       "reviews": 4500,
       "badge": "Desh Ka Namak",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧂",
       "image": "https://images.unsplash.com/photo-1518110925495-5fe2fda0442c?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -818,7 +818,7 @@
       "rating": 4.8,
       "reviews": 2310,
       "badge": "Sparkling White",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍬",
       "image": "https://images.unsplash.com/photo-1581441363689-1f3c3c414635?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -834,7 +834,7 @@
       "rating": 4.9,
       "reviews": 4120,
       "badge": "India's Nostalgia",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍪",
       "image": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -850,7 +850,7 @@
       "rating": 4.8,
       "reviews": 2650,
       "badge": "Rich Cashews",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍪",
       "image": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -866,7 +866,7 @@
       "rating": 4.9,
       "reviews": 3200,
       "badge": "Twist Lick Dunk",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍪",
       "image": "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -882,7 +882,7 @@
       "rating": 4.9,
       "reviews": 2190,
       "badge": "Molten Choco Core",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍫",
       "image": "https://images.unsplash.com/photo-1590080875515-8a3a8dc5735e?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -898,7 +898,7 @@
       "rating": 4.9,
       "reviews": 3840,
       "badge": "Irresistibly Smooth",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍫",
       "image": "/images/products/dairy-milk-silk.jpg",
       "enabled": true
@@ -914,7 +914,7 @@
       "rating": 4.9,
       "reviews": 1670,
       "badge": "Luxury Gifting",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍬",
       "image": "/images/products/ferrero-rocher-box.jpg",
       "enabled": true
@@ -930,7 +930,7 @@
       "rating": 4.8,
       "reviews": 2950,
       "badge": "Have a Break",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍫",
       "image": "/images/products/kitkat-share-pack.jpg",
       "enabled": true
@@ -946,7 +946,7 @@
       "rating": 4.8,
       "reviews": 1420,
       "badge": "Melt In Mouth",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍯",
       "image": "https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -962,7 +962,7 @@
       "rating": 4.9,
       "reviews": 1190,
       "badge": "Pure Silver Vark",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "💎",
       "image": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -978,7 +978,7 @@
       "rating": 4.9,
       "reviews": 3120,
       "badge": "100% Germ Protection",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧴",
       "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -994,7 +994,7 @@
       "rating": 4.8,
       "reviews": 2780,
       "badge": "Cooling Crystals",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🪥",
       "image": "https://images.unsplash.com/photo-1559567249-664c39174092?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1010,7 +1010,7 @@
       "rating": 4.9,
       "reviews": 2140,
       "badge": "1/4th Moisturising Cream",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧼",
       "image": "https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1026,7 +1026,7 @@
       "rating": 4.8,
       "reviews": 1890,
       "badge": "Up to 100% Dandruff Free",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧴",
       "image": "https://images.unsplash.com/photo-1535585209827-a15fcdbc4c2d?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1042,7 +1042,7 @@
       "rating": 4.9,
       "reviews": 2980,
       "badge": "Zero Leakage",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🌸",
       "image": "https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1058,7 +1058,7 @@
       "rating": 4.8,
       "reviews": 1420,
       "badge": "48h Fresh Protection",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "❄️",
       "image": "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1074,7 +1074,7 @@
       "rating": 4.9,
       "reviews": 2890,
       "badge": "Tough Stain Removal",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧺",
       "image": "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1090,7 +1090,7 @@
       "rating": 4.8,
       "reviews": 2310,
       "badge": "1 Spoon Greaseless Shine",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍋",
       "image": "https://images.unsplash.com/photo-1584813470613-5b1c1cad3d69?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1106,7 +1106,7 @@
       "rating": 4.9,
       "reviews": 3100,
       "badge": "10x Better Stain Removal",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🚽",
       "image": "https://images.unsplash.com/photo-1585421514738-01798e348b17?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1122,7 +1122,7 @@
       "rating": 4.8,
       "reviews": 1890,
       "badge": "Instant Knockdown",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🦟",
       "image": "https://images.unsplash.com/photo-1628102491629-778571d893a3?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1138,7 +1138,7 @@
       "rating": 4.7,
       "reviews": 1120,
       "badge": "Super Absorbent",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧻",
       "image": "https://images.unsplash.com/photo-1584556812952-905ffd0c611a?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1154,7 +1154,7 @@
       "rating": 4.8,
       "reviews": 2450,
       "badge": "Instant Fresh Breath",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍬",
       "image": "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1170,7 +1170,7 @@
       "rating": 4.8,
       "reviews": 1890,
       "badge": "Pocket Friendly",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍃",
       "image": "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1186,7 +1186,7 @@
       "rating": 4.7,
       "reviews": 1340,
       "badge": "Herbal Refreshment",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🌿",
       "image": "https://images.unsplash.com/photo-1599488615731-7e5c2823ff28?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1202,7 +1202,7 @@
       "rating": 4.9,
       "reviews": 1980,
       "badge": "Real Silver Coated",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "✨",
       "image": "https://images.unsplash.com/photo-1582058091505-f87a2e55a40f?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1218,7 +1218,7 @@
       "rating": 4.9,
       "reviews": 2310,
       "badge": "12 Hr Leak Lock",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "👶",
       "image": "https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1234,7 +1234,7 @@
       "rating": 4.8,
       "reviews": 1780,
       "badge": "Doctor Recommended",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🍼",
       "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1250,7 +1250,7 @@
       "rating": 4.9,
       "reviews": 2190,
       "badge": "Alcohol Free",
-      "delivery": "8 MINS",
+      "delivery": "INSTANT",
       "emoji": "🧻",
       "image": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=500&auto=format&fit=crop&q=80",
       "enabled": true
@@ -1266,7 +1266,7 @@
       "rating": 4.9,
       "reviews": 2140,
       "badge": "Fresh Blooms",
-      "delivery": "10 MINS",
+      "delivery": "INSTANT",
       "emoji": "🌹",
       "image": "/images/products/velvet-crimson-red-roses.jpg",
       "enabled": true
@@ -1282,7 +1282,7 @@
       "rating": 4.8,
       "reviews": 1420,
       "badge": "Floral Elegance",
-      "delivery": "10 MINS",
+      "delivery": "INSTANT",
       "emoji": "🌸",
       "image": "/images/products/lilies-roses-vase.jpg",
       "enabled": true
@@ -1298,7 +1298,7 @@
       "rating": 4.9,
       "reviews": 980,
       "badge": "Rare Blooms",
-      "delivery": "10 MINS",
+      "delivery": "INSTANT",
       "emoji": "🪻",
       "image": "/images/products/blue-dendrobium-orchids.jpg",
       "enabled": true
@@ -1314,14 +1314,14 @@
       "rating": 4.9,
       "reviews": 1120,
       "badge": "Gift Box",
-      "delivery": "10 MINS",
+      "delivery": "INSTANT",
       "emoji": "🎁",
       "image": "/images/products/birthday-surprise-hamper.jpg",
       "enabled": true
     },
     {
       "id": 1082,
-      "name": "The 10-Min Bespoke Hamper & Bouquet Atelier",
+      "name": "The Instant Bespoke Hamper & Bouquet Atelier",
       "cat": "Flowers & Gifting",
       "weight": "Custom Built Live",
       "price": 499,
@@ -1330,7 +1330,7 @@
       "rating": 5,
       "reviews": 840,
       "badge": "Custom Studio",
-      "delivery": "10 MINS",
+      "delivery": "INSTANT",
       "emoji": "✨",
       "image": "/images/products/roses-hat-box.jpg",
       "enabled": true
@@ -1363,7 +1363,7 @@
       "address": "Flat 101, Lake Avenue, Lalpur",
       "city": "Ranchi",
       "pin": "834001",
-      "slot": "⚡ 8–10 Mins (Lalpur Dark Store)",
+      "slot": "⚡ Instant Delivery (Lalpur Dark Store)",
       "tip": 0,
       "date": "2026-10-31T14:37:05.282Z",
       "demoPayment": false,
