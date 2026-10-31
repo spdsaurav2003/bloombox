@@ -630,19 +630,23 @@
       background: linear-gradient(135deg, #fff5f8 0%, #fdf2f8 45%, #fffbeb 100%);
       border: 1.5px solid #fbcfe8;
       border-radius: var(--radius-lg);
-      padding: 24px;
-      margin-bottom: 30px;
+      padding: 22px 20px;
+      margin-bottom: 28px;
       box-shadow: 0 4px 20px rgba(190, 24, 93, 0.06);
+      box-sizing: border-box;
+      width: 100%;
+      position: relative;
+      overflow: hidden; /* Guarantees live preview & contents stay inside container */
     }
     .studio-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
       gap: 12px;
       border-bottom: 1px dashed #fbcfe8;
-      padding-bottom: 14px;
+      padding-bottom: 12px;
     }
     .studio-header h3 {
       font-size: 22px;
@@ -651,24 +655,39 @@
     }
     .studio-layout {
       display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 22px;
-      align-items: start;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      gap: 18px;
+      align-items: stretch;
+      width: 100%;
+      box-sizing: border-box;
     }
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .studio-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: 100%;
+        gap: 18px;
       }
+      .studio-preview-card {
+        margin-top: 8px;
+      }
+    }
+    .studio-builder-pane {
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .studio-steps-rail {
       display: flex;
       gap: 8px;
       overflow-x: auto;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       padding-bottom: 4px;
+      scrollbar-width: thin;
     }
     .studio-step-btn {
-      padding: 8px 16px;
+      padding: 8px 14px;
       border-radius: var(--radius-pill);
       font-size: 12px;
       font-weight: 800;
@@ -681,6 +700,7 @@
       gap: 6px;
       transition: var(--transition);
       white-space: nowrap;
+      user-select: none;
     }
     .studio-step-btn:hover {
       border-color: #be185d;
@@ -694,81 +714,91 @@
     }
     .choice-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-      gap: 12px;
-      margin-bottom: 16px;
+      grid-template-columns: repeat(auto-fill, minmax(115px, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
+      width: 100%;
+      box-sizing: border-box;
     }
     .studio-choice-card {
       background: #ffffff;
       border: 1.5px solid #fbcfe8;
       border-radius: var(--radius-md);
-      padding: 10px;
+      padding: 10px 8px;
       text-align: center;
       cursor: pointer;
-      transition: var(--transition);
+      transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
       align-items: center;
       position: relative;
       overflow: hidden;
+      box-sizing: border-box;
+      user-select: none;
     }
     .studio-choice-card:hover {
       transform: translateY(-2px);
-      border-color: #f472b6;
+      border-color: #be185d;
       box-shadow: 0 4px 14px rgba(190, 24, 93, 0.12);
     }
     .studio-choice-card.selected {
       border-color: #be185d;
       background: #fff1f2;
-      box-shadow: 0 4px 14px rgba(190, 24, 93, 0.2);
+      box-shadow: 0 3px 12px rgba(190, 24, 93, 0.2);
     }
     .studio-choice-thumb {
       width: 100%;
-      height: 84px;
+      height: 80px;
       border-radius: 8px;
       object-fit: cover;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
       background: #fdf2f8;
       border: 1px solid #fce7f3;
+      pointer-events: none;
     }
     .studio-choice-emoji {
       font-size: 32px;
-      height: 84px;
+      height: 80px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 8px;
+      margin-bottom: 6px;
+      pointer-events: none;
     }
     .studio-choice-name {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 800;
       color: #1c1c1c;
       line-height: 1.25;
-      margin-bottom: 4px;
-      height: 30px;
+      margin-bottom: 3px;
+      height: 28px;
       display: flex;
       align-items: center;
       justify-content: center;
+      pointer-events: none;
     }
     .studio-choice-price {
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 900;
       color: #be185d;
+      pointer-events: none;
     }
     .studio-badge-check {
       position: absolute;
-      top: 6px;
-      right: 6px;
-      width: 18px;
-      height: 18px;
+      top: 5px;
+      right: 5px;
+      min-width: 20px;
+      height: 20px;
+      padding: 0 5px;
       background: #be185d;
       color: #fff;
-      border-radius: 50%;
-      font-size: 10px;
+      border-radius: 10px;
+      font-size: 10.5px;
       display: none;
       align-items: center;
       justify-content: center;
       font-weight: 900;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
     }
     .studio-choice-card.selected .studio-badge-check {
       display: flex;
@@ -777,9 +807,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 6px;
       margin-top: 6px;
       width: 100%;
+      box-sizing: border-box;
     }
     .stem-btn {
       width: 26px;
@@ -795,6 +826,7 @@
       align-items: center;
       justify-content: center;
       line-height: 1;
+      transition: all 0.15s;
     }
     .stem-btn:hover {
       background: #be185d;
@@ -802,31 +834,36 @@
     }
     .stem-qty-label {
       font-weight: 900;
-      font-size: 12.5px;
+      font-size: 12px;
       min-width: 20px;
       text-align: center;
       color: #881337;
     }
 
-    /* Live Preview Right Card */
+    /* Live Preview Right Card (stays fully inside container) */
     .studio-preview-card {
       background: #ffffff;
       border: 1.5px solid #fbcfe8;
-      border-radius: var(--radius-lg);
-      padding: 18px;
+      border-radius: 14px;
+      padding: 14px;
       box-shadow: 0 4px 18px rgba(190, 24, 93, 0.08);
-      position: sticky;
-      top: 90px;
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
     .studio-preview-img-wrap {
       width: 100%;
-      height: 170px;
-      border-radius: 12px;
+      height: 135px;
+      border-radius: 10px;
       overflow: hidden;
-      margin-bottom: 14px;
+      margin-bottom: 8px;
       border: 1px solid #fce7f3;
       background: #fff1f2;
       position: relative;
+      flex-shrink: 0;
     }
     .studio-preview-img-wrap img {
       width: 100%;
@@ -835,19 +872,21 @@
       transition: transform 0.3s ease;
     }
     .studio-receipt-list {
-      max-height: 160px;
+      max-height: 125px;
       overflow-y: auto;
-      font-size: 12px;
-      margin: 10px 0;
+      font-size: 11.5px;
+      margin: 8px 0;
       display: flex;
       flex-direction: column;
-      gap: 6px;
+      gap: 5px;
+      box-sizing: border-box;
+      padding-right: 2px;
     }
     .studio-receipt-item {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 4px 0;
+      padding: 3px 0;
       border-bottom: 1px dashed #f3f4f6;
     }
 
@@ -2485,7 +2524,7 @@
         { name: 'Pink Stargazer Lilies', price: 139, unit: 'stem', image: '/images/photos/pink-stargazer-lilies-peach-roses.jpeg', defaultQty: 2 },
         { name: 'Peach & Apricot Roses', price: 49, unit: 'stem', image: '/images/photos/peach-apricot-roses-bouquet.jpeg', defaultQty: 5 },
         { name: 'Pristine White Roses', price: 45, unit: 'stem', image: '/images/photos/pure-white-roses-black-wrap.jpeg', defaultQty: 5 },
-        { name: 'Cloud Baby\'s Breath Fillers', price: 99, unit: 'bunch', image: '/images/photos/blushing-pink-roses-dewdrop.jpeg', defaultQty: 1 }
+        { name: 'Cloud Babys Breath Fillers', price: 99, unit: 'bunch', image: '/images/photos/blushing-pink-roses-dewdrop.jpeg', defaultQty: 1 }
       ],
       2: [
         { name: 'Ferrero Rocher Luxury Box', price: 249, image: '/images/photos/ferrero-rocher-roses-luxury.jpeg' },
@@ -2511,7 +2550,7 @@
       const rail = document.getElementById('studioStepsRail');
       if (!rail) return;
       rail.innerHTML = studioSteps.map((s, i) => `
-        <button class="studio-step-btn ${i === studioStep ? 'active' : ''}" onclick="setStudioStep(${i})">
+        <button type="button" class="studio-step-btn ${i === studioStep ? 'active' : ''}" onclick="setStudioStep(${i})">
           <span>${i === 0 ? '🎁' : i === 1 ? '💐' : i === 2 ? '🧸' : '💌'}</span>
           <span>${s}</span>
         </button>
@@ -2546,11 +2585,11 @@
         ctrl.innerHTML = `
           <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:12px">Select your presentation style (handcrafted artisanal wraps & baskets):</div>
           <div class="choice-grid">
-            ${studioChoices[0].map(c => {
-              const isSel = studioBase.name === c.name;
+            ${studioChoices[0].map((c, idx) => {
+              const isSel = studioBase && studioBase.name === c.name;
               return `
-                <div class="studio-choice-card ${isSel ? 'selected' : ''}" onclick="selectStudioBase('${escapeHtml(c.name)}')">
-                  <div class="studio-badge-check">✓</div>
+                <div class="studio-choice-card ${isSel ? 'selected' : ''}" onclick="selectStudioBaseByIndex(${idx})" title="Select ${escapeHtml(c.name)}">
+                  <div class="studio-badge-check" style="${isSel ? 'display:flex' : 'display:none'}">✓</div>
                   <img class="studio-choice-thumb" src="${c.image}" alt="${escapeHtml(c.name)}" onerror="this.onerror=null;this.src='/images/photos/velvet-red-roses-black-gold.jpeg'">
                   <div class="studio-choice-name">${escapeHtml(c.name)}</div>
                   <div class="studio-choice-price">${money(c.price)}</div>
@@ -2560,29 +2599,31 @@
           </div>
         `;
       } else if (studioStep === 1) {
-        // Step 2: Pick Stems & Blooms (Customer configures counts!)
+        // Step 2: Pick Stems & Blooms (Click anywhere on card or button to select!)
+        const totalStemsSelected = Object.values(studioStems).reduce((a,b)=>a+b, 0);
         ctrl.innerHTML = `
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;font-size:12.5px;color:var(--text-muted)">
-            <span>Add or customize your fresh stems:</span>
-            <span style="font-weight:800;color:#be185d">${Object.values(studioStems).reduce((a,b)=>a+b, 0)} total stems selected</span>
+            <span>Tap any flower to select or add stems:</span>
+            <span style="font-weight:800;color:#be185d">${totalStemsSelected} total stems selected</span>
           </div>
           <div class="choice-grid">
-            ${studioChoices[1].map(c => {
+            ${studioChoices[1].map((c, idx) => {
               const qty = studioStems[c.name] || 0;
               const isSel = qty > 0;
               return `
-                <div class="studio-choice-card ${isSel ? 'selected' : ''}">
+                <div class="studio-choice-card ${isSel ? 'selected' : ''}" onclick="handleStemCardClick(${idx})" title="Click to select or add stems">
+                  <div class="studio-badge-check" style="${isSel ? 'display:flex' : 'display:none'}">${qty}</div>
                   <img class="studio-choice-thumb" src="${c.image}" alt="${escapeHtml(c.name)}" onerror="this.onerror=null;this.src='/images/photos/velvet-red-roses-black-gold.jpeg'">
                   <div class="studio-choice-name">${escapeHtml(c.name)}</div>
                   <div class="studio-choice-price">${money(c.price)} / ${c.unit}</div>
                   
-                  <div class="stem-counter-row">
+                  <div class="stem-counter-row" onclick="event.stopPropagation()">
                     ${qty === 0 ? `
-                      <button class="header-btn" style="width:100%;justify-content:center;font-size:11px;padding:5px 8px;background:#fdf2f8;color:#be185d;border:1px solid #fbcfe8" onclick="changeStemCount('${escapeHtml(c.name)}', ${c.defaultQty})">+ ADD</button>
+                      <button type="button" class="header-btn" style="width:100%;justify-content:center;font-size:11.5px;font-weight:800;padding:5px 8px;background:#fdf2f8;color:#be185d;border:1px solid #fbcfe8;border-radius:6px;cursor:pointer" onclick="changeStemByIndex(${idx}, ${c.defaultQty || 1}, event)">+ ADD</button>
                     ` : `
-                      <button class="stem-btn" onclick="changeStemCount('${escapeHtml(c.name)}', -1)">−</button>
+                      <button type="button" class="stem-btn" onclick="changeStemByIndex(${idx}, -1, event)" title="Decrease">−</button>
                       <span class="stem-qty-label">${qty}</span>
-                      <button class="stem-btn" onclick="changeStemCount('${escapeHtml(c.name)}', 1)">+</button>
+                      <button type="button" class="stem-btn" onclick="changeStemByIndex(${idx}, 1, event)" title="Increase">+</button>
                     `}
                   </div>
                 </div>
@@ -2595,15 +2636,15 @@
         ctrl.innerHTML = `
           <div style="font-size:12.5px;color:var(--text-muted);margin-bottom:12px">Elevate with premium chocolates, cute plushies, or celebration shagun:</div>
           <div class="choice-grid">
-            ${studioChoices[2].map(c => {
+            ${studioChoices[2].map((c, idx) => {
               const isSel = Boolean(studioAddons[c.name]);
               return `
-                <div class="studio-choice-card ${isSel ? 'selected' : ''}" onclick="toggleStudioAddon('${escapeHtml(c.name)}')">
-                  <div class="studio-badge-check">✓</div>
+                <div class="studio-choice-card ${isSel ? 'selected' : ''}" onclick="toggleStudioAddonByIndex(${idx})" title="Click to include ${escapeHtml(c.name)}">
+                  <div class="studio-badge-check" style="${isSel ? 'display:flex' : 'display:none'}">✓</div>
                   <img class="studio-choice-thumb" src="${c.image}" alt="${escapeHtml(c.name)}" onerror="this.onerror=null;this.src='/images/photos/ferrero-rocher-roses-luxury.jpeg'">
                   <div class="studio-choice-name">${escapeHtml(c.name)}</div>
                   <div class="studio-choice-price">${money(c.price)}</div>
-                  <button class="header-btn" style="width:100%;justify-content:center;font-size:11px;padding:4px 8px;margin-top:6px;border:1px solid ${isSel ? '#be185d' : '#fbcfe8'};background:${isSel ? '#be185d' : '#fff'};color:${isSel ? '#fff' : '#881337'}">
+                  <button type="button" class="header-btn" style="width:100%;justify-content:center;font-size:11px;font-weight:800;padding:4px 8px;margin-top:6px;border:1px solid ${isSel ? '#be185d' : '#fbcfe8'};background:${isSel ? '#be185d' : '#fff'};color:${isSel ? '#fff' : '#881337'};pointer-events:none">
                     ${isSel ? '✓ Included' : '+ Add'}
                   </button>
                 </div>
@@ -2645,10 +2686,53 @@
       }
     }
 
+    function selectStudioBaseByIndex(idx) {
+      const b = studioChoices[0][idx];
+      if (b) {
+        studioBase = b;
+        renderStudioStep();
+        updateStudioPreview();
+      }
+    }
+
     function selectStudioBase(name) {
       const b = studioChoices[0].find(x => x.name === name);
       if (b) {
         studioBase = b;
+        renderStudioStep();
+        updateStudioPreview();
+      }
+    }
+
+    function handleStemCardClick(idx) {
+      const item = studioChoices[1][idx];
+      if (!item) return;
+      const cur = studioStems[item.name] || 0;
+      if (cur === 0) {
+        studioStems[item.name] = item.defaultQty || 1;
+      } else {
+        studioStems[item.name] = cur + 1;
+      }
+      renderStudioStep();
+      updateStudioPreview();
+    }
+
+    function changeStemByIndex(idx, delta, evt) {
+      if (evt && evt.stopPropagation) evt.stopPropagation();
+      const item = studioChoices[1][idx];
+      if (!item) return;
+      const cur = studioStems[item.name] || 0;
+      const next = Math.max(0, cur + delta);
+      if (next === 0) delete studioStems[item.name];
+      else studioStems[item.name] = next;
+      renderStudioStep();
+      updateStudioPreview();
+    }
+
+    function removeStemByIndex(idx) {
+      const item = studioChoices[1][idx];
+      if (item && studioStems[item.name]) {
+        delete studioStems[item.name];
         renderStudioStep();
         updateStudioPreview();
       }
@@ -2663,6 +2747,24 @@
       updateStudioPreview();
     }
 
+    function toggleStudioAddonByIndex(idx) {
+      const item = studioChoices[2][idx];
+      if (!item) return;
+      if (studioAddons[item.name]) delete studioAddons[item.name];
+      else studioAddons[item.name] = true;
+      renderStudioStep();
+      updateStudioPreview();
+    }
+
+    function removeAddonByIndex(idx) {
+      const item = studioChoices[2][idx];
+      if (item && studioAddons[item.name]) {
+        delete studioAddons[item.name];
+        renderStudioStep();
+        updateStudioPreview();
+      }
+    }
+
     function toggleStudioAddon(name) {
       if (studioAddons[name]) delete studioAddons[name];
       else studioAddons[name] = true;
@@ -2675,39 +2777,39 @@
       const receipts = [];
 
       // Base
-      receipts.push({
-        title: `Base: ${studioBase.name}`,
-        price: studioBase.price,
-        removable: false
-      });
-
-      // Stems
-      for (const [sName, qty] of Object.entries(studioStems)) {
-        if (qty > 0) {
-          const item = studioChoices[1].find(x => x.name === sName);
-          const p = item ? item.price : 39;
-          const sub = qty * p;
-          total += sub;
-          receipts.push({
-            title: `${qty}x ${sName}`,
-            price: sub,
-            action: `changeStemCount('${escapeHtml(sName)}', -${qty})`
-          });
-        }
+      if (studioBase) {
+        receipts.push({
+          title: `Base: ${studioBase.name}`,
+          price: studioBase.price,
+          removable: false
+        });
       }
 
+      // Stems
+      studioChoices[1].forEach((item, idx) => {
+        const qty = studioStems[item.name] || 0;
+        if (qty > 0) {
+          const sub = qty * item.price;
+          total += sub;
+          receipts.push({
+            title: `${qty}x ${item.name}`,
+            price: sub,
+            action: `removeStemByIndex(${idx})`
+          });
+        }
+      });
+
       // Addons
-      for (const aName of Object.keys(studioAddons)) {
-        const item = studioChoices[2].find(x => x.name === aName);
-        if (item) {
+      studioChoices[2].forEach((item, idx) => {
+        if (studioAddons[item.name]) {
           total += item.price;
           receipts.push({
             title: item.name,
             price: item.price,
-            action: `toggleStudioAddon('${escapeHtml(aName)}')`
+            action: `removeAddonByIndex(${idx})`
           });
         }
-      }
+      });
 
       // Free Perks
       receipts.push({ title: `Ribbon: ${studioRibbon}`, price: 0, free: true });
@@ -2722,7 +2824,9 @@
       const listEl = document.getElementById('studioReceiptList');
       const totalEl = document.getElementById('studioTotal');
 
-      if (titleEl) titleEl.textContent = `Custom Atelier Bouquet (${studioBase.name.split(' ')[0]} Wrap)`;
+      if (titleEl && studioBase) {
+        titleEl.textContent = `Custom Atelier Bouquet (${studioBase.name.split(' ')[0]} Wrap)`;
+      }
       if (subEl) {
         const totalStems = Object.values(studioStems).reduce((a,b)=>a+b, 0);
         const addonCount = Object.keys(studioAddons).length;
@@ -2742,7 +2846,7 @@
             </span>
             <div style="display:flex;align-items:center;gap:6px">
               <span style="font-weight:800;color:${r.free ? '#059669' : '#be185d'}">${r.free ? 'FREE' : money(r.price)}</span>
-              ${r.action ? `<button style="background:none;border:none;color:#9ca3af;cursor:pointer;font-size:12px;padding:0 2px" onclick="${r.action}" title="Remove">✕</button>` : ''}
+              ${r.action ? `<button type="button" style="background:none;border:none;color:#9ca3af;cursor:pointer;font-size:12px;padding:0 2px" onclick="${r.action}" title="Remove">✕</button>` : ''}
             </div>
           </div>
         `).join('');
@@ -2767,7 +2871,7 @@
         'Oriental White Lilies': 2,
         'Sunshine Golden Sunflowers': 2,
         'Velvet Crimson Red Roses': 5,
-        'Cloud Baby\'s Breath Fillers': 1
+        'Cloud Babys Breath Fillers': 1
       };
       studioAddons = {
         'Ferrero Rocher Luxury Box': true
