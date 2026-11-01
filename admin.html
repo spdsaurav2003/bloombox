@@ -759,21 +759,15 @@
 
       <div class="form-group" style="text-align:left">
         <label>Admin Password</label>
-        <input type="password" id="gatePassword" placeholder="Enter admin password (e.g. admin123)" onkeydown="if(event.key==='Enter')handleAdminLogin()">
+        <input type="password" id="gatePassword" placeholder="Enter administrator password" onkeydown="if(event.key==='Enter')handleAdminLogin()">
       </div>
 
       <button class="btn-primary" style="width:100%;height:44px;justify-content:center;margin-top:8px" onclick="handleAdminLogin()">
         Unlock Admin Section ⚡
       </button>
 
-      <div style="margin-top:16px;padding-top:16px;border-top:1px solid var(--surface-border-subtle)">
-        <button class="btn-secondary" style="width:100%;justify-content:center;font-size:12px" onclick="document.getElementById('gatePassword').value='admin123';handleAdminLogin()">
-          ⚡ 1-Click Fill Demo Credentials (admin123)
-        </button>
-      </div>
-
-      <div style="margin-top:18px">
-        <a href="/" style="font-size:12px;color:var(--ink-muted);text-decoration:none">← Return to Client Boutique</a>
+      <div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--surface-border-subtle)">
+        <a href="/" style="font-size:12.5px;color:var(--primary);font-weight:700;text-decoration:none">← Return to Client Boutique</a>
       </div>
     </div>
   </div>
@@ -1138,6 +1132,26 @@
               <div style="font-size:12px;color:var(--ink-muted)">Verify Service: <b style="color:var(--ink)">Configured (.env)</b></div>
               <div style="margin-top:6px;font-size:11.5px;color:var(--success);font-weight:700">✓ SMS OTP Dispatch Operational</div>
             </div>
+          </div>
+
+          <!-- Admin Security & Password Card -->
+          <div class="panel-card">
+            <div class="panel-card-head">
+              <div>
+                <h2>Admin Security & Password</h2>
+                <p>Update administrator password for console access.</p>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label>New Administrator Password</label>
+              <input type="password" id="newAdminPassword" placeholder="Minimum 6 characters">
+            </div>
+            <div class="form-group">
+              <label>Confirm New Password</label>
+              <input type="password" id="confirmAdminPassword" placeholder="Re-enter new password">
+            </div>
+            <button class="btn-primary" onclick="updateAdminPassword()">Save New Admin Password 🔒</button>
           </div>
         </div>
       </section>
@@ -2151,6 +2165,28 @@
         toast('Store delivery settings saved successfully!');
       } catch (err) {
         toast('Save failed: ' + err.message);
+      }
+    }
+
+    async function updateAdminPassword() {
+      const p1 = document.getElementById('newAdminPassword').value.trim();
+      const p2 = document.getElementById('confirmAdminPassword').value.trim();
+      if (!p1) return toast('Please enter a new admin password');
+      if (p1.length < 6) return toast('Password must be at least 6 characters long');
+      if (p1 !== p2) return toast('Passwords do not match. Please re-enter.');
+
+      try {
+        const res = await api('/api/admin/change-password', {
+          method: 'POST',
+          body: JSON.stringify({ newPassword: p1 })
+        });
+        adminToken = res.token || p1;
+        localStorage.setItem('bb_admin_token', adminToken);
+        document.getElementById('newAdminPassword').value = '';
+        document.getElementById('confirmAdminPassword').value = '';
+        toast('Admin password successfully updated and saved! 🔒');
+      } catch (err) {
+        toast(err.message || 'Failed to update admin password');
       }
     }
 

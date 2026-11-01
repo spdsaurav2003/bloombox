@@ -456,6 +456,30 @@ async function handle(req, res) {
     });
   }
 
+  if (req.method === 'POST' && pathname === '/api/admin/change-password') {
+    if (!adminOnly(req)) return json(res, 401, { error: 'Admin authentication required.' });
+    const body = await readBody(req);
+    const newPassword = String(body.newPassword || '').trim();
+    if (!newPassword || newPassword.length < 6) {
+      return json(res, 400, { error: 'New password must be at least 6 characters long.' });
+    }
+    ADMIN_PASSWORD = newPassword;
+    process.env.ADMIN_PASSWORD = newPassword;
+    try {
+      const envPath = path.join(ROOT, '.env');
+      let envRaw = await fs.readFile(envPath, 'utf8');
+      if (/^ADMIN_PASSWORD=.*$/m.test(envRaw)) {
+        envRaw = envRaw.replace(/^ADMIN_PASSWORD=.*$/m, `ADMIN_PASSWORD=${newPassword}`);
+      } else {
+        envRaw += `\nADMIN_PASSWORD=${newPassword}\n`;
+      }
+      await fs.writeFile(envPath, envRaw, 'utf8');
+    } catch (e) {
+      console.warn('Could not update .env file:', e.message);
+    }
+    return json(res, 200, { success: true, token: newPassword, message: 'Admin password updated successfully.' });
+  }
+
   if (req.method === 'GET' && pathname === '/api/admin/stats') {
     if (!adminOnly(req)) return json(res, 401, { error: 'Admin authentication required.' });
     const orders = Array.isArray(db.orders) ? db.orders : [];
@@ -786,7 +810,7 @@ async function main() {
     console.log(`BloomBox running at http://localhost:${PORT}`);
     console.log(`API health: http://localhost:${PORT}/api/health`);
     console.log(`Twilio SMS OTP: ${twilioActive ? 'Configured (' + (process.env.TWILIO_PHONE_NUMBER ? 'Ready with phone ' + process.env.TWILIO_PHONE_NUMBER : 'Needs TWILIO_PHONE_NUMBER in .env') + ')' : 'Not configured'}`);
-    console.log(`Demo admin password: ${ADMIN_PASSWORD}`);
+    console.log(`Admin authentication: Protected by ADMIN_PASSWORD`);
   });
 }
 main().catch(err => { console.error(err); process.exit(1); });

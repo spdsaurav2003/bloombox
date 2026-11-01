@@ -780,21 +780,16 @@
           </div>
           <label for="adminPasswordInput">Admin Password</label>
           <div class="input-wrap">
-            <input id="adminPasswordInput" type="password" placeholder="Enter admin password (e.g. admin123)" onkeydown="if(event.key==='Enter')handleAdminSubmit()">
+            <input id="adminPasswordInput" type="password" placeholder="Enter administrator password" onkeydown="if(event.key==='Enter')handleAdminSubmit()">
           </div>
 
-          <button id="adminSubmitBtn" class="btn-submit" onclick="handleAdminSubmit()">
+          <button id="adminSubmitBtn" class="btn-submit" onclick="handleAdminSubmit()" style="margin-top:10px">
             <span>Sign In to Admin Portal</span>
             <span>⚡</span>
           </button>
-
-          <div style="margin-top:12px">
-            <button type="button" class="btn-secondary" style="width:100%;justify-content:center;font-size:12px" onclick="document.getElementById('adminPasswordInput').value='admin123';handleAdminSubmit()">
-              ⚡ 1-Click Fill Demo Credentials (admin123)
-            </button>
-          </div>
         </div>
 
+        ${activeTab !== 'admin' ? `
         <!-- Divider -->
         <div class="divider">
           <span>or 1-click test login</span>
@@ -823,6 +818,7 @@
           <svg width="18" height="18" viewBox="0 0 24 24"><path fill="#EA4335" d="M12 5c1.6 0 3 .6 4.1 1.6l3.1-3.1C17.3 1.8 14.8 1 12 1 7.4 1 3.5 3.6 1.6 7.4l3.7 2.9C6.2 7.3 8.9 5 12 5z"/><path fill="#4285F4" d="M23.5 12.3c0-.8-.1-1.6-.2-2.3H12v4.5h6.5c-.3 1.5-1.1 2.8-2.4 3.7l3.7 2.9c2.2-2 3.7-5 3.7-8.8z"/><path fill="#FBBC05" d="M5.3 14.7c-.2-.7-.4-1.5-.4-2.7s.1-2 .4-2.7L1.6 6.4C.6 8.3 0 10.5 0 12.8s.6 4.5 1.6 6.4l3.7-4.5z"/><path fill="#34A853" d="M12 23.5c3.2 0 6-1.1 8-3l-3.7-2.9c-1.1.7-2.5 1.2-4.3 1.2-3.1 0-5.8-2.3-6.7-5.3L1.6 16.4C3.5 20.2 7.4 23.5 12 23.5z"/></svg>
           <span>Continue with Google</span>
         </button>
+        ` : ''}
       `;
     }
 
